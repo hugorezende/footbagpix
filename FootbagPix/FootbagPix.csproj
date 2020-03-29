@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\BallModel.cs" />
+    <Compile Include="Models\CharacterModel.cs" />
+    <Compile Include="Models\IGameModel.cs" />
+    <Compile Include="Models\ScoreModel.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
