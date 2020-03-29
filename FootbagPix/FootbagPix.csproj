@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Logic\IBallLogic.cs" />
+    <Compile Include="Logic\ICharacterLogic.cs" />
+    <Compile Include="Logic\IGameLogic.cs" />
     <Compile Include="Models\BallModel.cs" />
     <Compile Include="Models\CharacterModel.cs" />
     <Compile Include="Models\IGameModel.cs" />
