@@ -18,6 +18,8 @@ namespace FootbagPix.Models
         public GameModel()
         {
             Ball = new BallModel();
+            Character = new CharacterModel();
+
             Gravity = 1;
 
         }

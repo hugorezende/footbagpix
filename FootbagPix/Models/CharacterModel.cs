@@ -21,7 +21,7 @@ namespace FootbagPix.Models
         {
             leftFoot = new Rect(50, 300, 40, 20);
             rigthFoot = new Rect(100, 300, 40, 20);
-            body = new Rect(50, 40, 100, 200);
+            body = new Rect(55, 180, 80, 100);
             PositionX = 75;
         }
     }

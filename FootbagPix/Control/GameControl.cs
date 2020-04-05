@@ -21,7 +21,6 @@ namespace FootbagPix.Control
         GameRenderer render;
         DispatcherTimer tickTimer;
 
-
         public GameControl()
         {
             Loaded += GameScreen_Loaded;
