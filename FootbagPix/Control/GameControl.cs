@@ -16,8 +16,8 @@ namespace FootbagPix.Control
     public class GameControl : FrameworkElement
     {
         GameModel gameModel;
-        BallModel ballModel;
         BallLogic ballLogic;
+        CharacterLogic characterLogic;
         GameRenderer render;
         DispatcherTimer tickTimer;
 
@@ -30,6 +30,8 @@ namespace FootbagPix.Control
         {
             gameModel = new GameModel();
             ballLogic = new BallLogic(gameModel.Ball);
+            characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character);
+
             render = new GameRenderer(gameModel);
 
             Window win = Window.GetWindow(this);
@@ -50,7 +52,9 @@ namespace FootbagPix.Control
         {
             switch (e.Key)
             {
-                case Key.Space: ballLogic.KickBall(); break;
+                case Key.Space: characterLogic.TryHitBall(); break;
+                case Key.Left: characterLogic.MoveLeft(); break;
+                case Key.Right: characterLogic.MoveRight(); break;
             }
         }
 

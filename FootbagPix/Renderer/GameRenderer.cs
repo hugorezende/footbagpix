@@ -33,8 +33,8 @@ namespace FootbagPix.Renderer
 
             drawingGroup.Children.Add(ball);
 
-            ctx.DrawDrawing(drawingGroup);
             DrawCharacter(ctx);
+            ctx.DrawDrawing(drawingGroup);
 
         }
 

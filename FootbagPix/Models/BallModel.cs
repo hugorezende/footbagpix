@@ -20,6 +20,8 @@ namespace FootbagPix.Models
         public double SpeedX { get; set; }
         public double SpeedY { get; set; }
 
+        public double TimeOnAir { get; set; }
+
         public BallModel()
         {
             area = new Rect(30, 30, 20, 20);
@@ -27,6 +29,7 @@ namespace FootbagPix.Models
             PositionX = Config.windowWidth/2;
             SpeedX = 0;
             SpeedY = 0;
+            TimeOnAir = 0;
         }
         
     }

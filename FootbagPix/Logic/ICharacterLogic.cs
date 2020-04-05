@@ -8,7 +8,8 @@ namespace FootbagPix.Logic
 {
     public interface ICharacterLogic
     {
-        void Move();
+        void MoveLeft();
+        void MoveRight();
         void TryHitBall();
         void KickLeft();
         void KickRight();

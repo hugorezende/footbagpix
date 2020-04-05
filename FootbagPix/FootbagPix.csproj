@@ -59,6 +59,7 @@
     <Compile Include="Config.cs" />
     <Compile Include="Control\GameControl.cs" />
     <Compile Include="Logic\BallLogic.cs" />
+    <Compile Include="Logic\CharacterLogic.cs" />
     <Compile Include="Logic\IBallLogic.cs" />
     <Compile Include="Logic\ICharacterLogic.cs" />
     <Compile Include="Logic\IGameLogic.cs" />

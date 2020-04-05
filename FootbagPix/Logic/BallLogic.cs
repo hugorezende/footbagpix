@@ -12,11 +12,12 @@ namespace FootbagPix.Logic
         BallModel ball;
         public event EventHandler RefreshScreen;
 
-        float time = 0;
-        double gravity = 0.002;
+        
+        double gravity = 0.0001;
 
         public BallLogic(BallModel ball)
         {
+           
             this.ball = ball;
         }
 
@@ -24,8 +25,8 @@ namespace FootbagPix.Logic
         {
             if (ball.area.Y < 300)
             {
-                time++;
-                ball.SpeedY = ball.SpeedY - ((gravity * time * time));
+                ball.TimeOnAir++;
+                ball.SpeedY = ball.SpeedY - ((gravity * ball.TimeOnAir * ball.TimeOnAir));
                 ball.area.Y = ball.area.Y - ball.SpeedY;
 
             }
@@ -33,7 +34,7 @@ namespace FootbagPix.Logic
             {
                 ball.area.Y = 301;
                 ball.SpeedY = 0;
-                time = 0;
+                ball.TimeOnAir = 0;
 
             }
             RefreshScreen?.Invoke(this, EventArgs.Empty);
@@ -41,8 +42,9 @@ namespace FootbagPix.Logic
 
         public void KickBall()
         {
+            ball.TimeOnAir = 0;
             ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
-            ball.SpeedY = ball.SpeedY + 10;
+            ball.SpeedY = 10;
         }
         public void SetPosition(int x, int y)
         {
