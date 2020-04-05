@@ -8,6 +8,7 @@ namespace FootbagPix.Models
 {
     public interface IGameModel
     {
+        int Gravity { get; set; }
         CharacterModel Character { get; set; }
         BallModel Ball { get; set; }
         string PlayerName { get; set; }

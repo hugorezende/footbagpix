@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,13 +56,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Config.cs" />
+    <Compile Include="Control\GameControl.cs" />
+    <Compile Include="Logic\BallLogic.cs" />
     <Compile Include="Logic\IBallLogic.cs" />
     <Compile Include="Logic\ICharacterLogic.cs" />
     <Compile Include="Logic\IGameLogic.cs" />
     <Compile Include="Models\BallModel.cs" />
     <Compile Include="Models\CharacterModel.cs" />
+    <Compile Include="Models\GameModel.cs" />
     <Compile Include="Models\IGameModel.cs" />
     <Compile Include="Models\ScoreModel.cs" />
+    <Compile Include="Renderer\GameRenderer.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -102,5 +108,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
