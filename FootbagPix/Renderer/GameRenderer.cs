@@ -15,7 +15,7 @@ namespace FootbagPix.Renderer
 
         static SolidColorBrush colorRed = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
         static SolidColorBrush colorBlue = new SolidColorBrush(Color.FromArgb(255, 0, 0, 255));
-        static Pen defaultPen = new Pen(colorBlue, 0);
+        static Pen defaultPen = new Pen(colorBlue, 1);
 
         public GameRenderer(GameModel gameModel)
         {
@@ -37,7 +37,7 @@ namespace FootbagPix.Renderer
             ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.LeftFoot).Rect);
             ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.RigthFoot).Rect);
             
-            ctx.DrawRectangle(gameModel.Character.imageBrush, defaultPen, new Rect(gameModel.Character.PositionX, 100, 56, 213));
+            ctx.DrawRectangle(gameModel.Character.imageBrush, defaultPen, new Rect(gameModel.Character.PositionX, 100, 95, 214));
         }
     }
 }

@@ -20,18 +20,24 @@ namespace FootbagPix.Models
         public Point Head { get { return head; } }
         public int PositionX { get; set; }
 
+        public int SpriteWidth { get; set; }
+        public int SpriteHeight{ get; set; }
+
         public ImageBrush imageBrush { get; set; }
 
         public CharacterModel()
         {
+            SpriteWidth = 95;
+            SpriteHeight = 214;
+
             imageBrush = new ImageBrush(new BitmapImage(new Uri("Resources/ImageResources/character_sprite3.png", UriKind.Relative)));
             
-            imageBrush.Viewbox = new Rect(-112,0,280,213);
+            imageBrush.Viewbox = new Rect(0,0, SpriteWidth, SpriteHeight);
             imageBrush.ViewboxUnits = BrushMappingMode.Absolute;
             imageBrush.Stretch = Stretch.None;
 
-            leftFoot = new Rect(300, 300, 40, 20);
-            rigthFoot = new Rect(350, 300, 40, 20);
+            leftFoot = new Rect(310, 300, 40, 20);
+            rigthFoot = new Rect(360, 300, 40, 20);
             
             PositionX = 310;
         }
