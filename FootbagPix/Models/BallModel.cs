@@ -28,7 +28,7 @@ namespace FootbagPix.Models
 
         public BallModel()
         {
-            imageBrush = new ImageBrush(new BitmapImage(new Uri("assets/images/ball.png", UriKind.Relative)));
+            imageBrush = new ImageBrush(new BitmapImage(new Uri("Resources/ImageResources/ball.png", UriKind.Relative)));
 
             area = new Rect(300, 30, 20, 20);
             PositionX = Config.windowHeight-50;

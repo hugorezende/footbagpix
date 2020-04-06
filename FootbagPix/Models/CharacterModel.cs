@@ -24,7 +24,7 @@ namespace FootbagPix.Models
 
         public CharacterModel()
         {
-            imageBrush = new ImageBrush(new BitmapImage(new Uri("assets/images/character_sprite3.png", UriKind.Relative)));
+            imageBrush = new ImageBrush(new BitmapImage(new Uri("Resources/ImageResources/character_sprite3.png", UriKind.Relative)));
             
             imageBrush.Viewbox = new Rect(-112,0,280,213);
             imageBrush.ViewboxUnits = BrushMappingMode.Absolute;
