@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace FootbagPix.Models
 {
@@ -21,10 +23,14 @@ namespace FootbagPix.Models
         public double SpeedY { get; set; }
 
         public double TimeOnAir { get; set; }
+        public ImageBrush imageBrush { get; set; }
+            
 
         public BallModel()
         {
-            area = new Rect(30, 30, 20, 20);
+            imageBrush = new ImageBrush(new BitmapImage(new Uri("assets/images/ball.png", UriKind.Relative)));
+
+            area = new Rect(300, 30, 20, 20);
             PositionX = Config.windowHeight-50;
             PositionX = Config.windowWidth/2;
             SpeedX = 0;

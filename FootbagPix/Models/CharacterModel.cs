@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace FootbagPix.Models
 {
@@ -18,13 +20,20 @@ namespace FootbagPix.Models
         public Point Head { get { return head; } }
         public int PositionX { get; set; }
 
+        public ImageBrush imageBrush { get; set; }
+
         public CharacterModel()
         {
-            leftFoot = new Rect(50, 300, 40, 20);
-            rigthFoot = new Rect(100, 300, 40, 20);
-            body = new Rect(55, 180, 80, 100);
-            head = new Point(95,140);
-            PositionX = 75;
+            imageBrush = new ImageBrush(new BitmapImage(new Uri("assets/images/character_sprite3.png", UriKind.Relative)));
+            
+            imageBrush.Viewbox = new Rect(-112,0,280,213);
+            imageBrush.ViewboxUnits = BrushMappingMode.Absolute;
+            imageBrush.Stretch = Stretch.None;
+
+            leftFoot = new Rect(300, 300, 40, 20);
+            rigthFoot = new Rect(350, 300, 40, 20);
+            
+            PositionX = 310;
         }
     }
 }

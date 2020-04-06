@@ -25,25 +25,19 @@ namespace FootbagPix.Renderer
         public void DrawItens(DrawingContext ctx)
         {
 
-            DrawingGroup drawingGroup = new DrawingGroup();
-            GeometryDrawing ball = new GeometryDrawing(colorRed,
-            new Pen(colorRed, 0),
-            new RectangleGeometry(gameModel.Ball.Area)
-            );
-
-            drawingGroup.Children.Add(ball);
-
+            
             DrawCharacter(ctx);
-            ctx.DrawDrawing(drawingGroup);
+            ctx.DrawRectangle(gameModel.Ball.imageBrush, defaultPen, gameModel.Ball.Area);
 
         }
 
         private void DrawCharacter(DrawingContext ctx)
         {
+            
             ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.LeftFoot).Rect);
             ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.RigthFoot).Rect);
-            ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.Body).Rect);
-            ctx.DrawEllipse(colorBlue, defaultPen, gameModel.Character.Head,30,30);
+            
+            ctx.DrawRectangle(gameModel.Character.imageBrush, defaultPen, new Rect(gameModel.Character.PositionX, 100, 56, 213));
         }
     }
 }

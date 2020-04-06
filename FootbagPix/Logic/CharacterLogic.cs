@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FootbagPix.Logic
 {
@@ -33,22 +34,25 @@ namespace FootbagPix.Logic
 
         public void MoveLeft()
         {
+            character.PositionX -= 5;
             character.head.X -= 5;
-            character.leftFoot.X -=5;
+            character.leftFoot.X -= 5;
             character.rigthFoot.X -= 5;
             character.body.X -= 5;
         }
 
         public void MoveRight()
         {
+            character.PositionX += 5;
             character.head.X += 5;
-            character.leftFoot.X+=5;
+            character.leftFoot.X += 5;
             character.rigthFoot.X += 5;
             character.body.X += 5;
         }
 
         public void TryHitBall()
         {
+            AnimateKick();
             if (ball.Area.IntersectsWith(character.LeftFoot))
             {
                 ball.TimeOnAir = 0;
@@ -64,6 +68,18 @@ namespace FootbagPix.Logic
                 ball.SpeedY = kickForce;
                 ball.SpeedX = (float)random.Next(-10, 10) / 10;
             }
+        }
+
+        private async void AnimateKick()
+        {
+            character.imageBrush.Viewbox = new Rect(-56, 0, 280, 213);
+            await Task.Delay(100);
+            character.imageBrush.Viewbox = new Rect(0, 0, 280, 213);
+            await Task.Delay(100);
+            character.imageBrush.Viewbox = new Rect(-56, 0, 280, 213);
+            await Task.Delay(100);
+            character.imageBrush.Viewbox = new Rect(-112, 0, 280, 213);
+            
         }
 
         public void Turn()
