@@ -57,6 +57,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Config.cs" />
+    <Compile Include="ControlsWindow.xaml.cs">
+      <DependentUpon>ControlsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\GameControl.cs" />
     <Compile Include="Logic\BallLogic.cs" />
     <Compile Include="Logic\CharacterLogic.cs" />
@@ -73,6 +76,10 @@
     <Compile Include="Models\ScoreModel.cs" />
     <Compile Include="Renderer\GameRenderer.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Page Include="ControlsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainMenuWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -121,11 +128,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\ImageResources\FootBagControls.png" />
     <Resource Include="Resources\ImageResources\gamegrass.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ImageResources\FootBagMainMenu.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

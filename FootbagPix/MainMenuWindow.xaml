@@ -12,15 +12,15 @@
         </Grid.Background>
 
         <Button Name="Button_Play" Click="Button_Play_Click" Style="{StaticResource MainMenuButtonStyle}"
-                HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Margin="190,200,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="191,199,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}">
         </Button>
         <Button Name="Button_Load" Click="Button_Load_Click" Style="{StaticResource MainMenuButtonStyle}"
-                HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Margin="190,269,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="191,268,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
         <Button Name="Button_Scoreboard" Click="Button_Scoreboard_Click" Style="{StaticResource MainMenuButtonStyle}"
-                HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Margin="190,338,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="191,337,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
         <Button Name="Button_Controls" Click="Button_Controls_Click" Style="{StaticResource MainMenuButtonStyle}"
-                HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Margin="190,407,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="191,407,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
         <Button Name="Button_Quit" Click="Button_Quit_Click" Style="{StaticResource MainMenuButtonStyle}"
-                HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Margin="190,477,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="190,476,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
     </Grid>
 </Window>

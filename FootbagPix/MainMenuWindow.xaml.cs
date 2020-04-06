@@ -26,7 +26,11 @@ namespace FootbagPix
 
         private void Button_Play_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
+            MainWindow mainWindow = new MainWindow
+            {
+                Left = this.Left,
+                Top = this.Top
+            };
             mainWindow.Show();
             this.Close();
         }
@@ -43,7 +47,13 @@ namespace FootbagPix
 
         private void Button_Controls_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Controls button clicked!");
+            ControlsWindow controlsWindow = new ControlsWindow
+            {
+                Left = this.Left,
+                Top = this.Top
+            };
+            controlsWindow.Show();
+            this.Close();
         }
 
         private void Button_Quit_Click(object sender, RoutedEventArgs e)
