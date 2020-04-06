@@ -13,7 +13,7 @@ namespace FootbagPix.Logic
         public event EventHandler RefreshScreen;
 
         
-        double gravity = 0.0001;
+        double gravity = 0.01;
 
         public BallLogic(BallModel ball)
         {
@@ -26,7 +26,8 @@ namespace FootbagPix.Logic
             if (ball.area.Y < 300)
             {
                 ball.TimeOnAir++;
-                ball.SpeedY = ball.SpeedY - ((gravity * ball.TimeOnAir * ball.TimeOnAir));
+                ball.SpeedY = ball.SpeedY - ((gravity * ball.TimeOnAir ));
+                ball.area.X = ball.area.X + ball.SpeedX;
                 ball.area.Y = ball.area.Y - ball.SpeedY;
 
             }

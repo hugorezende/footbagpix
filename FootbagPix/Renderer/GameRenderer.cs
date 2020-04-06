@@ -43,6 +43,7 @@ namespace FootbagPix.Renderer
             ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.LeftFoot).Rect);
             ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.RigthFoot).Rect);
             ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.Body).Rect);
+            ctx.DrawEllipse(colorBlue, defaultPen, gameModel.Character.Head,30,30);
         }
     }
 }

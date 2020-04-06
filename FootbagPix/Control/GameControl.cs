@@ -38,7 +38,7 @@ namespace FootbagPix.Control
             if (win != null) // if (!IsInDesignMode)
             {
                 tickTimer = new DispatcherTimer();
-                tickTimer.Interval = TimeSpan.FromMilliseconds(25);
+                tickTimer.Interval = TimeSpan.FromMilliseconds(20);
                 tickTimer.Tick += timer_Tick;
                 tickTimer.Start();
 

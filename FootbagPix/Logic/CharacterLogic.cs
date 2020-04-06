@@ -11,6 +11,9 @@ namespace FootbagPix.Logic
     {
         BallModel ball;
         CharacterModel character;
+        Random random = new Random();
+
+        const int kickForce = 10;
 
         public CharacterLogic(BallModel ball, CharacterModel character)
         {
@@ -30,6 +33,7 @@ namespace FootbagPix.Logic
 
         public void MoveLeft()
         {
+            character.head.X -= 5;
             character.leftFoot.X -=5;
             character.rigthFoot.X -= 5;
             character.body.X -= 5;
@@ -37,6 +41,7 @@ namespace FootbagPix.Logic
 
         public void MoveRight()
         {
+            character.head.X += 5;
             character.leftFoot.X+=5;
             character.rigthFoot.X += 5;
             character.body.X += 5;
@@ -48,7 +53,16 @@ namespace FootbagPix.Logic
             {
                 ball.TimeOnAir = 0;
                 ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
-                ball.SpeedY = 3;
+                ball.SpeedY = kickForce;
+                ball.SpeedX = (float)random.Next(-10, 10) / 10;
+            }
+
+            if (ball.Area.IntersectsWith(character.RigthFoot))
+            {
+                ball.TimeOnAir = 0;
+                ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
+                ball.SpeedY = kickForce;
+                ball.SpeedX = (float)random.Next(-10, 10) / 10;
             }
         }
 
