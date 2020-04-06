@@ -23,5 +23,37 @@ namespace FootbagPix
         {
             InitializeComponent();
         }
+
+        private void Button_Play_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+        private void Button_Load_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Load button clicked!");
+        }
+
+        private void Button_Scoreboard_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Scoreboard button clicked!");
+        }
+
+        private void Button_Controls_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Controls button clicked!");
+        }
+
+        private void Button_Quit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }
