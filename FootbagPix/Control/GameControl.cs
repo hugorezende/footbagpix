@@ -15,6 +15,9 @@ namespace FootbagPix.Control
 {
     public class GameControl : FrameworkElement
     {
+
+        // this is a test comment for hugo branch
+
         GameModel gameModel;
         BallLogic ballLogic;
         CharacterLogic characterLogic;
