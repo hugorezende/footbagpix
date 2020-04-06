@@ -36,8 +36,8 @@ namespace FootbagPix.Models
             imageBrush.ViewboxUnits = BrushMappingMode.Absolute;
             imageBrush.Stretch = Stretch.None;
 
-            leftFoot = new Rect(310, 300, 40, 20);
-            rigthFoot = new Rect(360, 300, 40, 20);
+            leftFoot = new Rect(310, 280, 40, 40);
+            rigthFoot = new Rect(360, 280, 40, 40);
             
             PositionX = 310;
         }

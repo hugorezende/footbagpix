@@ -13,9 +13,9 @@ namespace FootbagPix.Renderer
     {
         GameModel gameModel;
 
-        static SolidColorBrush colorRed = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
-        static SolidColorBrush colorBlue = new SolidColorBrush(Color.FromArgb(255, 0, 0, 255));
-        static Pen defaultPen = new Pen(colorBlue, 1);
+        static SolidColorBrush colorRed = new SolidColorBrush(Color.FromArgb(10, 255, 0, 0));
+        static SolidColorBrush colorBlue = new SolidColorBrush(Color.FromArgb(10, 0, 0, 255));
+        static Pen defaultPen = new Pen(colorBlue, 0);
 
         public GameRenderer(GameModel gameModel)
         {

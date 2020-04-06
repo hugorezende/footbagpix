@@ -34,6 +34,8 @@ namespace FootbagPix.Logic
 
         public async void MoveLeft()
         {
+            character.leftFoot.X -= 5;
+            character.rigthFoot.X -= 5;
             AnimateWalkRight();
             character.PositionX -= 1;
             await Task.Delay(100);
@@ -45,13 +47,13 @@ namespace FootbagPix.Logic
             await Task.Delay(100);
             character.PositionX -= 1;
             await Task.Delay(100);
-
-            character.leftFoot.X -= 5;
-            character.rigthFoot.X -= 5;
+ 
         }
 
         public async void MoveRight()
         {
+            character.leftFoot.X += 5;
+            character.rigthFoot.X += 5;
             AnimateWalkLeft();
             character.PositionX += 1;
             await Task.Delay(100);
@@ -64,16 +66,14 @@ namespace FootbagPix.Logic
             character.PositionX += 1;
             await Task.Delay(100);
 
-            character.leftFoot.X += 5;
-            character.rigthFoot.X += 5;
-
         }
 
         public void TryHitBall()
         {
-            AnimateKick();
+           
             if (ball.Area.IntersectsWith(character.LeftFoot))
             {
+                AnimateKickLeft();
                 ball.TimeOnAir = 0;
                 ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
                 ball.SpeedY = kickForce;
@@ -82,6 +82,7 @@ namespace FootbagPix.Logic
 
             if (ball.Area.IntersectsWith(character.RigthFoot))
             {
+                AnimateKickRight();
                 ball.TimeOnAir = 0;
                 ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
                 ball.SpeedY = kickForce;
@@ -89,49 +90,62 @@ namespace FootbagPix.Logic
             }
         }
 
-        private async void AnimateKick()
+        private async void AnimateKickRight()
         {
             character.imageBrush.Viewbox = new Rect(0, 0, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
             character.imageBrush.Viewbox = new Rect(character.SpriteWidth, character.SpriteHeight * 2, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
             character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 2, character.SpriteHeight * 2, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
             character.imageBrush.Viewbox = new Rect(character.SpriteWidth, character.SpriteHeight * 2, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
+            character.imageBrush.Viewbox = new Rect(0, 0, character.SpriteWidth, character.SpriteHeight);
+        }
+
+        private async void AnimateKickLeft() 
+        {
+            character.imageBrush.Viewbox = new Rect(0, 0, character.SpriteWidth, character.SpriteHeight);
+            await Task.Delay(50);
+            character.imageBrush.Viewbox = new Rect(character.SpriteWidth, character.SpriteHeight * 3, character.SpriteWidth, character.SpriteHeight);
+            await Task.Delay(50);
+            character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 2, character.SpriteHeight * 3, character.SpriteWidth, character.SpriteHeight);
+            await Task.Delay(50);
+            character.imageBrush.Viewbox = new Rect(character.SpriteWidth, character.SpriteHeight * 3, character.SpriteWidth, character.SpriteHeight);
+            await Task.Delay(50);
             character.imageBrush.Viewbox = new Rect(0, 0, character.SpriteWidth, character.SpriteHeight);
         }
 
         private async void AnimateWalkLeft()
         {
             character.imageBrush.Viewbox = new Rect(0, 0, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
             character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 1, character.SpriteHeight * 0, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
             character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 2, character.SpriteHeight * 0, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
             character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 3, character.SpriteHeight * 0, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
             character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 4, character.SpriteHeight * 0, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
             character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 5, character.SpriteHeight * 0, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
         }
 
         private async void AnimateWalkRight()
         {
             character.imageBrush.Viewbox = new Rect(0, 0, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
             character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 1, character.SpriteHeight * 1, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
             character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 2, character.SpriteHeight * 1, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
             character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 3, character.SpriteHeight * 1, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
             character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 4, character.SpriteHeight * 1, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
             character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 5, character.SpriteHeight * 1, character.SpriteWidth, character.SpriteHeight);
-            await Task.Delay(100);
+            await Task.Delay(50);
         }
 
         public void Turn()
