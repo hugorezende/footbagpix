@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FootbagPix"
         mc:Ignorable="d"
-        Title="MainMenuWindow" Height="600" Width="600" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown">
+        Title="MainMenuWindow" WindowStartupLocation="CenterScreen" Height="600" Width="600" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/FootbagPix;component/Resources/ImageResources/FootBagMainMenu.png"/>
