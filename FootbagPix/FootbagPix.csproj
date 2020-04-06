@@ -63,6 +63,9 @@
     <Compile Include="Logic\IBallLogic.cs" />
     <Compile Include="Logic\ICharacterLogic.cs" />
     <Compile Include="Logic\IGameLogic.cs" />
+    <Compile Include="MainMenuWindow.xaml.cs">
+      <DependentUpon>MainMenuWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\BallModel.cs" />
     <Compile Include="Models\CharacterModel.cs" />
     <Compile Include="Models\GameModel.cs" />
@@ -70,6 +73,10 @@
     <Compile Include="Models\ScoreModel.cs" />
     <Compile Include="Renderer\GameRenderer.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Page Include="MainMenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
