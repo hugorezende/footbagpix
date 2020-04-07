@@ -21,6 +21,7 @@ namespace FootbagPix.Control
         GameModel gameModel;
         BallLogic ballLogic;
         CharacterLogic characterLogic;
+        ScoreLogic scoreLogic;
         GameRenderer render;
         DispatcherTimer tickTimer;
 
@@ -33,11 +34,13 @@ namespace FootbagPix.Control
         {
             gameModel = new GameModel();
             ballLogic = new BallLogic(gameModel.Ball);
-            characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character);
+            characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character, gameModel.Score);
+            scoreLogic = new ScoreLogic(gameModel.Score, gameModel.Ball);
 
             render = new GameRenderer(gameModel);
 
             Window win = Window.GetWindow(this);
+            var dpiInfo = VisualTreeHelper.GetDpi(win);
             if (win != null) // if (!IsInDesignMode)
             {
                 tickTimer = new DispatcherTimer();
@@ -48,6 +51,7 @@ namespace FootbagPix.Control
                 win.KeyDown += Win_KeyDown;
             }
             ballLogic.RefreshScreen += (obj, args) => InvalidateVisual();
+            scoreLogic.RefreshScreen += (obj, args) => InvalidateVisual();
             InvalidateVisual();
         }
 
@@ -55,7 +59,7 @@ namespace FootbagPix.Control
         {
             switch (e.Key)
             {
-                case Key.Space: characterLogic.TryHitBall(); break;
+                case Key.Space: if (characterLogic.TryHitBall()) scoreLogic.Increase(); break;
                 case Key.Left: characterLogic.MoveLeft(); break;
                 case Key.Right: characterLogic.MoveRight(); break;
             }
@@ -63,12 +67,13 @@ namespace FootbagPix.Control
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            if (render != null) render.DrawItens(drawingContext);
+            if (render != null) render.DrawItens(drawingContext, VisualTreeHelper.GetDpi(Window.GetWindow(this)));
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
             ballLogic.DoGravity();
+            scoreLogic.CheckIfBallFell();
         }
 
     }

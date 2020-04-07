@@ -12,14 +12,16 @@ namespace FootbagPix.Logic
     {
         BallModel ball;
         CharacterModel character;
+        ScoreModel score;
         Random random = new Random();
 
         const int kickForce = 10;
 
-        public CharacterLogic(BallModel ball, CharacterModel character)
+        public CharacterLogic(BallModel ball, CharacterModel character, ScoreModel score)
         {
             this.ball = ball;
             this.character = character;
+            this.score = score;
         }
 
         public void KickLeft()
@@ -68,7 +70,7 @@ namespace FootbagPix.Logic
 
         }
 
-        public void TryHitBall()
+        public bool TryHitBall()
         {
            
             if (ball.Area.IntersectsWith(character.LeftFoot))
@@ -78,6 +80,7 @@ namespace FootbagPix.Logic
                 ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
                 ball.SpeedY = kickForce;
                 ball.SpeedX = (float)random.Next(-10, 10) / 10;
+                return true;
             }
 
             if (ball.Area.IntersectsWith(character.RigthFoot))
@@ -87,7 +90,9 @@ namespace FootbagPix.Logic
                 ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
                 ball.SpeedY = kickForce;
                 ball.SpeedX = (float)random.Next(-10, 10) / 10;
+                return true;
             }
+            return false;
         }
 
         private async void AnimateKickRight()

@@ -12,7 +12,7 @@ namespace FootbagPix.Models
         CharacterModel Character { get; set; }
         BallModel Ball { get; set; }
         string PlayerName { get; set; }
-        ScoreModel CurrentScore { get; set; }
+        ScoreModel Score { get; set; }
         TimeSpan ElapsedTime { get; set; }
     }
 }

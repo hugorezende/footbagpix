@@ -14,7 +14,7 @@ namespace FootbagPix.Models
         public CharacterModel Character { get; set; }
         public BallModel Ball { get; set; }
         public string PlayerName { get; set; }
-        public ScoreModel CurrentScore { get; set; }
+        public ScoreModel Score { get; set; }
         public TimeSpan ElapsedTime { get; set; }
         public int Gravity { get ; set ; }
         public ImageBrush BackgroundBrush { get; set; }
@@ -25,6 +25,7 @@ namespace FootbagPix.Models
 
             Ball = new BallModel();
             Character = new CharacterModel();
+            Score = new ScoreModel();
 
             Gravity = 1;
 

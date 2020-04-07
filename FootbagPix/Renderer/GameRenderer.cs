@@ -25,11 +25,12 @@ namespace FootbagPix.Renderer
             bgArea = new Rect(0, 0, Config.windowWidth, Config.windowHeight);
         }
 
-        public void DrawItens(DrawingContext ctx)
+        public void DrawItens(DrawingContext ctx, DpiScale dpiScale)
         {
 
             ctx.DrawRectangle(gameModel.BackgroundBrush, defaultPen, bgArea);
-            DrawCharacter(ctx);            
+            DrawCharacter(ctx);
+            DrawScore(ctx, dpiScale);
             ctx.DrawRectangle(gameModel.Ball.imageBrush, defaultPen, gameModel.Ball.Area);
 
         }
@@ -40,6 +41,22 @@ namespace FootbagPix.Renderer
             ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.LeftFoot).Rect);
             ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.RigthFoot).Rect);
             ctx.DrawRectangle(gameModel.Character.imageBrush, defaultPen, new Rect(gameModel.Character.PositionX, Config.windowHeight - 280, 95, 214));
+        }
+
+        private void DrawScore(DrawingContext ctx, DpiScale dpiScale)
+        {
+            DrawingGroup dg = new DrawingGroup();
+            FormattedText formattedText = new FormattedText(gameModel.Score.CurrentScore.ToString(),
+                System.Globalization.CultureInfo.CurrentCulture,
+                FlowDirection.LeftToRight,
+                new Typeface("Arial"),
+                32,
+                Brushes.Transparent,
+                dpiScale.PixelsPerDip);
+            GeometryDrawing text = new GeometryDrawing(null, new Pen(Brushes.White, 2),
+                formattedText.BuildGeometry(new Point(5, 5)));
+            dg.Children.Add(text);
+            ctx.DrawDrawing(dg);
         }
     }
 }
