@@ -40,7 +40,6 @@ namespace FootbagPix.Control
             render = new GameRenderer(gameModel);
 
             Window win = Window.GetWindow(this);
-            var dpiInfo = VisualTreeHelper.GetDpi(win);
             if (win != null) // if (!IsInDesignMode)
             {
                 tickTimer = new DispatcherTimer();
