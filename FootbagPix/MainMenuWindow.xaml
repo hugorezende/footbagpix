@@ -1,0 +1,26 @@
+﻿<Window x:Class="FootbagPix.MainMenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FootbagPix"
+        mc:Ignorable="d"
+        Title="MainMenuWindow" WindowStartupLocation="CenterScreen" Height="600" Width="600" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/FootbagPix;component/Resources/ImageResources/FootBagMainMenu.png"/>
+        </Grid.Background>
+
+        <Button Name="Button_Play" Click="Button_Play_Click" Style="{StaticResource MainMenuButtonStyle}"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="191,199,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}">
+        </Button>
+        <Button Name="Button_Load" Click="Button_Load_Click" Style="{StaticResource MainMenuButtonStyle}"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="191,268,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
+        <Button Name="Button_Scoreboard" Click="Button_Scoreboard_Click" Style="{StaticResource MainMenuButtonStyle}"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="191,337,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
+        <Button Name="Button_Controls" Click="Button_Controls_Click" Style="{StaticResource MainMenuButtonStyle}"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="191,407,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
+        <Button Name="Button_Quit" Click="Button_Quit_Click" Style="{StaticResource MainMenuButtonStyle}"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="190,476,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
+    </Grid>
+</Window>
