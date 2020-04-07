@@ -11,32 +11,26 @@ namespace FootbagPix.Logic
     {
         BallModel ball;
         public event EventHandler RefreshScreen;
-
-        
         double gravity = 0.01;
-
+        int groundPosition = 415;
         public BallLogic(BallModel ball)
         {
-           
             this.ball = ball;
         }
-
         public void DoGravity()
         {
-            if (ball.area.Y < 300)
+            if (ball.area.Y < groundPosition)
             {
                 ball.TimeOnAir++;
-                ball.SpeedY = ball.SpeedY - ((gravity * ball.TimeOnAir ));
+                ball.SpeedY = ball.SpeedY - ((gravity * ball.TimeOnAir));
                 ball.area.X = ball.area.X + ball.SpeedX;
                 ball.area.Y = ball.area.Y - ball.SpeedY;
-
             }
             else
             {
-                ball.area.Y = 301;
+                ball.area.Y = groundPosition + 1;
                 ball.SpeedY = 0;
                 ball.TimeOnAir = 0;
-
             }
             RefreshScreen?.Invoke(this, EventArgs.Empty);
         }

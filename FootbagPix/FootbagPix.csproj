@@ -131,6 +131,9 @@
     <Content Include="Resources\ImageResources\ball.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\ImageResources\bg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\ImageResources\character_sprite3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

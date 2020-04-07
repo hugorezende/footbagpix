@@ -14,19 +14,22 @@ namespace FootbagPix.Renderer
         GameModel gameModel;
 
         static SolidColorBrush colorRed = new SolidColorBrush(Color.FromArgb(10, 255, 0, 0));
-        static SolidColorBrush colorBlue = new SolidColorBrush(Color.FromArgb(10, 0, 0, 255));
+        static SolidColorBrush colorBlue = new SolidColorBrush(Color.FromArgb(0, 0, 0, 255));
         static Pen defaultPen = new Pen(colorBlue, 0);
+
+        private Rect bgArea;
 
         public GameRenderer(GameModel gameModel)
         {
             this.gameModel = gameModel;
+            bgArea = new Rect(0, 0, Config.windowWidth, Config.windowHeight);
         }
 
         public void DrawItens(DrawingContext ctx)
         {
 
-            
-            DrawCharacter(ctx);
+            ctx.DrawRectangle(gameModel.BackgroundBrush, defaultPen, bgArea);
+            DrawCharacter(ctx);            
             ctx.DrawRectangle(gameModel.Ball.imageBrush, defaultPen, gameModel.Ball.Area);
 
         }
@@ -36,8 +39,7 @@ namespace FootbagPix.Renderer
             
             ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.LeftFoot).Rect);
             ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.RigthFoot).Rect);
-            
-            ctx.DrawRectangle(gameModel.Character.imageBrush, defaultPen, new Rect(gameModel.Character.PositionX, 100, 95, 214));
+            ctx.DrawRectangle(gameModel.Character.imageBrush, defaultPen, new Rect(gameModel.Character.PositionX, Config.windowHeight - 280, 95, 214));
         }
     }
 }

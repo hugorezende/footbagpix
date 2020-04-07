@@ -8,9 +8,7 @@ namespace FootbagPix
 {
     class Config
     {
-
-               
-        public const int windowWidth = 600;
-        public const int windowHeight = 600;
+        public const int windowWidth = 800;
+        public const int windowHeight = 500;
     }
 }
