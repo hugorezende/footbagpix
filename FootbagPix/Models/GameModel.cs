@@ -25,7 +25,7 @@ namespace FootbagPix.Models
             BackgroundBrush = new ImageBrush(new BitmapImage(new Uri("Resources/ImageResources/bg.png", UriKind.Relative)));
             Ball = new BallModel();
             Character = new CharacterModel();
-            Timer = new TimerModel(5);
+            Timer = new TimerModel(60);
             Gravity = 1;
 
         }
