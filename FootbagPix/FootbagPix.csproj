@@ -68,6 +68,7 @@
     <Compile Include="Logic\IGameLogic.cs" />
     <Compile Include="Logic\ITimerLogic.cs" />
     <Compile Include="Logic\TimerLogic.cs" />
+    <Compile Include="Logic\ScoreLogic.cs" />
     <Compile Include="MainMenuWindow.xaml.cs">
       <DependentUpon>MainMenuWindow.xaml</DependentUpon>
     </Compile>
