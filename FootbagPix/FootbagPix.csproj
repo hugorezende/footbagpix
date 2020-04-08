@@ -66,6 +66,8 @@
     <Compile Include="Logic\IBallLogic.cs" />
     <Compile Include="Logic\ICharacterLogic.cs" />
     <Compile Include="Logic\IGameLogic.cs" />
+    <Compile Include="Logic\ITimerLogic.cs" />
+    <Compile Include="Logic\TimerLogic.cs" />
     <Compile Include="MainMenuWindow.xaml.cs">
       <DependentUpon>MainMenuWindow.xaml</DependentUpon>
     </Compile>
@@ -74,6 +76,7 @@
     <Compile Include="Models\GameModel.cs" />
     <Compile Include="Models\IGameModel.cs" />
     <Compile Include="Models\ScoreModel.cs" />
+    <Compile Include="Models\TimerModel.cs" />
     <Compile Include="Renderer\GameRenderer.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Page Include="ControlsWindow.xaml">
@@ -136,6 +139,9 @@
     </Content>
     <Content Include="Resources\ImageResources\character_sprite3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ImageResources\game_over.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\ImageResources\FootBagControls.png" />
     <Resource Include="Resources\ImageResources\gamegrass.png" />
