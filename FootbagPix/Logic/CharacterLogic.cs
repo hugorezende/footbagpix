@@ -12,14 +12,16 @@ namespace FootbagPix.Logic
     {
         BallModel ball;
         CharacterModel character;
+        TimerModel timer;
         Random random = new Random();
 
         const int kickForce = 10;
 
-        public CharacterLogic(BallModel ball, CharacterModel character)
+        public CharacterLogic(BallModel ball, CharacterModel character, TimerModel timer)
         {
             this.ball = ball;
             this.character = character;
+            this.timer = timer;
         }
 
         public void KickLeft()
@@ -34,59 +36,67 @@ namespace FootbagPix.Logic
 
         public async void MoveLeft()
         {
-            character.leftFoot.X -= 5;
-            character.rigthFoot.X -= 5;
-            AnimateWalkRight();
-            character.PositionX -= 1;
-            await Task.Delay(100);
-            character.PositionX -= 1;
-            await Task.Delay(100);
-            character.PositionX -= 1;
-            await Task.Delay(100);
-            character.PositionX -= 1;
-            await Task.Delay(100);
-            character.PositionX -= 1;
-            await Task.Delay(100);
- 
+            if (!timer.GameOver)
+            {
+                character.leftFoot.X -= 5;
+                character.rigthFoot.X -= 5;
+                AnimateWalkRight();
+                character.PositionX -= 1;
+                await Task.Delay(100);
+                character.PositionX -= 1;
+                await Task.Delay(100);
+                character.PositionX -= 1;
+                await Task.Delay(100);
+                character.PositionX -= 1;
+                await Task.Delay(100);
+                character.PositionX -= 1;
+                await Task.Delay(100);
+            }
+
         }
 
         public async void MoveRight()
         {
-            character.leftFoot.X += 5;
-            character.rigthFoot.X += 5;
-            AnimateWalkLeft();
-            character.PositionX += 1;
-            await Task.Delay(100);
-            character.PositionX += 1;
-            await Task.Delay(100);
-            character.PositionX += 1;
-            await Task.Delay(100);
-            character.PositionX += 1;
-            await Task.Delay(100);
-            character.PositionX += 1;
-            await Task.Delay(100);
+            if (!timer.GameOver)
+            {
+                character.leftFoot.X += 5;
+                character.rigthFoot.X += 5;
+                AnimateWalkLeft();
+                character.PositionX += 1;
+                await Task.Delay(100);
+                character.PositionX += 1;
+                await Task.Delay(100);
+                character.PositionX += 1;
+                await Task.Delay(100);
+                character.PositionX += 1;
+                await Task.Delay(100);
+                character.PositionX += 1;
+                await Task.Delay(100);
+            }
 
         }
 
         public void TryHitBall()
         {
-           
-            if (ball.Area.IntersectsWith(character.LeftFoot))
+            if (!timer.GameOver)
             {
-                AnimateKickLeft();
-                ball.TimeOnAir = 0;
-                ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
-                ball.SpeedY = kickForce;
-                ball.SpeedX = (float)random.Next(-10, 10) / 10;
-            }
+                if (ball.Area.IntersectsWith(character.LeftFoot))
+                {
+                    AnimateKickLeft();
+                    ball.TimeOnAir = 0;
+                    ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
+                    ball.SpeedY = kickForce;
+                    ball.SpeedX = (float)random.Next(-10, 10) / 10;
+                }
 
-            if (ball.Area.IntersectsWith(character.RigthFoot))
-            {
-                AnimateKickRight();
-                ball.TimeOnAir = 0;
-                ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
-                ball.SpeedY = kickForce;
-                ball.SpeedX = (float)random.Next(-10, 10) / 10;
+                if (ball.Area.IntersectsWith(character.RigthFoot))
+                {
+                    AnimateKickRight();
+                    ball.TimeOnAir = 0;
+                    ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
+                    ball.SpeedY = kickForce;
+                    ball.SpeedX = (float)random.Next(-10, 10) / 10;
+                }
             }
         }
 
@@ -103,7 +113,7 @@ namespace FootbagPix.Logic
             character.imageBrush.Viewbox = new Rect(0, 0, character.SpriteWidth, character.SpriteHeight);
         }
 
-        private async void AnimateKickLeft() 
+        private async void AnimateKickLeft()
         {
             character.imageBrush.Viewbox = new Rect(0, 0, character.SpriteWidth, character.SpriteHeight);
             await Task.Delay(50);

@@ -21,8 +21,9 @@ namespace FootbagPix.Control
         GameModel gameModel;
         BallLogic ballLogic;
         CharacterLogic characterLogic;
+        TimerLogic timerLogic;
         GameRenderer render;
-        DispatcherTimer tickTimer;
+        DispatcherTimer tickTimer, tickTimerSeconds;
 
         public GameControl()
         {
@@ -33,7 +34,8 @@ namespace FootbagPix.Control
         {
             gameModel = new GameModel();
             ballLogic = new BallLogic(gameModel.Ball);
-            characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character);
+            characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character, gameModel.Timer);
+            timerLogic = new TimerLogic(gameModel.Timer);
 
             render = new GameRenderer(gameModel);
 
@@ -41,8 +43,14 @@ namespace FootbagPix.Control
             if (win != null) // if (!IsInDesignMode)
             {
                 tickTimer = new DispatcherTimer();
+                tickTimerSeconds = new DispatcherTimer();
+                tickTimerSeconds.Interval = TimeSpan.FromMilliseconds(1000);
                 tickTimer.Interval = TimeSpan.FromMilliseconds(20);
+
                 tickTimer.Tick += timer_Tick;
+                tickTimerSeconds.Tick += timer_Tick_Seconds;
+
+                tickTimerSeconds.Start();
                 tickTimer.Start();
 
                 win.KeyDown += Win_KeyDown;
@@ -58,6 +66,7 @@ namespace FootbagPix.Control
                 case Key.Space: characterLogic.TryHitBall(); break;
                 case Key.Left: characterLogic.MoveLeft(); break;
                 case Key.Right: characterLogic.MoveRight(); break;
+                case Key.Escape: goToMainMenu(); break;
             }
         }
 
@@ -69,6 +78,18 @@ namespace FootbagPix.Control
         void timer_Tick(object sender, EventArgs e)
         {
             ballLogic.DoGravity();
+        }
+        void timer_Tick_Seconds(object sender, EventArgs e)
+        {
+            timerLogic.DecrementTime();
+        }
+
+        void goToMainMenu()
+        {
+            
+            MainMenuWindow mainmenu = new MainMenuWindow();
+            Application.Current.Windows[0].Close();
+            mainmenu.Show();
         }
 
     }
