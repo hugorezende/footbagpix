@@ -58,6 +58,7 @@ namespace FootbagPix.Control
                 case Key.Space: characterLogic.TryHitBall(); break;
                 case Key.Left: characterLogic.MoveLeft(); break;
                 case Key.Right: characterLogic.MoveRight(); break;
+                case Key.Escape: goToMainMenu(); break;
             }
         }
 
@@ -69,6 +70,14 @@ namespace FootbagPix.Control
         void timer_Tick(object sender, EventArgs e)
         {
             ballLogic.DoGravity();
+        }
+
+        void goToMainMenu()
+        {
+            
+            MainMenuWindow mainmenu = new MainMenuWindow();
+            Application.Current.Windows[0].Close();
+            mainmenu.Show();
         }
 
     }
