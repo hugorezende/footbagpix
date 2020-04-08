@@ -24,8 +24,8 @@ namespace FootbagPix.Logic
 
         public void Increase()
         {
-            score.ComboCounter++;
             score.CurrentScore = score.CurrentScore + (scorePerKick * score.ComboCounter);
+            score.ComboCounter++;
         }
 
         public void CheckIfBallFell()

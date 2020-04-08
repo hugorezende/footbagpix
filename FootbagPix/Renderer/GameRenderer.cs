@@ -25,7 +25,7 @@ namespace FootbagPix.Renderer
             bgArea = new Rect(0, 0, Config.windowWidth, Config.windowHeight);
         }
 
-        public void DrawItens(DrawingContext ctx, DpiScale dpiScale)
+        public void DrawItems(DrawingContext ctx, DpiScale dpiScale)
         {
 
             ctx.DrawRectangle(gameModel.BackgroundBrush, defaultPen, bgArea);
@@ -45,18 +45,40 @@ namespace FootbagPix.Renderer
 
         private void DrawScore(DrawingContext ctx, DpiScale dpiScale)
         {
-            DrawingGroup dg = new DrawingGroup();
-            FormattedText formattedText = new FormattedText(gameModel.Score.CurrentScore.ToString(),
+            DrawingGroup scoreDrawing = new DrawingGroup();
+            DrawingGroup comboDrawing = new DrawingGroup();
+
+            FormattedText formattedScoreText = new FormattedText("Score: " +gameModel.Score.CurrentScore.ToString(),
                 System.Globalization.CultureInfo.CurrentCulture,
                 FlowDirection.LeftToRight,
-                new Typeface("Arial"),
+                new Typeface("Segoe UI"),
                 32,
-                Brushes.Transparent,
+                Brushes.White,
                 dpiScale.PixelsPerDip);
-            GeometryDrawing text = new GeometryDrawing(null, new Pen(Brushes.White, 2),
-                formattedText.BuildGeometry(new Point(5, 5)));
-            dg.Children.Add(text);
-            ctx.DrawDrawing(dg);
+            formattedScoreText.SetFontSize(28, 0, 5);
+            GeometryDrawing scoreText = new GeometryDrawing(Brushes.White, new Pen(Brushes.White, 2),
+                formattedScoreText.BuildGeometry(new Point(Config.windowWidth - formattedScoreText.Width - 5, -5)));
+            scoreDrawing.Children.Add(scoreText);
+
+            
+            if ((gameModel.Score.ComboCounter - 1) > 0)
+            {
+                FormattedText formattedComboText = new FormattedText((gameModel.Score.ComboCounter - 1).ToString() + "x !",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Segoe UI"),
+                    32,
+                    Brushes.White,
+                    dpiScale.PixelsPerDip);
+                formattedComboText.SetFontWeight(FontWeights.ExtraBold, 0, formattedComboText.Text.Length);
+                GeometryDrawing comboText = new GeometryDrawing(Brushes.Red, new Pen(Brushes.Black, 1),
+                    formattedComboText.BuildGeometry(new Point(Config.windowWidth - formattedComboText.Width - 10, -100)));
+                comboDrawing.Children.Add(comboText);
+                comboDrawing.Transform = new RotateTransform(10);
+            }
+            
+            ctx.DrawDrawing(scoreDrawing);
+            ctx.DrawDrawing(comboDrawing);
         }
     }
 }
