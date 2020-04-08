@@ -50,7 +50,6 @@ namespace FootbagPix.Control
                 win.KeyDown += Win_KeyDown;
             }
             ballLogic.RefreshScreen += (obj, args) => InvalidateVisual();
-            scoreLogic.RefreshScreen += (obj, args) => InvalidateVisual();
             InvalidateVisual();
         }
 

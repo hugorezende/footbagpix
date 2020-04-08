@@ -11,7 +11,6 @@ namespace FootbagPix.Logic
     {
         ScoreModel score;
         BallModel ball;
-        public event EventHandler RefreshScreen;
         int groundPosition = 415;
 
         public ScoreLogic(ScoreModel score, BallModel ball)
@@ -34,7 +33,6 @@ namespace FootbagPix.Logic
             {
                 score.ComboCounter = 0;
             }
-            RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         public void Reset()
