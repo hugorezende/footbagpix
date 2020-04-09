@@ -127,6 +127,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\FontResources\joystix monospace.ttf" />
+    <Resource Include="Resources\FontResources\game_over.ttf" />
+    <Resource Include="Resources\FontResources\Gameplay.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

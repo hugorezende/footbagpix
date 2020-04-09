@@ -76,7 +76,7 @@ namespace FootbagPix.Control
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            if (render != null) render.DrawItems(drawingContext, VisualTreeHelper.GetDpi(Window.GetWindow(this)));
+            if (render != null) render.DrawItems(drawingContext);
         }
 
         void timer_Tick(object sender, EventArgs e)
