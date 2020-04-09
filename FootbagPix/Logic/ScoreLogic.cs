@@ -24,6 +24,10 @@ namespace FootbagPix.Logic
         public void Increase()
         {
             score.CurrentScore = score.CurrentScore + (scorePerKick * score.ComboCounter);
+            if (score.ComboCounter > score.MaxComboCount)
+            {
+                score.MaxComboCount = score.ComboCounter;
+            }
             score.ComboCounter++;
         }
 
@@ -38,6 +42,8 @@ namespace FootbagPix.Logic
         public void Reset()
         {
             score.CurrentScore = 0;
+            score.ComboCounter = 0;
+            score.MaxComboCount = 0;
         }
 
     }
