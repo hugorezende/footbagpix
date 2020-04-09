@@ -38,7 +38,7 @@ namespace FootbagPix.Logic
 
         public async void MoveLeft()
         {
-            if (!timer.GameOver)
+            if (!timer.GameOver && !character.Blocked)
             {
                 if (0 < character.PositionX)
                 {
@@ -61,7 +61,7 @@ namespace FootbagPix.Logic
 
         public async void MoveRight()
         {
-            if (!timer.GameOver)
+            if (!timer.GameOver && !character.Blocked)
             {
                 if (character.PositionX + character.SpriteWidth < Config.windowWidth)
                 {
@@ -190,7 +190,12 @@ namespace FootbagPix.Logic
 
         public void Turn()
         {
-            AnimateTurn();
+            if (!character.Blocked && !timer.GameOver)
+            {
+                AnimateTurn();
+                BlockControl(600);
+                score.ComboCounter++;
+            }
         }
         public async void BlockControl(int miliseconds)
         {

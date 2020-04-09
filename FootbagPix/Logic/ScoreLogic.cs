@@ -46,5 +46,10 @@ namespace FootbagPix.Logic
             score.MaxComboCount = 0;
         }
 
+        public void IncreaseCombo()
+        {
+            score.ComboCounter++;
+        }
+
     }
 }
