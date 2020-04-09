@@ -80,7 +80,7 @@ namespace FootbagPix.Logic
 
         public bool TryHitBall()
         {
-            if (!timer.GameOver)
+            if (!timer.GameOver && !character.Blocked)
             {
                 if (ball.Area.IntersectsWith(character.LeftFoot))
                 {
@@ -101,7 +101,9 @@ namespace FootbagPix.Logic
                     ball.SpeedX = (float)random.Next(-10, 10) / 10;
                     return true;
                 }
+                AnimateKickLeft();
             }
+            BlockControl(100);
             return false;
         }
 
@@ -167,5 +169,13 @@ namespace FootbagPix.Logic
         {
             throw new NotImplementedException();
         }
+
+        public async void BlockControl(int miliseconds)
+        {
+            character.Blocked = true;
+            await Task.Delay(miliseconds);
+            character.Blocked = false;
+        }
+
     }
 }

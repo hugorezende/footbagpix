@@ -21,8 +21,8 @@ namespace FootbagPix.Models
         public int PositionX { get; set; }
         public int SpriteWidth { get; set; }
         public int SpriteHeight { get; set; }
-
         public ImageBrush imageBrush { get; set; }
+        public bool Blocked { get; set; }
 
         public CharacterModel()
         {

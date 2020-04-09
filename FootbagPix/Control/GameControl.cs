@@ -63,12 +63,15 @@ namespace FootbagPix.Control
 
         private void Win_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.Key)
+            if (!e.IsRepeat)
             {
-                case Key.Space: if (characterLogic.TryHitBall()) scoreLogic.Increase(); break;
-                case Key.Left: characterLogic.MoveLeft(); break;
-                case Key.Right: characterLogic.MoveRight(); break;
-                case Key.Escape: goToMainMenu(); break;
+                switch (e.Key)
+                {
+                    case Key.Space: if (characterLogic.TryHitBall()) scoreLogic.Increase(); break;
+                    case Key.Left: characterLogic.MoveLeft(); break;
+                    case Key.Right: characterLogic.MoveRight(); break;
+                    case Key.Escape: goToMainMenu(); break;
+                }
             }
         }
 
@@ -89,7 +92,7 @@ namespace FootbagPix.Control
 
         void goToMainMenu()
         {
-            
+
             MainMenuWindow mainmenu = new MainMenuWindow();
             Application.Current.Windows[0].Close();
             mainmenu.Show();

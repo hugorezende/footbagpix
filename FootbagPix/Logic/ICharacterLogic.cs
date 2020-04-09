@@ -14,5 +14,6 @@ namespace FootbagPix.Logic
         void KickLeft();
         void KickRight();
         void Turn();
+        void BlockControl(int miliseconds);
     }
 }
