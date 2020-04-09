@@ -164,12 +164,28 @@ namespace FootbagPix.Logic
             character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 5, character.SpriteHeight * 1, character.SpriteWidth, character.SpriteHeight);
             await Task.Delay(50);
         }
+        private async void AnimateTurn()
+        {
+            character.imageBrush.Viewbox = new Rect(0, 0, character.SpriteWidth, character.SpriteHeight);
+            await Task.Delay(80);
+            character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 1, character.SpriteHeight * 4, character.SpriteWidth, character.SpriteHeight);
+            await Task.Delay(80);
+            character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 2, character.SpriteHeight * 4, character.SpriteWidth, character.SpriteHeight);
+            await Task.Delay(80);
+            character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 3, character.SpriteHeight * 4, character.SpriteWidth, character.SpriteHeight);
+            await Task.Delay(80);
+            character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 4, character.SpriteHeight * 4, character.SpriteWidth, character.SpriteHeight);
+            await Task.Delay(80);
+            character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 5, character.SpriteHeight * 4, character.SpriteWidth, character.SpriteHeight);
+            await Task.Delay(80);
+            character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 6, character.SpriteHeight * 4, character.SpriteWidth, character.SpriteHeight);
+            await Task.Delay(50);
+        }
 
         public void Turn()
         {
-            throw new NotImplementedException();
+            AnimateTurn();
         }
-
         public async void BlockControl(int miliseconds)
         {
             character.Blocked = true;
