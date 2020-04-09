@@ -57,15 +57,59 @@ namespace FootbagPix.Renderer
                 Brushes.Transparent,
                 96);
             GeometryDrawing text = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 2),
-                formattedText.BuildGeometry(new Point((Config.windowWidth / 2) - formattedText.Width, 5)));
+                formattedText.BuildGeometry(new Point((Config.windowWidth - formattedText.Width) / 2, 5)));
             dg.Children.Add(text);
             ctx.DrawDrawing(dg);
+
+            // Game over image
 
             ctx.DrawRectangle(gameModel.Timer.gameOverBrush, defaultPen,
                 new Rect((Config.windowWidth - gameModel.Timer.gameOverBrush.ImageSource.Width) / 2,
                 100,
                 gameModel.Timer.gameOverBrush.ImageSource.Width,
                 gameModel.Timer.gameOverBrush.ImageSource.Height));
+
+            // Game over text
+
+            DrawingGroup GameOverTextDrawing = new DrawingGroup();
+
+            FormattedText formattedEnterToNewGame = new FormattedText("Press 'Enter' to start a new game!",
+                System.Globalization.CultureInfo.CurrentCulture,
+                FlowDirection.LeftToRight,
+                JoystixFont,
+                20,
+                Brushes.Transparent,
+                96);
+            GeometryDrawing enterToNewGameText = new GeometryDrawing(gameModel.Timer.gameOverTextBrush, new Pen(gameModel.Timer.gameOverTextBrush, 2),
+                formattedEnterToNewGame.BuildGeometry(new Point((Config.windowWidth - formattedEnterToNewGame.Width) / 2,
+                120 + gameModel.Timer.gameOverBrush.ImageSource.Height)));
+
+            FormattedText formattedEscToLeaveGame = new FormattedText("Press 'ESC' to leave the game!",
+                System.Globalization.CultureInfo.CurrentCulture,
+                FlowDirection.LeftToRight,
+                JoystixFont,
+                20,
+                Brushes.Transparent,
+                96);
+            GeometryDrawing escToLeaveGameText = new GeometryDrawing(gameModel.Timer.gameOverTextBrush, new Pen(gameModel.Timer.gameOverTextBrush, 2),
+                formattedEscToLeaveGame.BuildGeometry(new Point((Config.windowWidth - formattedEscToLeaveGame.Width) / 2,
+                120 + gameModel.Timer.gameOverBrush.ImageSource.Height + formattedEnterToNewGame.Height)));
+
+            FormattedText formattedMaxCombo = new FormattedText("Max combo:" + gameModel.Score.MaxComboCount,
+                System.Globalization.CultureInfo.CurrentCulture,
+                FlowDirection.LeftToRight,
+                JoystixFont,
+                20,
+                Brushes.Transparent,
+                96);
+            GeometryDrawing maxComboText = new GeometryDrawing(gameModel.Timer.gameOverTextBrush, new Pen(gameModel.Timer.gameOverTextBrush, 1),
+                formattedMaxCombo.BuildGeometry(new Point(Config.windowWidth - formattedMaxCombo.Width - 5,
+                formattedMaxCombo.Height + 20)));
+
+            GameOverTextDrawing.Children.Add(enterToNewGameText);
+            GameOverTextDrawing.Children.Add(escToLeaveGameText);
+            GameOverTextDrawing.Children.Add(maxComboText);
+            ctx.DrawDrawing(GameOverTextDrawing);
         }
 
 

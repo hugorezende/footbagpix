@@ -10,11 +10,13 @@ namespace FootbagPix.Models
     {
         public int CurrentScore { get; set; }
         public int ComboCounter { get; set; }
+        public int MaxComboCount { get; set; }
 
         public ScoreModel()
         {
             CurrentScore = 0;
             ComboCounter = 0;
+            MaxComboCount = 0;
         }
     }
 
