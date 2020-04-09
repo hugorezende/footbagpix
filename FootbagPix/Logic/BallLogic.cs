@@ -32,7 +32,7 @@ namespace FootbagPix.Logic
                 ball.SpeedY = 0;
                 ball.TimeOnAir = 0;
             }
-            if (ball.area.X < 0 || ball.area.X > Config.windowWidth)
+            if (ball.area.X < 0 || ball.area.X + ball.Area.Width > Config.windowWidth)
             {
                 ball.SpeedX *= -1;
             }

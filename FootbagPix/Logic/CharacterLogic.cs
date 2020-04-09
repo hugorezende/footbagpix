@@ -40,40 +40,46 @@ namespace FootbagPix.Logic
         {
             if (!timer.GameOver)
             {
-                character.leftFoot.X -= 5;
-                character.rigthFoot.X -= 5;
-                AnimateWalkRight();
-                character.PositionX -= 1;
-                await Task.Delay(100);
-                character.PositionX -= 1;
-                await Task.Delay(100);
-                character.PositionX -= 1;
-                await Task.Delay(100);
-                character.PositionX -= 1;
-                await Task.Delay(100);
-                character.PositionX -= 1;
-                await Task.Delay(100);
+                if (0 < character.PositionX)
+                {
+                    character.leftFoot.X -= 5;
+                    character.rigthFoot.X -= 5;
+                    AnimateWalkRight();
+                    character.PositionX -= 1;
+                    await Task.Delay(100);
+                    character.PositionX -= 1;
+                    await Task.Delay(100);
+                    character.PositionX -= 1;
+                    await Task.Delay(100);
+                    character.PositionX -= 1;
+                    await Task.Delay(100);
+                    character.PositionX -= 1;
+                    await Task.Delay(100);
+                }
             }
-
         }
 
         public async void MoveRight()
         {
             if (!timer.GameOver)
             {
-                character.leftFoot.X += 5;
-                character.rigthFoot.X += 5;
-                AnimateWalkLeft();
-                character.PositionX += 1;
-                await Task.Delay(100);
-                character.PositionX += 1;
-                await Task.Delay(100);
-                character.PositionX += 1;
-                await Task.Delay(100);
-                character.PositionX += 1;
-                await Task.Delay(100);
-                character.PositionX += 1;
-                await Task.Delay(100);
+                if (character.PositionX + character.SpriteWidth < Config.windowWidth)
+                {
+                    character.leftFoot.X += 5;
+                    character.rigthFoot.X += 5;
+                    AnimateWalkLeft();
+                    character.PositionX += 1;
+                    await Task.Delay(100);
+                    character.PositionX += 1;
+                    await Task.Delay(100);
+                    character.PositionX += 1;
+                    await Task.Delay(100);
+                    character.PositionX += 1;
+                    await Task.Delay(100);
+                    character.PositionX += 1;
+                    await Task.Delay(100);
+                }
+                
             }
 
         }
