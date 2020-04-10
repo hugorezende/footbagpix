@@ -1,5 +1,6 @@
 ﻿using FootbagPix.Models;
 using FootbagPix.Renderer;
+using FootbagPix.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,14 @@ namespace FootbagPix.Logic
     class TimerLogic : ITimerLogic
     {
         TimerModel timer;
+        GameModel game;
+        ScoreboardService scoreboardService;
 
-        public TimerLogic(TimerModel timer)
+        public TimerLogic(TimerModel timer, GameModel game)
         {
             this.timer = timer;
+            this.game = game;
+            scoreboardService = new ScoreboardService();
         }
 
         public void DecrementTime()
@@ -29,6 +34,7 @@ namespace FootbagPix.Logic
                 else
                 {
                     timer.GameOver = true;
+                    scoreboardService.AddScore(game.PlayerName, game.Score.CurrentScore, game.Score.MaxComboCount);
                     ShowGameOver();
                 }
             }

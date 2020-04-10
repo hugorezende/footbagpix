@@ -36,7 +36,7 @@ namespace FootbagPix.Control
             ballLogic = new BallLogic(gameModel.Ball);
             characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character, gameModel.Score, gameModel.Timer);
             scoreLogic = new ScoreLogic(gameModel.Score, gameModel.Ball);
-            timerLogic = new TimerLogic(gameModel.Timer);
+            timerLogic = new TimerLogic(gameModel.Timer, gameModel);
 
             render = new GameRenderer(gameModel);
 

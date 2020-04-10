@@ -81,6 +81,11 @@
     <Compile Include="Models\TimerModel.cs" />
     <Compile Include="Renderer\GameRenderer.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="ScoreboardWindow.xaml.cs">
+      <DependentUpon>ScoreboardWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ScoreboardEntry.cs" />
+    <Compile Include="Services\ScoreboardService.cs" />
     <Page Include="ControlsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,6 +107,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Resources\StyleResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScoreboardWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

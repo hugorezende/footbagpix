@@ -42,7 +42,14 @@ namespace FootbagPix
 
         private void Button_Scoreboard_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Scoreboard button clicked!");
+            this.Cursor = Cursors.Wait;
+            ScoreboardWindow scoreboardWindow = new ScoreboardWindow
+            {
+                Left = this.Left,
+                Top = this.Top
+            };
+            scoreboardWindow.Show();
+            this.Close();
         }
 
         private void Button_Controls_Click(object sender, RoutedEventArgs e)
