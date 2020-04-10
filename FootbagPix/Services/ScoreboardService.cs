@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FootbagPix.Services
 {
-    public class ScoreboardService
+    public class ScoreboardService : IScoreboardService
     {
         private const string privateURL = "http://dreamlo.com/lb/A1bG9M-W70GThtBQTVl-AA44FEVXFiYUWvWtufLd2f6w";
         private const string publicURL = "http://dreamlo.com/lb/5e8caa74403c2d12b8c4827a";

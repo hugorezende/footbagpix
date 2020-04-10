@@ -79,11 +79,15 @@
     <Compile Include="Models\IGameModel.cs" />
     <Compile Include="Models\ScoreModel.cs" />
     <Compile Include="Models\TimerModel.cs" />
+    <Compile Include="NewGameWindow.xaml.cs">
+      <DependentUpon>NewGameWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Renderer\GameRenderer.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="ScoreboardWindow.xaml.cs">
       <DependentUpon>ScoreboardWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\IScoreboardService.cs" />
     <Compile Include="Services\ScoreboardEntry.cs" />
     <Compile Include="Services\ScoreboardService.cs" />
     <Page Include="ControlsWindow.xaml">
@@ -106,6 +110,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NewGameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\StyleResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +145,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\FontResources\ConcertOne-Regular.ttf" />
     <Resource Include="Resources\FontResources\joystix monospace.ttf" />
     <Resource Include="Resources\FontResources\game_over.ttf" />
     <Resource Include="Resources\FontResources\Gameplay.ttf" />
@@ -155,6 +164,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\ImageResources\FootBagScoreboard.png" />
+    <Resource Include="Resources\ImageResources\FootbagNewGame.png" />
     <Content Include="Resources\ImageResources\game_over.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
