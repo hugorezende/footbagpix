@@ -66,6 +66,7 @@
     <Compile Include="Logic\IBallLogic.cs" />
     <Compile Include="Logic\ICharacterLogic.cs" />
     <Compile Include="Logic\IGameLogic.cs" />
+    <Compile Include="Logic\IScoreLogic.cs" />
     <Compile Include="Logic\ITimerLogic.cs" />
     <Compile Include="Logic\TimerLogic.cs" />
     <Compile Include="Logic\ScoreLogic.cs" />

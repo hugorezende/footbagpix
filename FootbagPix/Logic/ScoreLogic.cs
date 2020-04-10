@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FootbagPix.Logic
 {
-    class ScoreLogic
+    class ScoreLogic : IScoreLogic
     {
         ScoreModel score;
         BallModel ball;
