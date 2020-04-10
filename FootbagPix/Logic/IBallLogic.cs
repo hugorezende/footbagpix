@@ -8,8 +8,7 @@ namespace FootbagPix.Logic
 {
     public interface IBallLogic
     {
-        void SetPosition(int x, int y);
-        void SetSpeed();
         void DoGravity();
+        void Reset();
     }
 }

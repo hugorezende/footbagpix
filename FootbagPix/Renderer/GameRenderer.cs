@@ -95,6 +95,8 @@ namespace FootbagPix.Renderer
                 formattedEscToLeaveGame.BuildGeometry(new Point((Config.windowWidth - formattedEscToLeaveGame.Width) / 2,
                 120 + gameModel.Timer.gameOverBrush.ImageSource.Height + formattedEnterToNewGame.Height)));
 
+            // Game over max combo 
+
             FormattedText formattedMaxCombo = new FormattedText("Max combo:" + gameModel.Score.MaxComboCount,
                 System.Globalization.CultureInfo.CurrentCulture,
                 FlowDirection.LeftToRight,

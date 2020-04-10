@@ -46,25 +46,13 @@ namespace FootbagPix.Logic
             ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
             ball.SpeedY = 10;
         }
-        public void SetPosition(int x, int y)
-        {
-            ball.PositionX = x;
-            ball.PositionY = y;
-        }
 
         public void Reset()
         {
-            ball.area = new Rect(300, 30, 20, 20);
-            ball.PositionY = Config.windowHeight - 50;
-            ball.PositionX = Config.windowWidth / 2;
+            ball.area = new Rect((Config.windowWidth - ball.Area.Width) / 2, 50, 20, 20);
             ball.SpeedX = 0;
             ball.SpeedY = 0;
             ball.TimeOnAir = 0;
-        }
-
-        public void SetSpeed()
-        {
-            throw new NotImplementedException();
         }
     }
 }

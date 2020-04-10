@@ -30,9 +30,7 @@ namespace FootbagPix.Models
         {
             imageBrush = new ImageBrush(new BitmapImage(new Uri("Resources/ImageResources/ball.png", UriKind.Relative)));
 
-            area = new Rect(300, 30, 20, 20);
-            PositionY = Config.windowHeight-50;
-            PositionX = Config.windowWidth/2;
+            area = new Rect((Config.windowWidth - BallModel.width)/2, 50, 20, 20);
             SpeedX = 0;
             SpeedY = 0;
             TimeOnAir = 0;
