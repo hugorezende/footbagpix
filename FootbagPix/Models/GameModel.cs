@@ -20,13 +20,14 @@ namespace FootbagPix.Models
         public int Gravity { get ; set ; }
         public ImageBrush BackgroundBrush { get; set; }
 
-        public GameModel()
+        public GameModel(string playerName)
         {
             BackgroundBrush = new ImageBrush(new BitmapImage(new Uri("Resources/ImageResources/bg.png", UriKind.Relative)));
             Ball = new BallModel();
             Character = new CharacterModel();
             Timer = new TimerModel(60);
             Score = new ScoreModel();
+            PlayerName = playerName;
 
             Gravity = 1;
 

@@ -37,6 +37,7 @@ namespace FootbagPix.Renderer
             DrawScore(ctx);
             ctx.DrawRectangle(gameModel.Ball.imageBrush, defaultPen, gameModel.Ball.Area);
             DrawTimer(ctx);
+            DrawPlayerName(ctx);
 
         }
 
@@ -151,6 +152,23 @@ namespace FootbagPix.Renderer
             
             ctx.DrawDrawing(scoreDrawing);
             ctx.DrawDrawing(comboDrawing);
+        }
+
+        private void DrawPlayerName(DrawingContext ctx)
+        {
+            DrawingGroup playerNameDrawing = new DrawingGroup();
+
+            FormattedText formattedPlayerNameText = new FormattedText(gameModel.PlayerName,
+                System.Globalization.CultureInfo.CurrentCulture,
+                FlowDirection.LeftToRight,
+                JoystixFont,
+                24,
+                Brushes.White,
+                96);
+            GeometryDrawing playerNameText = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 2),
+                formattedPlayerNameText.BuildGeometry(new Point(5, 11)));
+            playerNameDrawing.Children.Add(playerNameText);
+            ctx.DrawDrawing(playerNameDrawing);
         }
     }
 }

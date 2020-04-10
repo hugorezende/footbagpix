@@ -30,7 +30,9 @@ namespace FootbagPix.Control
 
         private void GameScreen_Loaded(object sender, RoutedEventArgs e)
         {
-            gameModel = new GameModel();
+            MainWindow win = (MainWindow)Window.GetWindow(this);
+
+            gameModel = new GameModel(win.PlayerName);
             ballLogic = new BallLogic(gameModel.Ball);
             characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character, gameModel.Score, gameModel.Timer);
             scoreLogic = new ScoreLogic(gameModel.Score, gameModel.Ball);
@@ -38,7 +40,6 @@ namespace FootbagPix.Control
 
             render = new GameRenderer(gameModel);
 
-            Window win = Window.GetWindow(this);
             if (win != null) // if (!IsInDesignMode)
             {
                 tickTimer = new DispatcherTimer();
