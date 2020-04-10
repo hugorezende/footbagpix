@@ -64,13 +64,14 @@ namespace FootbagPix.Control
         private void Win_KeyDown(object sender, KeyEventArgs e)
         {
 
-                switch (e.Key)
-                {
-                    case Key.Space: if (!e.IsRepeat) { if (characterLogic.TryHitBall()) { scoreLogic.Increase(); } } break;
-                    case Key.Left: characterLogic.MoveLeft(); break;
-                    case Key.Right: characterLogic.MoveRight(); break;
-                    case Key.Escape: goToMainMenu(); break;
-                }
+            switch (e.Key)
+            {
+                case Key.Space: if (!e.IsRepeat) { if (characterLogic.TryHitBall()) { scoreLogic.Increase(); } } break;
+                case Key.Left: characterLogic.MoveLeft(); break;
+                case Key.Right: characterLogic.MoveRight(); break;
+                case Key.Up: characterLogic.Turn(); break;
+                case Key.Escape: goToMainMenu(); break;
+            }
 
         }
 
