@@ -11,7 +11,6 @@ namespace FootbagPix.Models
 {
     public class BallModel
     {
-        // to be implemented
         const int width = 20;
         const int heigth = 20;
 

@@ -11,7 +11,6 @@ namespace FootbagPix.Models
 {
     public class CharacterModel
     {
-        // to be implemented
         public Rect leftFoot, rigthFoot, body;
         public Point head;
         public Rect LeftFoot { get { return leftFoot; } }
