@@ -42,13 +42,20 @@ namespace FootbagPix
 
         private void Button_Scoreboard_Click(object sender, RoutedEventArgs e)
         {
-            this.Cursor = Cursors.Wait;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                Mouse.OverrideCursor = Cursors.Wait;
+            });
             ScoreboardWindow scoreboardWindow = new ScoreboardWindow
             {
                 Left = this.Left,
                 Top = this.Top
             };
             scoreboardWindow.Show();
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                Mouse.OverrideCursor = null;
+            });
             this.Close();
         }
 

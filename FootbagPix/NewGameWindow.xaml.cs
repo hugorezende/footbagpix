@@ -57,7 +57,7 @@ namespace FootbagPix
         {
             NewGameTextBox.Text = string.Concat(NewGameTextBox.Text.Where(char.IsLetterOrDigit));
             NewGameTextBox.SelectionStart = NewGameTextBox.Text.Length + 1;
-            PlayerName = NewGameTextBox.Text;
+            PlayerName = NewGameTextBox.Text.ToUpper();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
