@@ -35,10 +35,10 @@ namespace FootbagPix.Models
             imageBrush.ViewboxUnits = BrushMappingMode.Absolute;
             imageBrush.Stretch = Stretch.None;
 
-            leftFoot = new Rect(310, Config.windowHeight - 100, 40, 40);
-            rigthFoot = new Rect(360, Config.windowHeight - 100, 40, 40);
+            leftFoot = new Rect((Config.windowWidth - SpriteWidth) / 2, Config.windowHeight - 100, 40, 40);
+            rigthFoot = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 50, Config.windowHeight - 100, 40, 40);
 
-            PositionX = 310;
+            PositionX = (Config.windowWidth - SpriteWidth) / 2;
         }
     }
 }

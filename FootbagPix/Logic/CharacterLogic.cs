@@ -206,10 +206,10 @@ namespace FootbagPix.Logic
 
         public void Reset()
         {
-            character.leftFoot = new Rect(310, Config.windowHeight - 100, 40, 40);
-            character.rigthFoot = new Rect(360, Config.windowHeight - 100, 40, 40);
+            character.leftFoot = new Rect((Config.windowWidth - character.SpriteWidth) / 2, Config.windowHeight - 100, 40, 40);
+            character.rigthFoot = new Rect(((Config.windowWidth - character.SpriteWidth) / 2) +50, Config.windowHeight - 100, 40, 40);
 
-            character.PositionX = 310;
+            character.PositionX = (Config.windowWidth - character.SpriteWidth) / 2;
         }
 
     }
