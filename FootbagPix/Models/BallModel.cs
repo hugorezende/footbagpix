@@ -31,7 +31,7 @@ namespace FootbagPix.Models
             imageBrush = new ImageBrush(new BitmapImage(new Uri("Resources/ImageResources/ball.png", UriKind.Relative)));
 
             area = new Rect(300, 30, 20, 20);
-            PositionX = Config.windowHeight-50;
+            PositionY = Config.windowHeight-50;
             PositionX = Config.windowWidth/2;
             SpeedX = 0;
             SpeedY = 0;

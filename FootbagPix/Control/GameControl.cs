@@ -71,6 +71,7 @@ namespace FootbagPix.Control
                 case Key.Right: characterLogic.MoveRight(); break;
                 case Key.Up: characterLogic.Turn(); break;
                 case Key.Escape: goToMainMenu(); break;
+                case Key.Enter: if (gameModel.Timer.GameOver) startNewGame(); break;
             }
 
         }
@@ -96,6 +97,14 @@ namespace FootbagPix.Control
             MainMenuWindow mainmenu = new MainMenuWindow();
             Application.Current.Windows[0].Close();
             mainmenu.Show();
+        }
+
+        void startNewGame()
+        {
+            ballLogic.Reset();
+            characterLogic.Reset();
+            timerLogic.Reset();
+            scoreLogic.Reset();
         }
 
     }

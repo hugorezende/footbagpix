@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FootbagPix.Logic
 {
@@ -49,6 +50,16 @@ namespace FootbagPix.Logic
         {
             ball.PositionX = x;
             ball.PositionY = y;
+        }
+
+        public void Reset()
+        {
+            ball.area = new Rect(300, 30, 20, 20);
+            ball.PositionY = Config.windowHeight - 50;
+            ball.PositionX = Config.windowWidth / 2;
+            ball.SpeedX = 0;
+            ball.SpeedY = 0;
+            ball.TimeOnAir = 0;
         }
 
         public void SetSpeed()

@@ -204,5 +204,13 @@ namespace FootbagPix.Logic
             character.Blocked = false;
         }
 
+        public void Reset()
+        {
+            character.leftFoot = new Rect(310, Config.windowHeight - 100, 40, 40);
+            character.rigthFoot = new Rect(360, Config.windowHeight - 100, 40, 40);
+
+            character.PositionX = 310;
+        }
+
     }
 }
