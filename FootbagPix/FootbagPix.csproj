@@ -145,6 +145,7 @@
     <Content Include="Resources\ImageResources\character_sprite3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\ImageResources\FootBagScoreboard.png" />
     <Content Include="Resources\ImageResources\game_over.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
