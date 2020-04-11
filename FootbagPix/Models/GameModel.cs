@@ -16,7 +16,6 @@ namespace FootbagPix.Models
         public TimerModel Timer { get; set; }
         public string PlayerName { get; set; }
         public ScoreModel Score { get; set; }
-        public TimeSpan ElapsedTime { get; set; }
         public int Gravity { get ; set ; }
         public ImageBrush BackgroundBrush { get; set; }
 

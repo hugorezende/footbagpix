@@ -13,6 +13,5 @@ namespace FootbagPix.Models
         BallModel Ball { get; set; }
         string PlayerName { get; set; }
         ScoreModel Score { get; set; }
-        TimeSpan ElapsedTime { get; set; }
     }
 }

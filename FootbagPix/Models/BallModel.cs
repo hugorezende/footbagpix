@@ -16,11 +16,8 @@ namespace FootbagPix.Models
 
         public Rect area;
         public Rect Area { get { return area; } }
-        public int PositionX { get; set; }
-        public int PositionY { get; set; }
         public double SpeedX { get; set; }
         public double SpeedY { get; set; }
-
         public double TimeOnAir { get; set; }
         public ImageBrush imageBrush { get; set; }
             
