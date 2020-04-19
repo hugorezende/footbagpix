@@ -8,6 +8,16 @@ namespace FootbagPix.Models
 {
     public class ScoreModel
     {
-        // to be implemented
+        public int CurrentScore { get; set; }
+        public int ComboCounter { get; set; }
+        public int MaxComboCount { get; set; }
+
+        public ScoreModel()
+        {
+            CurrentScore = 0;
+            ComboCounter = 0;
+            MaxComboCount = 0;
+        }
     }
+
 }

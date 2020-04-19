@@ -15,14 +15,13 @@ namespace FootbagPix.Control
 {
     public class GameControl : FrameworkElement
     {
-
-        // this is a test comment for hugo branch
-
         GameModel gameModel;
         BallLogic ballLogic;
         CharacterLogic characterLogic;
+        TimerLogic timerLogic;
+        ScoreLogic scoreLogic;
         GameRenderer render;
-        DispatcherTimer tickTimer;
+        DispatcherTimer tickTimer, tickTimerSeconds;
 
         public GameControl()
         {
@@ -31,18 +30,27 @@ namespace FootbagPix.Control
 
         private void GameScreen_Loaded(object sender, RoutedEventArgs e)
         {
-            gameModel = new GameModel();
+            MainWindow win = (MainWindow)Window.GetWindow(this);
+
+            gameModel = new GameModel(win.PlayerName);
             ballLogic = new BallLogic(gameModel.Ball);
-            characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character);
+            characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character, gameModel.Score, gameModel.Timer);
+            scoreLogic = new ScoreLogic(gameModel.Score, gameModel.Ball);
+            timerLogic = new TimerLogic(gameModel.Timer, gameModel);
 
             render = new GameRenderer(gameModel);
 
-            Window win = Window.GetWindow(this);
             if (win != null) // if (!IsInDesignMode)
             {
                 tickTimer = new DispatcherTimer();
+                tickTimerSeconds = new DispatcherTimer();
+                tickTimerSeconds.Interval = TimeSpan.FromMilliseconds(1000);
                 tickTimer.Interval = TimeSpan.FromMilliseconds(20);
+
                 tickTimer.Tick += timer_Tick;
+                tickTimerSeconds.Tick += timer_Tick_Seconds;
+
+                tickTimerSeconds.Start();
                 tickTimer.Start();
 
                 win.KeyDown += Win_KeyDown;
@@ -53,22 +61,48 @@ namespace FootbagPix.Control
 
         private void Win_KeyDown(object sender, KeyEventArgs e)
         {
+
             switch (e.Key)
             {
-                case Key.Space: characterLogic.TryHitBall(); break;
+                case Key.Space: if (!e.IsRepeat) { if (characterLogic.TryHitBall()) { scoreLogic.Increase(); } } break;
                 case Key.Left: characterLogic.MoveLeft(); break;
                 case Key.Right: characterLogic.MoveRight(); break;
+                case Key.Up: characterLogic.Turn(); break;
+                case Key.Escape: goToMainMenu(); break;
+                case Key.Enter: if (gameModel.Timer.GameOver) startNewGame(); break;
             }
+
         }
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            if (render != null) render.DrawItens(drawingContext);
+            if (render != null) render.DrawItems(drawingContext);
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
             ballLogic.DoGravity();
+            scoreLogic.CheckIfBallFell();
+        }
+        void timer_Tick_Seconds(object sender, EventArgs e)
+        {
+            timerLogic.DecrementTime();
+        }
+
+        void goToMainMenu()
+        {
+
+            MainMenuWindow mainmenu = new MainMenuWindow();
+            Application.Current.Windows[0].Close();
+            mainmenu.Show();
+        }
+
+        void startNewGame()
+        {
+            ballLogic.Reset();
+            characterLogic.Reset();
+            timerLogic.Reset();
+            scoreLogic.Reset();
         }
 
     }

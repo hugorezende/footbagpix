@@ -1,0 +1,22 @@
+﻿<Window x:Class="FootbagPix.NewGameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FootbagPix"
+        mc:Ignorable="d"
+        Title="NewGameWindow" Height="300" Width="600" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/FootbagPix;component/Resources/ImageResources/FootBagNewGame.png"/>
+        </Grid.Background>
+
+        <Button Name="Button_Back" Click="Button_Back_Click" Style="{StaticResource MainMenuButtonStyle}"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="325,217,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}">
+        </Button>
+        <Button Name="Button_Play" Click="Button_Play_Click" Style="{StaticResource MainMenuButtonStyle}"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="56,217,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}">
+        </Button>
+        <TextBox x:Name="NewGameTextBox" MaxLength="12" TextChanged="TextBox_TextChanged" BorderThickness="3px" HorizontalAlignment="Left" Height="47" Margin="53,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="490" FontFamily="/FootbagPix;component/Resources/FontResources/#Joystix Monospace" FontSize="36" HorizontalContentAlignment="Center" SelectionBrush="{x:Null}" BorderBrush="Black" Background="White"/>
+    </Grid>
+</Window>

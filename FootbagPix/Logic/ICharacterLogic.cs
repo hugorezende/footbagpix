@@ -10,9 +10,11 @@ namespace FootbagPix.Logic
     {
         void MoveLeft();
         void MoveRight();
-        void TryHitBall();
+        bool TryHitBall();
         void KickLeft();
         void KickRight();
         void Turn();
+        void BlockControl(int miliseconds);
+        void Reset();
     }
 }

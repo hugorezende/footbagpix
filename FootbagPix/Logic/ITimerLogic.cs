@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace FootbagPix.Logic
 {
-    public interface IBallLogic
+    public interface ITimerLogic
     {
-        void DoGravity();
+        void DecrementTime();
         void Reset();
     }
 }

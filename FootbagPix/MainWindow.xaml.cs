@@ -20,9 +20,11 @@ namespace FootbagPix
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public string PlayerName { get; set; }
+        public MainWindow(string playerName)
         {
             InitializeComponent();
+            PlayerName = playerName;
         }
     }
 }

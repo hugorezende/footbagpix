@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace FootbagPix.Logic
 {
-    public interface IBallLogic
+    public interface IScoreLogic
     {
-        void DoGravity();
+        void Increase();
+        void CheckIfBallFell();
         void Reset();
     }
 }

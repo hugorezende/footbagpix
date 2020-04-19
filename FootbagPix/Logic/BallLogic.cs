@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FootbagPix.Logic
 {
@@ -32,6 +33,10 @@ namespace FootbagPix.Logic
                 ball.SpeedY = 0;
                 ball.TimeOnAir = 0;
             }
+            if (ball.area.X < 0 || ball.area.X + ball.Area.Width > Config.windowWidth)
+            {
+                ball.SpeedX *= -1;
+            }
             RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
@@ -41,15 +46,13 @@ namespace FootbagPix.Logic
             ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
             ball.SpeedY = 10;
         }
-        public void SetPosition(int x, int y)
-        {
-            ball.PositionX = x;
-            ball.PositionY = y;
-        }
 
-        public void SetSpeed()
+        public void Reset()
         {
-            throw new NotImplementedException();
+            ball.area = new Rect((Config.windowWidth - ball.Area.Width) / 2, 50, 20, 20);
+            ball.SpeedX = 0;
+            ball.SpeedY = 0;
+            ball.TimeOnAir = 0;
         }
     }
 }

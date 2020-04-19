@@ -66,6 +66,10 @@
     <Compile Include="Logic\IBallLogic.cs" />
     <Compile Include="Logic\ICharacterLogic.cs" />
     <Compile Include="Logic\IGameLogic.cs" />
+    <Compile Include="Logic\IScoreLogic.cs" />
+    <Compile Include="Logic\ITimerLogic.cs" />
+    <Compile Include="Logic\TimerLogic.cs" />
+    <Compile Include="Logic\ScoreLogic.cs" />
     <Compile Include="MainMenuWindow.xaml.cs">
       <DependentUpon>MainMenuWindow.xaml</DependentUpon>
     </Compile>
@@ -74,8 +78,18 @@
     <Compile Include="Models\GameModel.cs" />
     <Compile Include="Models\IGameModel.cs" />
     <Compile Include="Models\ScoreModel.cs" />
+    <Compile Include="Models\TimerModel.cs" />
+    <Compile Include="NewGameWindow.xaml.cs">
+      <DependentUpon>NewGameWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Renderer\GameRenderer.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="ScoreboardWindow.xaml.cs">
+      <DependentUpon>ScoreboardWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IScoreboardService.cs" />
+    <Compile Include="Services\ScoreboardEntry.cs" />
+    <Compile Include="Services\ScoreboardService.cs" />
     <Page Include="ControlsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -96,7 +110,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NewGameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\StyleResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScoreboardWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,6 +145,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\FontResources\ConcertOne-Regular.ttf" />
+    <Resource Include="Resources\FontResources\joystix monospace.ttf" />
+    <Resource Include="Resources\FontResources\game_over.ttf" />
+    <Resource Include="Resources\FontResources\Gameplay.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -136,6 +162,11 @@
     </Content>
     <Content Include="Resources\ImageResources\character_sprite3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\ImageResources\FootBagScoreboard.png" />
+    <Resource Include="Resources\ImageResources\FootbagNewGame.png" />
+    <Content Include="Resources\ImageResources\game_over.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\ImageResources\FootBagControls.png" />
     <Resource Include="Resources\ImageResources\gamegrass.png" />

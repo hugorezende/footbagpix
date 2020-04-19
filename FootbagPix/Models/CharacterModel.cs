@@ -11,7 +11,6 @@ namespace FootbagPix.Models
 {
     public class CharacterModel
     {
-        // to be implemented
         public Rect leftFoot, rigthFoot, body;
         public Point head;
         public Rect LeftFoot { get { return leftFoot; } }
@@ -21,8 +20,8 @@ namespace FootbagPix.Models
         public int PositionX { get; set; }
         public int SpriteWidth { get; set; }
         public int SpriteHeight { get; set; }
-
         public ImageBrush imageBrush { get; set; }
+        public bool Blocked { get; set; }
 
         public CharacterModel()
         {
@@ -35,10 +34,10 @@ namespace FootbagPix.Models
             imageBrush.ViewboxUnits = BrushMappingMode.Absolute;
             imageBrush.Stretch = Stretch.None;
 
-            leftFoot = new Rect(310, Config.windowHeight - 100, 40, 40);
-            rigthFoot = new Rect(360, Config.windowHeight - 100, 40, 40);
+            leftFoot = new Rect((Config.windowWidth - SpriteWidth) / 2, Config.windowHeight - 100, 40, 40);
+            rigthFoot = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 50, Config.windowHeight - 100, 40, 40);
 
-            PositionX = 310;
+            PositionX = (Config.windowWidth - SpriteWidth) / 2;
         }
     }
 }

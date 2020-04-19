@@ -26,12 +26,12 @@ namespace FootbagPix
 
         private void Button_Play_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow
+            NewGameWindow newGameWindow = new NewGameWindow
             {
                 Left = this.Left,
-                Top = this.Top
+                Top = this.Top + 150
             };
-            mainWindow.Show();
+            newGameWindow.Show();
             this.Close();
         }
 
@@ -42,7 +42,21 @@ namespace FootbagPix
 
         private void Button_Scoreboard_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Scoreboard button clicked!");
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                Mouse.OverrideCursor = Cursors.Wait;
+            });
+            ScoreboardWindow scoreboardWindow = new ScoreboardWindow
+            {
+                Left = this.Left,
+                Top = this.Top
+            };
+            scoreboardWindow.Show();
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                Mouse.OverrideCursor = null;
+            });
+            this.Close();
         }
 
         private void Button_Controls_Click(object sender, RoutedEventArgs e)
