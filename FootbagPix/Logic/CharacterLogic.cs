@@ -16,8 +16,6 @@ namespace FootbagPix.Logic
         ScoreModel score;
         Random random = new Random();
 
-        const int kickForce = 10;
-
         public CharacterLogic(BallModel ball, CharacterModel character, ScoreModel score, TimerModel timer)
         {
             this.ball = ball;
@@ -93,7 +91,7 @@ namespace FootbagPix.Logic
                     AnimateKickLeft();
                     ball.TimeOnAir = 0;
                     ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
-                    ball.SpeedY = kickForce;
+                    ball.SpeedY = Config.kickForce;
                     ball.SpeedX = (float)random.Next(-10, 10) / 10;
                     return true;
                 }
@@ -103,7 +101,7 @@ namespace FootbagPix.Logic
                     AnimateKickRight();
                     ball.TimeOnAir = 0;
                     ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
-                    ball.SpeedY = kickForce;
+                    ball.SpeedY = Config.kickForce;
                     ball.SpeedX = (float)random.Next(-10, 10) / 10;
                     return true;
                 }
@@ -208,7 +206,6 @@ namespace FootbagPix.Logic
         {
             character.leftFoot = new Rect((Config.windowWidth - character.SpriteWidth) / 2, Config.windowHeight - 100, 40, 40);
             character.rigthFoot = new Rect(((Config.windowWidth - character.SpriteWidth) / 2) +50, Config.windowHeight - 100, 40, 40);
-
             character.PositionX = (Config.windowWidth - character.SpriteWidth) / 2;
         }
 

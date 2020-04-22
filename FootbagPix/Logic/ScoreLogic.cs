@@ -11,7 +11,6 @@ namespace FootbagPix.Logic
     {
         ScoreModel score;
         BallModel ball;
-        int groundPosition = 415;
 
         public ScoreLogic(ScoreModel score, BallModel ball)
         {
@@ -19,11 +18,9 @@ namespace FootbagPix.Logic
             this.ball = ball;
         }
 
-        public const int scorePerKick = 10; // later put into config.cs ?
-
         public void Increase()
         {
-            score.CurrentScore = score.CurrentScore + (scorePerKick * score.ComboCounter);
+            score.CurrentScore = score.CurrentScore + (Config.scorePerKick * score.ComboCounter);
             if (score.ComboCounter > score.MaxComboCount)
             {
                 score.MaxComboCount = score.ComboCounter;
@@ -33,7 +30,7 @@ namespace FootbagPix.Logic
 
         public void CheckIfBallFell()
         {
-            if (ball.area.Y >= groundPosition)
+            if (ball.area.Y >= Config.groundPosition)
             {
                 score.ComboCounter = 0;
             }

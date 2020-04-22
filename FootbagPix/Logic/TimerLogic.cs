@@ -52,7 +52,7 @@ namespace FootbagPix.Logic
             timer.GameOver = false;
             timer.gameOverBrush.Opacity = 0;
             timer.gameOverTextBrush = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
-            timer.TimeLeft = 60;
+            timer.TimeLeft = Config.gameLength;
         }
     }
 }

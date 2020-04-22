@@ -16,7 +16,6 @@ namespace FootbagPix.Models
         public TimerModel Timer { get; set; }
         public string PlayerName { get; set; }
         public ScoreModel Score { get; set; }
-        public int Gravity { get ; set ; }
         public ImageBrush BackgroundBrush { get; set; }
 
         public GameModel(string playerName)
@@ -24,12 +23,9 @@ namespace FootbagPix.Models
             BackgroundBrush = new ImageBrush(new BitmapImage(new Uri("Resources/ImageResources/bg.png", UriKind.Relative)));
             Ball = new BallModel();
             Character = new CharacterModel();
-            Timer = new TimerModel(60);
+            Timer = new TimerModel(Config.gameLength);
             Score = new ScoreModel();
             PlayerName = playerName;
-
-            Gravity = 1;
-
         }
     }
 }
