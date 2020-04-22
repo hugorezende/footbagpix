@@ -8,7 +8,7 @@ using System.Windows.Media.Imaging;
 
 namespace FootbagPix.Models
 {
-    class TimerModel
+    public class TimerModel
     {
         public int TimeLeft { get; set; }
         public bool GameOver { get; set; }

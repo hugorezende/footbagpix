@@ -10,8 +10,8 @@ namespace FootbagPix.Repository
     {
         T GetById(Int64 id);
         IEnumerable<T> GetAll();
-        void Create(T entity);
-        void Delete(T entity);
-        void Update(T entity);
+        void Add(T entity);
+        void Remove(T entity);
+        void SaveChanges();
     }
 }

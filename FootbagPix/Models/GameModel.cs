@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 
 namespace FootbagPix.Models
 {
-    class GameModel : IGameModel
+    public class GameModel : IGameModel
     {
         public CharacterModel Character { get; set; }
         public BallModel Ball { get; set; }

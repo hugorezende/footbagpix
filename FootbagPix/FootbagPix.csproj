@@ -84,6 +84,7 @@
     </Compile>
     <Compile Include="Renderer\GameRenderer.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\GameModelRepository.cs" />
     <Compile Include="ScoreboardWindow.xaml.cs">
       <DependentUpon>ScoreboardWindow.xaml</DependentUpon>
     </Compile>
