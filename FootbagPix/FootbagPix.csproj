@@ -174,20 +174,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="FootBagIcon.ico" />
-    <Resource Include="Resources\ImageResources\ball.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\ImageResources\bg.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\ImageResources\character_sprite3.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resources\ImageResources\ball.png" />
+    <Resource Include="Resources\ImageResources\bg.png" />
+    <Resource Include="Resources\ImageResources\character_sprite3.png" />
     <Resource Include="Resources\ImageResources\FootBagScoreboard.png" />
     <Resource Include="Resources\ImageResources\FootbagNewGame.png" />
-    <Resource Include="Resources\ImageResources\game_over.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resources\ImageResources\game_over.png" />
     <Resource Include="Resources\ImageResources\FootBagControls.png" />
     <Resource Include="Resources\ImageResources\gamegrass.png" />
   </ItemGroup>

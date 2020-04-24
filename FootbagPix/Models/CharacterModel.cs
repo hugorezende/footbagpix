@@ -28,7 +28,7 @@ namespace FootbagPix.Models
             SpriteWidth = 95;
             SpriteHeight = 214;
 
-            imageBrush = new ImageBrush(new BitmapImage(new Uri("Resources/ImageResources/character_sprite3.png", UriKind.Relative)));
+            imageBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/ImageResources/character_sprite3.png")));
 
             imageBrush.Viewbox = new Rect(0, 0, SpriteWidth, SpriteHeight);
             imageBrush.ViewboxUnits = BrushMappingMode.Absolute;

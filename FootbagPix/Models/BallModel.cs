@@ -24,7 +24,7 @@ namespace FootbagPix.Models
 
         public BallModel()
         {
-            imageBrush = new ImageBrush(new BitmapImage(new Uri("Resources/ImageResources/ball.png", UriKind.Relative)));
+            imageBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/ImageResources/ball.png")));
 
             area = new Rect((Config.windowWidth - BallModel.width)/2, 50, 20, 20);
             SpeedX = 0;

@@ -18,7 +18,7 @@ namespace FootbagPix.Models
         {
             TimeLeft = timeLeft;
             GameOver = false;
-            gameOverBrush = new ImageBrush(new BitmapImage(new Uri("Resources/ImageResources/game_over.png", UriKind.Relative)));
+            gameOverBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/ImageResources/game_over.png")));
             gameOverBrush.Opacity = 0;
             gameOverTextBrush = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
         }

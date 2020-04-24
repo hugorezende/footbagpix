@@ -20,7 +20,7 @@ namespace FootbagPix.Models
 
         public GameModel(string playerName)
         {
-            BackgroundBrush = new ImageBrush(new BitmapImage(new Uri("Resources/ImageResources/bg.png", UriKind.Relative)));
+            BackgroundBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/ImageResources/bg.png")));
             Ball = new BallModel();
             Character = new CharacterModel();
             Timer = new TimerModel(Config.gameLength);
