@@ -64,5 +64,22 @@ namespace FootbagPix
         {
             this.DragMove();
         }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (PlayerName.Length > 2)
+                {
+                    MainWindow mainWindow = new MainWindow(PlayerName)
+                    {
+                        Left = this.Left,
+                        Top = this.Top - 150
+                    };
+                    mainWindow.Show();
+                    this.Close();
+                }
+            }
+        }
     }
 }

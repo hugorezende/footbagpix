@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FootbagPix"
         mc:Ignorable="d"
-        Title="NewGameWindow" Height="300" Width="600" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown">
+        Title="NewGameWindow" Height="300" Width="600" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown" KeyDown="Window_KeyDown">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/FootbagPix;component/Resources/ImageResources/FootBagNewGame.png"/>
