@@ -79,6 +79,9 @@
       <DependentUpon>ControlsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\GameControl.cs" />
+    <Compile Include="LoadWindow.xaml.cs">
+      <DependentUpon>LoadWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Logic\BallLogic.cs" />
     <Compile Include="Logic\CharacterLogic.cs" />
     <Compile Include="Logic\IBallLogic.cs" />
@@ -110,6 +113,10 @@
     <Compile Include="Services\ScoreboardEntry.cs" />
     <Compile Include="Services\ScoreboardService.cs" />
     <Page Include="ControlsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -197,6 +204,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageResources\FootBagLoad.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

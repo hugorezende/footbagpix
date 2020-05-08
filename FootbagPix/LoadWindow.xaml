@@ -1,0 +1,21 @@
+﻿<Window x:Class="FootbagPix.LoadWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FootbagPix"
+        mc:Ignorable="d"
+        Title="LoadWindow" Height="600" Width="600" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/FootbagPix;component/Resources/ImageResources/FootBagLoad.png"/>
+        </Grid.Background>
+
+        <Button Name="Button_Back" Click="Button_Back_Click" Style="{StaticResource MainMenuButtonStyle}"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="191,526,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}">
+        </Button>
+        <ListBox x:Name="LoadList" FontSize="16" HorizontalAlignment="Left" Height="380" VerticalAlignment="Top" Width="570" Margin="15,130,0,0" FontFamily="/FootbagPix;component/Resources/FontResources/#Joystix Monospace"/>
+        <Label Content="     Select the game you wish to load!" 
+               FontSize="16" FontFamily="/FootbagPix;component/Resources/FontResources/#Joystix Monospace" Foreground="White" HorizontalAlignment="Left" Margin="15,101,0,0" VerticalAlignment="Top" Width="570"/>
+    </Grid>
+</Window>
