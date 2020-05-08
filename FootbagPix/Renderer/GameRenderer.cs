@@ -134,11 +134,10 @@ namespace FootbagPix.Renderer
             GeometryDrawing scoreText = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 2),
                 formattedScoreText.BuildGeometry(new Point(Config.windowWidth - formattedScoreText.Width - 5, -5)));
             scoreDrawing.Children.Add(scoreText);
-
-            
+                       
             if ((gameModel.Score.ComboCounter - 1) > 0)
             {
-                FormattedText formattedComboText = new FormattedText((gameModel.Score.ComboCounter - 1).ToString() + "x!",
+                FormattedText formattedComboText = new FormattedText(gameModel.Score.ExtraInfo+" "+(gameModel.Score.ComboCounter - 1).ToString() + "x!",
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     JoystixFont,
