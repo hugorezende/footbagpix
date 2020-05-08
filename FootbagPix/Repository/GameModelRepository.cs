@@ -29,9 +29,9 @@ namespace FootbagPix.Repository
             }
         }
 
-        public GameModel GetById(long id)
+        public GameModel GetById(Guid gameID)
         {
-            throw new NotImplementedException();
+            return (from game in savedGames where game.GameID == gameID select game).Single();
         }
 
         public IEnumerable<GameModel> GetAll()
