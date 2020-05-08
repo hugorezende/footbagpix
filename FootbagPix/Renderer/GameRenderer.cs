@@ -13,7 +13,7 @@ namespace FootbagPix.Renderer
     {
         GameModel gameModel;
 
-        static SolidColorBrush colorRed = new SolidColorBrush(Color.FromArgb(10, 255, 0, 0));
+        static SolidColorBrush colorRed = new SolidColorBrush(Color.FromArgb(100, 255, 0, 0));
         static SolidColorBrush colorBlue = new SolidColorBrush(Color.FromArgb(0, 0, 0, 255));
         static Pen defaultPen = new Pen(colorBlue, 0);
 
@@ -45,6 +45,8 @@ namespace FootbagPix.Renderer
         {
             ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.LeftFoot).Rect);
             ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.RigthFoot).Rect);
+            ctx.DrawRectangle(colorRed, defaultPen, new RectangleGeometry(gameModel.Character.LeftKnee).Rect);
+            ctx.DrawRectangle(colorRed, defaultPen, new RectangleGeometry(gameModel.Character.RigthKneee).Rect);
             ctx.DrawRectangle(gameModel.Character.imageBrush, defaultPen, new Rect(gameModel.Character.PositionX, Config.windowHeight - 280, 95, 214));
         }
         private void DrawTimer(DrawingContext ctx)

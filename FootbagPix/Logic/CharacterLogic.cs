@@ -42,6 +42,10 @@ namespace FootbagPix.Logic
                 {
                     character.leftFoot.X -= 5;
                     character.rigthFoot.X -= 5;
+                    
+                    character.leftKnee.X -= 5;
+                    character.rigthKneee.X -= 5;
+
                     AnimateWalkRight();
                     character.PositionX -= 1;
                     await Task.Delay(100);
@@ -65,6 +69,10 @@ namespace FootbagPix.Logic
                 {
                     character.leftFoot.X += 5;
                     character.rigthFoot.X += 5;
+
+                    character.leftKnee.X += 5;
+                    character.rigthKneee.X += 5;
+
                     AnimateWalkLeft();
                     character.PositionX += 1;
                     await Task.Delay(100);
@@ -82,7 +90,7 @@ namespace FootbagPix.Logic
 
         }
 
-        public bool TryHitBall()
+        public ScoreType TryHitBall()
         {
             if (!timer.GameOver && !character.Blocked)
             {
@@ -93,7 +101,7 @@ namespace FootbagPix.Logic
                     ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
                     ball.SpeedY = Config.kickForce;
                     ball.SpeedX = (float)random.Next(-10, 10) / 10;
-                    return true;
+                    return ScoreType.FootHit;
                 }
 
                 if (ball.Area.IntersectsWith(character.RigthFoot))
@@ -103,12 +111,31 @@ namespace FootbagPix.Logic
                     ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
                     ball.SpeedY = Config.kickForce;
                     ball.SpeedX = (float)random.Next(-10, 10) / 10;
-                    return true;
+                    return ScoreType.FootHit;
                 }
+                
+                if (ball.Area.IntersectsWith(character.LeftKnee))
+                {
+                    ball.TimeOnAir = 0;
+                    ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
+                    ball.SpeedY = Config.kickForce + 2;
+                    ball.SpeedX = (float)random.Next(-10, 10) / 10;
+                    return ScoreType.KneeHit;
+                }
+
+                if (ball.Area.IntersectsWith(character.RigthKneee))
+                {
+                    ball.TimeOnAir = 0;
+                    ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
+                    ball.SpeedY = Config.kickForce + 2;
+                    ball.SpeedX = (float)random.Next(-10, 10) / 10;
+                    return ScoreType.KneeHit;
+                }
+
                 AnimateKickLeft();
             }
             BlockControl(100);
-            return false;
+            return ScoreType.Miss;
         }
 
         private async void AnimateKickRight()

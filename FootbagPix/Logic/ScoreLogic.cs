@@ -18,14 +18,29 @@ namespace FootbagPix.Logic
             this.ball = ball;
         }
 
-        public void Increase()
+        public void Increase(ScoreType scoreType)
         {
-            score.CurrentScore = score.CurrentScore + (Config.scorePerKick * score.ComboCounter);
-            if (score.ComboCounter > score.MaxComboCount)
+            if(scoreType == ScoreType.FootHit)
             {
-                score.MaxComboCount = score.ComboCounter;
+                score.CurrentScore = score.CurrentScore + (Config.scorePerKick * score.ComboCounter);
+                if (score.ComboCounter > score.MaxComboCount)
+                {
+                    score.MaxComboCount = score.ComboCounter;
+                }
+                score.ComboCounter++;
             }
-            score.ComboCounter++;
+
+            if (scoreType == ScoreType.KneeHit)
+            {
+                score.CurrentScore = score.CurrentScore + (Config.scorePerKick * score.ComboCounter);
+                if (score.ComboCounter > score.MaxComboCount)
+                {
+                    score.MaxComboCount = score.ComboCounter;
+                }
+                score.ComboCounter++;
+            }
+
+
         }
 
         public void CheckIfBallFell()
