@@ -18,6 +18,7 @@ namespace FootbagPix.Models
         public string PlayerName { get; set; }
         public ScoreModel Score { get; set; }
         public ImageBrush BackgroundBrush { get; set; }
+        public DateTime SavedAt { get; set; }
 
         public GameModel(string playerName)
         {
@@ -28,6 +29,11 @@ namespace FootbagPix.Models
             PlayerName = playerName;
             Score = new ScoreModel();
             BackgroundBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/ImageResources/bg.png")));
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0,-12} {1,-8} {2,3} {3,12}", PlayerName, Score.ToString(), Timer.TimeLeft + "x", SavedAt.ToShortDateString());
         }
     }
 }

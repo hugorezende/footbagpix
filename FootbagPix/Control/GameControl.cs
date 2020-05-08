@@ -32,11 +32,22 @@ namespace FootbagPix.Control
         {
             MainWindow win = (MainWindow)Window.GetWindow(this);
 
-            gameModel = new GameModel(win.PlayerName);
-            ballLogic = new BallLogic(gameModel.Ball);
-            characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character, gameModel.Score, gameModel.Timer);
-            scoreLogic = new ScoreLogic(gameModel.Score, gameModel.Ball);
-            timerLogic = new TimerLogic(gameModel.Timer, gameModel);
+            if (win.IsNewGame)
+            {
+                gameModel = new GameModel(win.PlayerName);
+                ballLogic = new BallLogic(gameModel.Ball);
+                characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character, gameModel.Score, gameModel.Timer);
+                scoreLogic = new ScoreLogic(gameModel.Score, gameModel.Ball);
+                timerLogic = new TimerLogic(gameModel.Timer, gameModel);
+            }
+            else
+            {
+                gameModel = win.GameModel;
+                ballLogic = new BallLogic(gameModel.Ball);
+                characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character, gameModel.Score, gameModel.Timer);
+                scoreLogic = new ScoreLogic(gameModel.Score, gameModel.Ball);
+                timerLogic = new TimerLogic(gameModel.Timer, gameModel);
+            }
 
             render = new GameRenderer(gameModel);
 

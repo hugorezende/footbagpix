@@ -60,5 +60,15 @@ namespace FootbagPix.Repository
                 writer.Close();
             }
         }
+
+        public List<string> ReadSavedGames()
+        {
+            List<string> formattedSavedGames = new List<string>();
+            for (int i = 0; i < savedGames.Count; i++)
+            {
+                formattedSavedGames.Add((i + 1) + ". " + savedGames[i].ToString());
+            }
+            return formattedSavedGames;
+        }
     }
 }
