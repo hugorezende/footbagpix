@@ -1,4 +1,5 @@
-﻿using FootbagPix.Repository;
+﻿using FootbagPix.Models;
+using FootbagPix.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,11 +24,23 @@ namespace FootbagPix
         public LoadWindow()
         {
             InitializeComponent();
+            GameModelRepository repository = new GameModelRepository("savedgames.xml");
+            LoadList.ItemsSource = repository.GetAll();
         }
 
         private void Button_Load_Click(object sender, RoutedEventArgs e)
         {
-
+            if (LoadList.SelectedItem != null)
+            {
+                GameModel gameToLoad = LoadList.SelectedItem as GameModel;
+                MainWindow mainWindow = new MainWindow(gameToLoad)
+                {
+                    Left = this.Left,
+                    Top = this.Top - 150
+                };
+                mainWindow.Show();
+                this.Close();
+            }
         }
 
         private void Button_Back_Click(object sender, RoutedEventArgs e)
@@ -40,12 +53,6 @@ namespace FootbagPix
             };
             mainmenuWindow.Show();
             this.Close();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            GameModelRepository repository = new GameModelRepository("savedgames.xml");
-            LoadList.ItemsSource = repository.ReadSavedGames();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

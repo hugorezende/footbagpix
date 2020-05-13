@@ -37,7 +37,7 @@ namespace FootbagPix.Models
 
         public override string ToString()
         {
-            return string.Format("{0,-10} {1,-3} {2,3} {3,15}", PlayerName, Score.CurrentScore.ToString(), "0:" + Timer.TimeLeft, SavedAt.ToString());
+            return string.Format("{0,-10} {1,-3} {2,6} {3,19}", PlayerName, Score.CurrentScore.ToString(), "0:" + Timer.TimeLeft, SavedAt.ToString("MM/dd/yyyy HH:mm"));
         }
     }
 }
