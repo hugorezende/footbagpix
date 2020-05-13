@@ -123,8 +123,8 @@ namespace FootbagPix.Control
             tickTimer.Stop();
             tickTimerSeconds.Stop();
             PauseWindow pauseWindow = new PauseWindow(this);
-            pauseWindow.Left = Window.GetWindow(this).Left;
-            pauseWindow.Top = Window.GetWindow(this).Top + 150;
+            pauseWindow.Left = Window.GetWindow(this).Left + 104;
+            pauseWindow.Top = Window.GetWindow(this).Top + 160;
             pauseWindow.Show();
         }
 
