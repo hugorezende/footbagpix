@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace FootbagPix.Repository
@@ -14,18 +16,30 @@ namespace FootbagPix.Repository
     {
         private readonly List<GameModel> savedGames;
         internal string FileName { get; private set; }
+        private readonly List<Type> types;
 
         public GameModelRepository(string filename)
         {
             FileName = filename;
+            types = new List<Type>{ typeof(CharacterModel), typeof(BallModel), typeof(TimerModel), typeof(ScoreModel), typeof(Guid), typeof(MatrixTransform), typeof(SolidColorBrush)};
+            savedGames = new List<GameModel>();
 
-            XmlSerializer serializer = new XmlSerializer(typeof(List<GameModel>), null,
-                new Type[] { typeof(CharacterModel), typeof(BallModel), typeof(TimerModel), typeof(ScoreModel), typeof(ImageBrush) },
-                new XmlRootAttribute("SavedGames"), "FootbagPix");
-            using (StreamReader reader = new StreamReader(FileName))
+            if (File.Exists(FileName))
             {
-                savedGames = (List<GameModel>)serializer.Deserialize(reader);
-                reader.Close();
+                XmlSerializer serializer = new XmlSerializer(typeof(List<GameModel>), null,
+                types.ToArray(),
+                new XmlRootAttribute("SavedGames"), "FootbagPix");
+                using (StreamReader reader = new StreamReader(FileName))
+                {
+                    savedGames = (List<GameModel>)serializer.Deserialize(reader);
+                    reader.Close();
+                }
+            }
+            else
+            {
+                XDocument newFile = new XDocument();
+                newFile.Add(new XElement("SavedGames"));
+                newFile.Save(FileName);
             }
         }
 
@@ -42,6 +56,7 @@ namespace FootbagPix.Repository
         public void Add(GameModel entity)
         {
             savedGames.Add(entity);
+            entity.SavedAt = DateTime.Now;
         }
 
         public void Remove(GameModel entity)
@@ -52,13 +67,13 @@ namespace FootbagPix.Repository
         public void SaveChanges()
         {
             XmlSerializer serializer = new XmlSerializer(savedGames.GetType(), null,
-                new Type[] { typeof(CharacterModel), typeof(BallModel), typeof(TimerModel), typeof(ScoreModel), typeof(ImageBrush) },
+                types.ToArray(),
                 new XmlRootAttribute("SavedGames"), "FootbagPix");
-            using (StreamWriter writer = new StreamWriter(FileName))
-            {
-                serializer.Serialize(writer, savedGames);
-                writer.Close();
-            }
+                using (StreamWriter writer = new StreamWriter(FileName))
+                {
+                    serializer.Serialize(writer, savedGames);
+                    writer.Close();
+                }           
         }
 
         public List<string> ReadSavedGames()
@@ -66,7 +81,7 @@ namespace FootbagPix.Repository
             List<string> formattedSavedGames = new List<string>();
             for (int i = 0; i < savedGames.Count; i++)
             {
-                formattedSavedGames.Add((i + 1) + ". " + savedGames[i].ToString());
+                formattedSavedGames.Add(savedGames[i].ToString());
             }
             return formattedSavedGames;
         }

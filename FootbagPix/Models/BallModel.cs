@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml.Serialization;
 
 namespace FootbagPix.Models
 {
@@ -19,6 +20,7 @@ namespace FootbagPix.Models
         public double SpeedX { get; set; }
         public double SpeedY { get; set; }
         public double TimeOnAir { get; set; }
+        [XmlIgnore]
         public ImageBrush imageBrush { get; set; }
             
 

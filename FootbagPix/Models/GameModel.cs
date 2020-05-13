@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml.Serialization;
 
 namespace FootbagPix.Models
 {
@@ -17,7 +18,6 @@ namespace FootbagPix.Models
         public TimerModel Timer { get; set; }
         public string PlayerName { get; set; }
         public ScoreModel Score { get; set; }
-        public ImageBrush BackgroundBrush { get; set; }
         public DateTime SavedAt { get; set; }
 
         public GameModel(string playerName)
@@ -28,12 +28,16 @@ namespace FootbagPix.Models
             Timer = new TimerModel(Config.gameLength);
             PlayerName = playerName;
             Score = new ScoreModel();
-            BackgroundBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/ImageResources/bg.png")));
+        }
+
+        public GameModel()
+        {
+
         }
 
         public override string ToString()
         {
-            return string.Format("{0,-12} {1,-8} {2,3} {3,12}", PlayerName, Score.ToString(), Timer.TimeLeft + "x", SavedAt.ToShortDateString());
+            return string.Format("{0,-10} {1,-3} {2,3} {3,15}", PlayerName, Score.CurrentScore.ToString(), "0:" + Timer.TimeLeft, SavedAt.ToString());
         }
     }
 }

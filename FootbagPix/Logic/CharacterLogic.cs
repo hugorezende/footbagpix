@@ -24,16 +24,6 @@ namespace FootbagPix.Logic
             this.timer = timer;
         }
 
-        public void KickLeft()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void KickRight()
-        {
-            throw new NotImplementedException();
-        }
-
         public async void MoveLeft()
         {
             if (!timer.GameOver && !character.Blocked)

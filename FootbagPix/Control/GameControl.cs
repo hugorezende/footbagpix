@@ -15,7 +15,7 @@ namespace FootbagPix.Control
 {
     public class GameControl : FrameworkElement
     {
-        GameModel gameModel;
+        public GameModel gameModel;
         BallLogic ballLogic;
         CharacterLogic characterLogic;
         TimerLogic timerLogic;
@@ -31,6 +31,7 @@ namespace FootbagPix.Control
         private void GameScreen_Loaded(object sender, RoutedEventArgs e)
         {
             MainWindow win = (MainWindow)Window.GetWindow(this);
+            
 
             if (win.IsNewGame)
             {
@@ -51,6 +52,7 @@ namespace FootbagPix.Control
 
             render = new GameRenderer(gameModel);
 
+
             if (win != null) // if (!IsInDesignMode)
             {
                 tickTimer = new DispatcherTimer();
@@ -58,8 +60,8 @@ namespace FootbagPix.Control
                 tickTimerSeconds.Interval = TimeSpan.FromMilliseconds(1000);
                 tickTimer.Interval = TimeSpan.FromMilliseconds(20);
 
-                tickTimer.Tick += timer_Tick;
-                tickTimerSeconds.Tick += timer_Tick_Seconds;
+                tickTimer.Tick += Timer_Tick;
+                tickTimerSeconds.Tick += Timer_Tick_Seconds;
 
                 tickTimerSeconds.Start();
                 tickTimer.Start();
@@ -79,8 +81,8 @@ namespace FootbagPix.Control
                 case Key.Left: characterLogic.MoveLeft(); break;
                 case Key.Right: characterLogic.MoveRight(); break;
                 case Key.Up: characterLogic.Turn(); break;
-                case Key.Escape: goToMainMenu(); break;
-                case Key.Enter: if (gameModel.Timer.GameOver) startNewGame(); break;
+                case Key.Escape: if (gameModel.Timer.GameOver) { GoToMainMenu(); } else { PauseGame(); } break;
+                case Key.Enter: if (gameModel.Timer.GameOver) StartNewGame(); break;
             }
 
         }
@@ -90,17 +92,17 @@ namespace FootbagPix.Control
             if (render != null) render.DrawItems(drawingContext);
         }
 
-        void timer_Tick(object sender, EventArgs e)
+        void Timer_Tick(object sender, EventArgs e)
         {
             ballLogic.DoGravity();
             scoreLogic.CheckIfBallFell();
         }
-        void timer_Tick_Seconds(object sender, EventArgs e)
+        void Timer_Tick_Seconds(object sender, EventArgs e)
         {
             timerLogic.DecrementTime();
         }
 
-        void goToMainMenu()
+        public void GoToMainMenu()
         {
 
             MainMenuWindow mainmenu = new MainMenuWindow();
@@ -108,12 +110,28 @@ namespace FootbagPix.Control
             mainmenu.Show();
         }
 
-        void startNewGame()
+        void StartNewGame()
         {
             ballLogic.Reset();
             characterLogic.Reset();
             timerLogic.Reset();
             scoreLogic.Reset();
+        }
+
+        void PauseGame()
+        {
+            tickTimer.Stop();
+            tickTimerSeconds.Stop();
+            PauseWindow pauseWindow = new PauseWindow(this);
+            pauseWindow.Left = Window.GetWindow(this).Left;
+            pauseWindow.Top = Window.GetWindow(this).Top + 150;
+            pauseWindow.Show();
+        }
+
+        public void ResumeGame()
+        {
+            tickTimer.Start();
+            tickTimerSeconds.Start();
         }
 
     }

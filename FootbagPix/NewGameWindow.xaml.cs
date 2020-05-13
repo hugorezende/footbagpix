@@ -84,5 +84,10 @@ namespace FootbagPix
                 }
             }
         }
+
+        private void NewGameTextBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            NewGameTextBox.Focus();
+        }
     }
 }

@@ -17,6 +17,6 @@
         <Button Name="Button_Play" Click="Button_Play_Click" Style="{StaticResource MainMenuButtonStyle}"
                 HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="56,217,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}">
         </Button>
-        <TextBox x:Name="NewGameTextBox" MaxLength="12" TextChanged="TextBox_TextChanged" BorderThickness="3px" HorizontalAlignment="Left" Height="47" Margin="53,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="490" FontFamily="/FootbagPix;component/Resources/FontResources/#Joystix Monospace" FontSize="36" HorizontalContentAlignment="Center" SelectionBrush="{x:Null}" BorderBrush="Black" Background="White"/>
+        <TextBox x:Name="NewGameTextBox" Loaded="NewGameTextBox_Loaded" MaxLength="12" TextChanged="TextBox_TextChanged" BorderThickness="3px" HorizontalAlignment="Left" Height="47" Margin="53,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="490" FontFamily="/FootbagPix;component/Resources/FontResources/#Joystix Monospace" FontSize="36" HorizontalContentAlignment="Center" SelectionBrush="{x:Null}" BorderBrush="Black" Background="White"/>
     </Grid>
 </Window>

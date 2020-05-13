@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace FootbagPix.Renderer
 {
@@ -16,6 +17,7 @@ namespace FootbagPix.Renderer
         static SolidColorBrush colorRed = new SolidColorBrush(Color.FromArgb(10, 255, 0, 0));
         static SolidColorBrush colorBlue = new SolidColorBrush(Color.FromArgb(0, 0, 0, 255));
         static Pen defaultPen = new Pen(colorBlue, 0);
+        static ImageBrush BackgroundBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/ImageResources/bg.png")));
 
         private Rect bgArea;
 
@@ -32,7 +34,7 @@ namespace FootbagPix.Renderer
         public void DrawItems(DrawingContext ctx)
         {
 
-            ctx.DrawRectangle(gameModel.BackgroundBrush, defaultPen, bgArea);
+            ctx.DrawRectangle(BackgroundBrush, defaultPen, bgArea);
             DrawCharacter(ctx);
             DrawScore(ctx);
             ctx.DrawRectangle(gameModel.Ball.imageBrush, defaultPen, gameModel.Ball.Area);

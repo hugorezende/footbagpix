@@ -103,6 +103,9 @@
     <Compile Include="NewGameWindow.xaml.cs">
       <DependentUpon>NewGameWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PauseWindow.xaml.cs">
+      <DependentUpon>PauseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Renderer\GameRenderer.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\GameModelRepository.cs" />
@@ -137,6 +140,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NewGameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PauseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,6 +214,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ImageResources\FootBagLoad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageResources\FootbagPause.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

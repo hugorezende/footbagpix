@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml.Serialization;
 
 namespace FootbagPix.Models
 {
@@ -20,6 +21,7 @@ namespace FootbagPix.Models
         public int PositionX { get; set; }
         public int SpriteWidth { get; set; }
         public int SpriteHeight { get; set; }
+        [XmlIgnore]
         public ImageBrush imageBrush { get; set; }
         public bool Blocked { get; set; }
 

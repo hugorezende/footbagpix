@@ -15,6 +15,5 @@ namespace FootbagPix.Models
         TimerModel Timer { get; set; }
         string PlayerName { get; set; }
         ScoreModel Score { get; set; }
-        ImageBrush BackgroundBrush { get; set; }
     }
 }

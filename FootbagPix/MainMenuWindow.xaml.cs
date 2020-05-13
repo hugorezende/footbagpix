@@ -37,7 +37,13 @@ namespace FootbagPix
 
         private void Button_Load_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Load button clicked!");
+            LoadWindow loadWindow = new LoadWindow
+            {
+                Left = this.Left,
+                Top = this.Top
+            };
+            loadWindow.Show();
+            this.Close();
         }
 
         private void Button_Scoreboard_Click(object sender, RoutedEventArgs e)

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml.Serialization;
 
 namespace FootbagPix.Models
 {
@@ -12,6 +13,7 @@ namespace FootbagPix.Models
     {
         public int TimeLeft { get; set; }
         public bool GameOver { get; set; }
+        [XmlIgnore]
         public ImageBrush gameOverBrush { get; set; }
         public Brush gameOverTextBrush { get; set; }
         public TimerModel(int timeLeft)
@@ -21,6 +23,10 @@ namespace FootbagPix.Models
             gameOverBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/ImageResources/game_over.png")));
             gameOverBrush.Opacity = 0;
             gameOverTextBrush = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+        }
+        public TimerModel()
+        {
+
         }
     }
 }
