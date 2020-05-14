@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace FootbagPix.Models
 {
-    public class BallModel
+    public class BallModel : IBallModel
     {
         const int width = 20;
         const int heigth = 20;
@@ -22,17 +22,17 @@ namespace FootbagPix.Models
         public double TimeOnAir { get; set; }
         [XmlIgnore]
         public ImageBrush imageBrush { get; set; }
-            
+
 
         public BallModel()
         {
             imageBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/ImageResources/ball.png")));
 
-            area = new Rect((Config.windowWidth - BallModel.width)/2, 50, 20, 20);
+            area = new Rect((Config.windowWidth - BallModel.width) / 2, 50, 20, 20);
             SpeedX = 0;
             SpeedY = 0;
             TimeOnAir = 0;
         }
-        
+
     }
 }

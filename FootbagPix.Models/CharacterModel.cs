@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace FootbagPix.Models
 {
-    public class CharacterModel
+    public class CharacterModel : ICharacterModel
     {
         public Rect leftFoot, rigthFoot, body;
         public Point head;

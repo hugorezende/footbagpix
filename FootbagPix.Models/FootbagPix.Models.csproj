@@ -52,5 +52,8 @@
     <Compile Include="ScoreModel.cs" />
     <Compile Include="TimerModel.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

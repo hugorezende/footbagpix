@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 namespace FootbagPix.Models
 {
-    public class TimerModel
+    public class TimerModel : ITimerModel
     {
         public int TimeLeft { get; set; }
         public bool GameOver { get; set; }
@@ -21,7 +21,7 @@ namespace FootbagPix.Models
             gameOverTextBrush = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
         }
         public TimerModel()
-        {  
+        {
             gameOverBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/ImageResources/game_over.png")));
             gameOverBrush.Opacity = 0;
         }
