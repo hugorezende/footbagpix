@@ -19,7 +19,6 @@ namespace FootbagPix.Test
         [Test]
         public void TestIncrease()
         {
-
             mockScore = new Mock<IScoreModel>(MockBehavior.Default);
             mockBall = new Mock<IBallModel>(MockBehavior.Default);
 
@@ -28,11 +27,11 @@ namespace FootbagPix.Test
 
             ScoreLogic scoreLogic = new ScoreLogic(mockScore.Object, mockBall.Object);
 
-            scoreLogic.Increase();
+            scoreLogic.Increase(ScoreType.FootHit);
             Assert.That(mockScore.Object.CurrentScore, Is.EqualTo(10));
-            scoreLogic.Increase();
+            scoreLogic.Increase(ScoreType.FootHit);
             Assert.That(mockScore.Object.CurrentScore, Is.EqualTo(30));
-            scoreLogic.Increase();
+            scoreLogic.Increase(ScoreType.FootHit);
             Assert.That(mockScore.Object.CurrentScore, Is.EqualTo(60));
 
         }
