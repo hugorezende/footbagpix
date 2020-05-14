@@ -4,10 +4,10 @@ namespace FootbagPix.Logic
 {
     public class ScoreLogic : IScoreLogic
     {
-        ScoreModel score;
-        BallModel ball;
+        IScoreModel score;
+        IBallModel ball;
 
-        public ScoreLogic(ScoreModel score, BallModel ball)
+        public ScoreLogic(IScoreModel score, IBallModel ball)
         {
             this.score = score;
             this.ball = ball;
