@@ -74,7 +74,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Config.cs" />
     <Compile Include="ControlsWindow.xaml.cs">
       <DependentUpon>ControlsWindow.xaml</DependentUpon>
     </Compile>
@@ -82,24 +81,9 @@
     <Compile Include="LoadWindow.xaml.cs">
       <DependentUpon>LoadWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Logic\BallLogic.cs" />
-    <Compile Include="Logic\CharacterLogic.cs" />
-    <Compile Include="Logic\IBallLogic.cs" />
-    <Compile Include="Logic\ICharacterLogic.cs" />
-    <Compile Include="Logic\IGameLogic.cs" />
-    <Compile Include="Logic\IScoreLogic.cs" />
-    <Compile Include="Logic\ITimerLogic.cs" />
-    <Compile Include="Logic\TimerLogic.cs" />
-    <Compile Include="Logic\ScoreLogic.cs" />
     <Compile Include="MainMenuWindow.xaml.cs">
       <DependentUpon>MainMenuWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\BallModel.cs" />
-    <Compile Include="Models\CharacterModel.cs" />
-    <Compile Include="Models\GameModel.cs" />
-    <Compile Include="Models\IGameModel.cs" />
-    <Compile Include="Models\ScoreModel.cs" />
-    <Compile Include="Models\TimerModel.cs" />
     <Compile Include="NewGameWindow.xaml.cs">
       <DependentUpon>NewGameWindow.xaml</DependentUpon>
     </Compile>
@@ -112,9 +96,6 @@
     <Compile Include="ScoreboardWindow.xaml.cs">
       <DependentUpon>ScoreboardWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\IScoreboardService.cs" />
-    <Compile Include="Services\ScoreboardEntry.cs" />
-    <Compile Include="Services\ScoreboardService.cs" />
     <Page Include="ControlsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -217,6 +198,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ImageResources\FootbagPause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FootbagPix.Models\FootbagPix.Models.csproj">
+      <Project>{C5809713-7982-409A-ACF6-E0EF7AEC7484}</Project>
+      <Name>FootbagPix.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="FootbagPix.Logic\FootbagPix.Logic.csproj">
+      <Project>{19B8C785-8753-4B2C-90AD-5F33D9A14FB9}</Project>
+      <Name>FootbagPix.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
