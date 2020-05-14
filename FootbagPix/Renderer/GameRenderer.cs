@@ -137,8 +137,8 @@ namespace FootbagPix.Renderer
             
             if ((gameModel.Score.ComboCounter - 1) > 0)
             {
-                FormattedText formattedComboText = new FormattedText((gameModel.Score.ComboCounter - 1).ToString() + "x!",
-                    System.Globalization.CultureInfo.CurrentCulture,
+                FormattedText formattedComboText = new FormattedText(gameModel.Score.ExtraInfo + " " + (gameModel.Score.ComboCounter - 1).ToString() + "x!",
+    System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     JoystixFont,
                     30,

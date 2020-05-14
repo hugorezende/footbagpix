@@ -22,6 +22,7 @@ namespace FootbagPix.Logic
                 {
                     score.MaxComboCount = score.ComboCounter;
                 }
+                score.ExtraInfo = "Foot Hit";
                 score.ComboCounter++;
             }
 
@@ -32,6 +33,7 @@ namespace FootbagPix.Logic
                 {
                     score.MaxComboCount = score.ComboCounter;
                 }
+                score.ExtraInfo = "Knee Hit!";
                 score.ComboCounter++;
             }
 

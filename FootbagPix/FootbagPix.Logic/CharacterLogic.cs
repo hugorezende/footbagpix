@@ -220,6 +220,9 @@ namespace FootbagPix.Logic
         {
             character.LeftFoot = new Rect((Config.windowWidth - character.SpriteWidth) / 2, Config.windowHeight - 100, 40, 40);
             character.RigthFoot = new Rect(((Config.windowWidth - character.SpriteWidth) / 2) +50, Config.windowHeight - 100, 40, 40);
+            character.LeftKnee = new Rect(((Config.windowWidth - character.SpriteWidth) / 2) + 30, Config.windowHeight - 140, 20, 20);
+            character.RigthKneee = new Rect(((Config.windowWidth - character.SpriteWidth) / 2) + 60, Config.windowHeight - 140, 20, 20);
+
             character.PositionX = (Config.windowWidth - character.SpriteWidth) / 2;
         }
 
