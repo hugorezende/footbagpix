@@ -25,7 +25,7 @@ namespace FootbagPix.Logic
 
         public void CheckIfBallFell()
         {
-            if (ball.area.Y >= Config.groundPosition)
+            if (ball.Area.Y >= Config.groundPosition)
             {
                 score.ComboCounter = 0;
             }

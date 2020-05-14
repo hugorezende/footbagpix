@@ -65,6 +65,7 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.1\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharacterLogicTests.cs" />
@@ -73,6 +74,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\FootbagPix.Models\FootbagPix.Models.csproj">
+      <Project>{c5809713-7982-409a-acf6-e0ef7aec7484}</Project>
+      <Name>FootbagPix.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FootbagPix.csproj">
+      <Project>{3d0927fa-790d-4332-af93-4d8abc62bf73}</Project>
+      <Name>FootbagPix</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FootbagPix.Logic\FootbagPix.Logic.csproj">
+      <Project>{19b8c785-8753-4b2c-90ad-5f33d9a14fb9}</Project>
+      <Name>FootbagPix.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

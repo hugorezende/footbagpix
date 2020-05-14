@@ -5,7 +5,7 @@ namespace FootbagPix.Models
 {
     public interface IBallModel
     {
-        Rect Area { get; }
+        Rect Area { get; set; }
         ImageBrush imageBrush { get; set; }
         double SpeedX { get; set; }
         double SpeedY { get; set; }

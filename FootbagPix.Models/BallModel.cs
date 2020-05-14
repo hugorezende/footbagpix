@@ -15,8 +15,8 @@ namespace FootbagPix.Models
         const int width = 20;
         const int heigth = 20;
 
-        public Rect area;
-        public Rect Area { get { return area; } }
+       // public Rect area;
+        public Rect Area { get; set; }
         public double SpeedX { get; set; }
         public double SpeedY { get; set; }
         public double TimeOnAir { get; set; }
@@ -28,7 +28,7 @@ namespace FootbagPix.Models
         {
             imageBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/ImageResources/ball.png")));
 
-            area = new Rect((Config.windowWidth - BallModel.width) / 2, 50, 20, 20);
+            Area = new Rect((Config.windowWidth - BallModel.width) / 2, 50, 20, 20);
             SpeedX = 0;
             SpeedY = 0;
             TimeOnAir = 0;

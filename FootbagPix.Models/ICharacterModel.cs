@@ -9,9 +9,9 @@ namespace FootbagPix.Models
         Rect Body { get; }
         Point Head { get; }
         ImageBrush imageBrush { get; set; }
-        Rect LeftFoot { get; }
+        Rect LeftFoot { get; set; }
         int PositionX { get; set; }
-        Rect RigthFoot { get; }
+        Rect RigthFoot { get; set; }
         int SpriteHeight { get; set; }
         int SpriteWidth { get; set; }
     }

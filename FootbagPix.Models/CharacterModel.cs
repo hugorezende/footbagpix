@@ -10,8 +10,8 @@ namespace FootbagPix.Models
     {
         public Rect leftFoot, rigthFoot, body;
         public Point head;
-        public Rect LeftFoot { get { return leftFoot; } }
-        public Rect RigthFoot { get { return rigthFoot; } }
+        public Rect LeftFoot { get; set; }
+        public Rect RigthFoot { get; set; }
         public Rect Body { get { return body; } }
         public Point Head { get { return head; } }
         public int PositionX { get; set; }
@@ -32,10 +32,11 @@ namespace FootbagPix.Models
             imageBrush.ViewboxUnits = BrushMappingMode.Absolute;
             imageBrush.Stretch = Stretch.None;
 
-            leftFoot = new Rect((Config.windowWidth - SpriteWidth) / 2, Config.windowHeight - 100, 40, 40);
-            rigthFoot = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 50, Config.windowHeight - 100, 40, 40);
+            LeftFoot = new Rect((Config.windowWidth - SpriteWidth) / 2, Config.windowHeight - 100, 40, 40);
+            RigthFoot = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 50, Config.windowHeight - 100, 40, 40);
 
             PositionX = (Config.windowWidth - SpriteWidth) / 2;
         }
+
     }
 }
