@@ -119,5 +119,26 @@ namespace FootbagPix.Test
             await Task.Delay(1000);
             Assert.That(mockedCharacter.Object.PositionX, Is.EqualTo(15));
         }
+
+        [Test]
+        public void TestTryHitBall()
+        {
+            mockedBall = new Mock<IBallModel>(MockBehavior.Default);
+            mockedCharacter = new Mock<ICharacterModel>(MockBehavior.Default);
+            mockedTimer = new Mock<ITimerModel>(MockBehavior.Default);
+            mockedScore = new Mock<IScoreModel>(MockBehavior.Default);
+
+            //mockedBall.Setup(mock => mock.Area.IntersectsWith(It.IsAny<Rect>())).Returns(true);
+
+            CharacterLogic characterLogic = new CharacterLogic(
+                mockedBall.Object,
+                mockedCharacter.Object,
+                mockedScore.Object,
+                mockedTimer.Object);
+
+            Assert.That(true, Is.EqualTo(characterLogic.TryHitBall()));
+            mockedBall.VerifySet(mock => mock.Area);
+
+        }
     }
 }

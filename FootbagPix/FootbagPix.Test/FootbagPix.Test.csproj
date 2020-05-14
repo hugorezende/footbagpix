@@ -69,8 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharacterLogicTests.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestScoreLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
