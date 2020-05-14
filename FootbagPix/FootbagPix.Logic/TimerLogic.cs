@@ -1,16 +1,10 @@
 ﻿using FootbagPix.Models;
-using FootbagPix.Renderer;
 using FootbagPix.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace FootbagPix.Logic
 {
-    class TimerLogic : ITimerLogic
+    public class TimerLogic : ITimerLogic
     {
         TimerModel timer;
         GameModel game;

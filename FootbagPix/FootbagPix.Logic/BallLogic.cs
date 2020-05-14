@@ -1,14 +1,10 @@
 ﻿using FootbagPix.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace FootbagPix.Logic
 {
-    class BallLogic : IBallLogic
+    public class BallLogic : IBallLogic
     {
         BallModel ball;
         public event EventHandler RefreshScreen;

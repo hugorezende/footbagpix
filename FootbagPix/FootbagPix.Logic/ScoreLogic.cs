@@ -1,13 +1,8 @@
 ﻿using FootbagPix.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FootbagPix.Logic
 {
-    class ScoreLogic : IScoreLogic
+    public class ScoreLogic : IScoreLogic
     {
         ScoreModel score;
         BallModel ball;

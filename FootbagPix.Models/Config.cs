@@ -1,6 +1,6 @@
 ﻿namespace FootbagPix
 {
-    class Config
+    public class Config
     {
         // Window Size
 

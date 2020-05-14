@@ -1,14 +1,11 @@
 ﻿using FootbagPix.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace FootbagPix.Logic
 {
-    class CharacterLogic : ICharacterLogic
+    public class CharacterLogic : ICharacterLogic
     {
         BallModel ball;
         CharacterModel character;
