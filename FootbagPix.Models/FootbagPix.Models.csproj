@@ -47,10 +47,17 @@
     <Compile Include="CharacterModel.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="GameModel.cs" />
+    <Compile Include="IBallModel.cs" />
+    <Compile Include="ICharacterModel.cs" />
     <Compile Include="IGameModel.cs" />
+    <Compile Include="IScoreModel.cs" />
+    <Compile Include="ITimerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScoreModel.cs" />
     <Compile Include="TimerModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

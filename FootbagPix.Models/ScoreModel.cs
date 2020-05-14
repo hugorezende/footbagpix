@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FootbagPix.Models
 {
-    public class ScoreModel
+    public class ScoreModel : IScoreModel
     {
         public int CurrentScore { get; set; }
         public int ComboCounter { get; set; }

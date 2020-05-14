@@ -10,9 +10,9 @@ namespace FootbagPix.Renderer
     {
         GameModel gameModel;
 
-        static SolidColorBrush colorRed = new SolidColorBrush(Color.FromArgb(10, 255, 0, 0));
-        static SolidColorBrush colorBlue = new SolidColorBrush(Color.FromArgb(0, 0, 0, 255));
-        static Pen defaultPen = new Pen(colorBlue, 0);
+        static SolidColorBrush colorRed = new SolidColorBrush(Color.FromArgb(100, 255, 0, 0));
+        static SolidColorBrush colorBlue = new SolidColorBrush(Color.FromArgb(100, 0, 0, 255));
+        static Pen defaultPen = new Pen(colorBlue, 1);
         static ImageBrush BackgroundBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/ImageResources/bg.png")));
 
         private Rect bgArea;
