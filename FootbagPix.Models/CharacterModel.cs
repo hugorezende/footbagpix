@@ -37,8 +37,8 @@ namespace FootbagPix.Models
             LeftFoot = new Rect((Config.windowWidth - SpriteWidth) / 2, Config.windowHeight - 100, 40, 40);
             RigthFoot = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 50, Config.windowHeight - 100, 40, 40);
 
-            LeftKnee = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 30, Config.windowHeight - 110, 10, 10);
-            RigthKneee = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 60, Config.windowHeight - 110, 10, 10);
+            LeftKnee = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 30, Config.windowHeight - 140, 20, 20);
+            RigthKneee = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 60, Config.windowHeight - 140, 20, 20);
 
             PositionX = (Config.windowWidth - SpriteWidth) / 2;
         }
