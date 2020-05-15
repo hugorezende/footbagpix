@@ -126,6 +126,7 @@ namespace FootbagPix.Control
         {
             tickTimer.Stop();
             tickTimerSeconds.Stop();
+            gameModel.Character.Blocked = true;
             PauseWindow pauseWindow = new PauseWindow(this);
             pauseWindow.Left = Window.GetWindow(this).Left + 104;
             pauseWindow.Top = Window.GetWindow(this).Top + 160;
@@ -136,6 +137,7 @@ namespace FootbagPix.Control
         {
             tickTimer.Start();
             tickTimerSeconds.Start();
+            gameModel.Character.Blocked = false;
         }
 
     }
