@@ -141,14 +141,14 @@ namespace FootbagPix.Renderer
     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     JoystixFont,
-                    30,
+                    24,
                     Brushes.White,
                     96);
                 formattedComboText.SetFontWeight(FontWeights.ExtraBold, 0, formattedComboText.Text.Length);
                 GeometryDrawing comboText = new GeometryDrawing(Brushes.Red, new Pen(Brushes.Black, 1),
-                    formattedComboText.BuildGeometry(new Point(Config.windowWidth - formattedComboText.Width - 10, -80)));
+                    formattedComboText.BuildGeometry(new Point(Config.windowWidth - formattedComboText.Width - 10, -30)));
                 comboDrawing.Children.Add(comboText);
-                comboDrawing.Transform = new RotateTransform(10);
+                comboDrawing.Transform = new RotateTransform(7);
             }
             
             ctx.DrawDrawing(scoreDrawing);

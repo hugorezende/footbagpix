@@ -142,6 +142,7 @@ namespace FootbagPix.Logic
             {
                 AnimateTurn();
                 BlockControl(600);
+                score.ExtraInfo = "Turn!";
                 score.ComboCounter++;
             }
         }
