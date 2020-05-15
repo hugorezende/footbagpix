@@ -63,6 +63,7 @@ namespace FootbagPix.Control
                 tickTimer.Start();
 
                 win.KeyDown += Win_KeyDown;
+                win.KeyUp += Win_KeyUp;
             }
             ballLogic.RefreshScreen += (obj, args) => InvalidateVisual();
             InvalidateVisual();
@@ -70,17 +71,24 @@ namespace FootbagPix.Control
 
         private void Win_KeyDown(object sender, KeyEventArgs e)
         {
-
             switch (e.Key)
             {
                 case Key.Space: if (!e.IsRepeat) { scoreLogic.Increase(characterLogic.TryHitBall()); } break;
-                case Key.Left: characterLogic.MoveLeft(); break;
-                case Key.Right: characterLogic.MoveRight(); break;
+                case Key.Left: characterLogic.MoveLeft(); if (!e.IsRepeat) { characterLogic.movingRight = false; characterLogic.movingLeft = true; characterLogic.AnimateWalkLeft(); } break;
+                case Key.Right: characterLogic.MoveRight(); if (!e.IsRepeat) { characterLogic.movingLeft = false; characterLogic.movingRight = true; characterLogic.AnimateWalkRight(); } break;
                 case Key.Up: characterLogic.Turn(); break;
                 case Key.Escape: if (gameModel.Timer.GameOver) { GoToMainMenu(); } else { PauseGame(); } break;
                 case Key.Enter: if (gameModel.Timer.GameOver) StartNewGame(); break;
             }
 
+        }
+        private void Win_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Left: characterLogic.movingLeft = false; break;
+                case Key.Right: characterLogic.movingRight = false; break;
+            }
         }
 
         protected override void OnRender(DrawingContext drawingContext)
