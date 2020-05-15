@@ -12,6 +12,8 @@ namespace FootbagPix.Models
         Rect LeftFoot { get; set; }
         int PositionX { get; set; }
         Rect RigthFoot { get; set; }
+        Rect LeftKnee { get; set; }
+        Rect RigthKneee { get; set; }
         int SpriteHeight { get; set; }
         int SpriteWidth { get; set; }
     }

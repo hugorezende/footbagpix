@@ -73,7 +73,7 @@ namespace FootbagPix.Control
 
             switch (e.Key)
             {
-                case Key.Space: if (!e.IsRepeat) { if (characterLogic.TryHitBall()) { scoreLogic.Increase(); } } break;
+                case Key.Space: if (!e.IsRepeat) { scoreLogic.Increase(characterLogic.TryHitBall()); } break;
                 case Key.Left: characterLogic.MoveLeft(); break;
                 case Key.Right: characterLogic.MoveRight(); break;
                 case Key.Up: characterLogic.Turn(); break;

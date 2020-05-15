@@ -52,6 +52,7 @@
     <Compile Include="ITimerLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScoreLogic.cs" />
+    <Compile Include="ScoreType.cs" />
     <Compile Include="Services\IScoreboardService.cs" />
     <Compile Include="Services\ScoreboardEntry.cs" />
     <Compile Include="Services\ScoreboardService.cs" />

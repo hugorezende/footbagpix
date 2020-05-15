@@ -43,6 +43,9 @@ namespace FootbagPix.Renderer
         {
             ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.LeftFoot).Rect);
             ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.RigthFoot).Rect);
+            ctx.DrawRectangle(colorRed, defaultPen, new RectangleGeometry(gameModel.Character.LeftKnee).Rect);
+            ctx.DrawRectangle(colorRed, defaultPen, new RectangleGeometry(gameModel.Character.RigthKneee).Rect);
+
             ctx.DrawRectangle(gameModel.Character.imageBrush, defaultPen, new Rect(gameModel.Character.PositionX, Config.windowHeight - 280, 95, 214));
         }
         private void DrawTimer(DrawingContext ctx)
@@ -134,8 +137,8 @@ namespace FootbagPix.Renderer
             
             if ((gameModel.Score.ComboCounter - 1) > 0)
             {
-                FormattedText formattedComboText = new FormattedText((gameModel.Score.ComboCounter - 1).ToString() + "x!",
-                    System.Globalization.CultureInfo.CurrentCulture,
+                FormattedText formattedComboText = new FormattedText(gameModel.Score.ExtraInfo + " " + (gameModel.Score.ComboCounter - 1).ToString() + "x!",
+    System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     JoystixFont,
                     30,

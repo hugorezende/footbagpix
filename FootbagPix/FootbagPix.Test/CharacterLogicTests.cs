@@ -42,7 +42,7 @@ namespace FootbagPix.Test
             await Task.Delay(1000);
             Assert.That(mockedCharacter.Object.PositionX, Is.EqualTo(5));
 
-           
+
         }
 
         [Test]
@@ -128,7 +128,7 @@ namespace FootbagPix.Test
             mockedTimer = new Mock<ITimerModel>(MockBehavior.Default);
             mockedScore = new Mock<IScoreModel>(MockBehavior.Default);
 
-            //mockedBall.Setup(mock => mock.Area.IntersectsWith(It.IsAny<Rect>())).Returns(true);
+            mockedBall.Setup(mock => mock.Area.IntersectsWith(It.IsAny<Rect>())).Returns(true);
 
             CharacterLogic characterLogic = new CharacterLogic(
                 mockedBall.Object,

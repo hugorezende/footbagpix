@@ -29,6 +29,9 @@ namespace FootbagPix.Logic
                 {
                     character.LeftFoot = Rect.Offset(character.LeftFoot, -5, 0);
                     character.RigthFoot = Rect.Offset(character.RigthFoot, -5, 0);
+                    character.LeftKnee = Rect.Offset(character.LeftKnee, -5, 0);
+                    character.RigthKneee = Rect.Offset(character.RigthKneee, -5, 0);
+
                     AnimateWalkRight();
                     character.PositionX -= 1;
                     await Task.Delay(100);
@@ -52,6 +55,9 @@ namespace FootbagPix.Logic
                 {
                     character.LeftFoot = Rect.Offset(character.LeftFoot, 5, 0);
                     character.RigthFoot = Rect.Offset(character.RigthFoot, 5, 0);
+                    character.LeftKnee = Rect.Offset(character.LeftKnee, 5, 0);
+                    character.RigthKneee = Rect.Offset(character.RigthKneee, 5, 0);
+
                     AnimateWalkLeft();
                     character.PositionX += 1;
                     await Task.Delay(100);
@@ -69,7 +75,7 @@ namespace FootbagPix.Logic
 
         }
 
-        public bool TryHitBall()
+        public ScoreType TryHitBall()
         {
             if (!timer.GameOver && !character.Blocked)
             {
@@ -80,7 +86,7 @@ namespace FootbagPix.Logic
                     ball.Area = Rect.Offset(ball.Area, 0, -5);
                     ball.SpeedY = Config.kickForce;
                     ball.SpeedX = (float)random.Next(-10, 10) / 10;
-                    return true;
+                    return ScoreType.FootHit;
                 }
 
                 if (ball.Area.IntersectsWith(character.RigthFoot))
@@ -88,15 +94,35 @@ namespace FootbagPix.Logic
                     AnimateKickRight();
                     ball.TimeOnAir = 0;
                     ball.Area = Rect.Offset(ball.Area, 0, -5);
-                    //ball.area.Y = ball.area.Y - 5; //just to remove ball of the area that DoGravity() does not work
                     ball.SpeedY = Config.kickForce;
                     ball.SpeedX = (float)random.Next(-10, 10) / 10;
-                    return true;
+                    return ScoreType.FootHit;
                 }
+
+                if (ball.Area.IntersectsWith(character.LeftKnee))
+                {
+                    AnimateKickLeft();
+                    ball.TimeOnAir = 0;
+                    ball.Area = Rect.Offset(ball.Area, 0, -5);
+                    ball.SpeedY = Config.kickForce + 2;
+                    ball.SpeedX = (float)random.Next(-10, 10) / 10;
+                    return ScoreType.KneeHit;
+                }
+
+                if (ball.Area.IntersectsWith(character.RigthKneee))
+                {
+                    AnimateKickRight();
+                    ball.TimeOnAir = 0;
+                    ball.Area = Rect.Offset(ball.Area, 0, -5); //just to remove ball of the area that DoGravity() does not work
+                    ball.SpeedY = Config.kickForce + 2;
+                    ball.SpeedX = (float)random.Next(-10, 10) / 10;
+                    return ScoreType.KneeHit;
+                }
+
                 AnimateKickLeft();
             }
             BlockControl(100);
-            return false;
+            return ScoreType.Miss;
         }
 
         private async void AnimateKickRight()
@@ -194,6 +220,9 @@ namespace FootbagPix.Logic
         {
             character.LeftFoot = new Rect((Config.windowWidth - character.SpriteWidth) / 2, Config.windowHeight - 100, 40, 40);
             character.RigthFoot = new Rect(((Config.windowWidth - character.SpriteWidth) / 2) +50, Config.windowHeight - 100, 40, 40);
+            character.LeftKnee = new Rect(((Config.windowWidth - character.SpriteWidth) / 2) + 30, Config.windowHeight - 140, 20, 20);
+            character.RigthKneee = new Rect(((Config.windowWidth - character.SpriteWidth) / 2) + 60, Config.windowHeight - 140, 20, 20);
+
             character.PositionX = (Config.windowWidth - character.SpriteWidth) / 2;
         }
 
