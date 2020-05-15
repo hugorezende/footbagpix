@@ -11,7 +11,6 @@ namespace FootbagPix.Logic
         ICharacterModel character;
         ITimerModel timer;
         IScoreModel score;
-        Random random = new Random();
 
         public CharacterLogic(IBallModel ball, ICharacterModel character, IScoreModel score, ITimerModel timer)
         {
@@ -30,7 +29,7 @@ namespace FootbagPix.Logic
                     character.LeftFoot = Rect.Offset(character.LeftFoot, -5, 0);
                     character.RigthFoot = Rect.Offset(character.RigthFoot, -5, 0);
                     character.LeftKnee = Rect.Offset(character.LeftKnee, -5, 0);
-                    character.RigthKneee = Rect.Offset(character.RigthKneee, -5, 0);
+                    character.RigthKnee = Rect.Offset(character.RigthKnee, -5, 0);
 
                     AnimateWalkRight();
                     character.PositionX -= 1;
@@ -56,7 +55,7 @@ namespace FootbagPix.Logic
                     character.LeftFoot = Rect.Offset(character.LeftFoot, 5, 0);
                     character.RigthFoot = Rect.Offset(character.RigthFoot, 5, 0);
                     character.LeftKnee = Rect.Offset(character.LeftKnee, 5, 0);
-                    character.RigthKneee = Rect.Offset(character.RigthKneee, 5, 0);
+                    character.RigthKnee = Rect.Offset(character.RigthKnee, 5, 0);
 
                     AnimateWalkLeft();
                     character.PositionX += 1;
@@ -85,7 +84,7 @@ namespace FootbagPix.Logic
                     ball.TimeOnAir = 0;
                     ball.Area = Rect.Offset(ball.Area, 0, -5);
                     ball.SpeedY = Config.kickForce;
-                    ball.SpeedX = (float)random.Next(-10, 10) / 10;
+                    ball.SpeedX = GenerateBallDirection(ball, character.LeftFoot);
                     return ScoreType.FootHit;
                 }
 
@@ -95,7 +94,7 @@ namespace FootbagPix.Logic
                     ball.TimeOnAir = 0;
                     ball.Area = Rect.Offset(ball.Area, 0, -5);
                     ball.SpeedY = Config.kickForce;
-                    ball.SpeedX = (float)random.Next(-10, 10) / 10;
+                    ball.SpeedX = GenerateBallDirection(ball, character.RigthFoot);
                     return ScoreType.FootHit;
                 }
 
@@ -105,17 +104,17 @@ namespace FootbagPix.Logic
                     ball.TimeOnAir = 0;
                     ball.Area = Rect.Offset(ball.Area, 0, -5);
                     ball.SpeedY = Config.kickForce + 2;
-                    ball.SpeedX = (float)random.Next(-10, 10) / 10;
+                    ball.SpeedX = GenerateBallDirection(ball, character.LeftKnee);
                     return ScoreType.KneeHit;
                 }
 
-                if (ball.Area.IntersectsWith(character.RigthKneee))
+                if (ball.Area.IntersectsWith(character.RigthKnee))
                 {
                     AnimateKickRight();
                     ball.TimeOnAir = 0;
                     ball.Area = Rect.Offset(ball.Area, 0, -5); //just to remove ball of the area that DoGravity() does not work
                     ball.SpeedY = Config.kickForce + 2;
-                    ball.SpeedX = (float)random.Next(-10, 10) / 10;
+                    ball.SpeedX = GenerateBallDirection(ball, character.RigthKnee);
                     return ScoreType.KneeHit;
                 }
 
@@ -125,6 +124,39 @@ namespace FootbagPix.Logic
             return ScoreType.Miss;
         }
 
+        public float GenerateBallDirection(IBallModel ball, Rect surface)
+        {
+            double middleOfBall = ball.Area.X + (ball.Area.Width / 2);
+            double middleOfSurface = surface.X + surface.Width / 2;
+            float offset = (float)(middleOfBall - middleOfSurface);
+            return offset / Config.kickOffset; 
+        }
+
+        public void Turn()
+        {
+            if (!character.Blocked && !timer.GameOver)
+            {
+                AnimateTurn();
+                BlockControl(600);
+                score.ComboCounter++;
+            }
+        }
+        public async void BlockControl(int miliseconds)
+        {
+            character.Blocked = true;
+            await Task.Delay(miliseconds);
+            character.Blocked = false;
+        }
+
+        public void Reset()
+        {
+            character.LeftFoot = new Rect((Config.windowWidth - character.SpriteWidth) / 2, Config.windowHeight - 100, 40, 40);
+            character.RigthFoot = new Rect(((Config.windowWidth - character.SpriteWidth) / 2) +50, Config.windowHeight - 100, 40, 40);
+            character.LeftKnee = new Rect(((Config.windowWidth - character.SpriteWidth) / 2) + 30, Config.windowHeight - 140, 20, 20);
+            character.RigthKnee = new Rect(((Config.windowWidth - character.SpriteWidth) / 2) + 60, Config.windowHeight - 140, 20, 20);
+
+            character.PositionX = (Config.windowWidth - character.SpriteWidth) / 2;
+        }
         private async void AnimateKickRight()
         {
             character.imageBrush.Viewbox = new Rect(0, 0, character.SpriteWidth, character.SpriteHeight);
@@ -198,32 +230,6 @@ namespace FootbagPix.Logic
             await Task.Delay(80);
             character.imageBrush.Viewbox = new Rect(character.SpriteWidth * 6, character.SpriteHeight * 4, character.SpriteWidth, character.SpriteHeight);
             await Task.Delay(50);
-        }
-
-        public void Turn()
-        {
-            if (!character.Blocked && !timer.GameOver)
-            {
-                AnimateTurn();
-                BlockControl(600);
-                score.ComboCounter++;
-            }
-        }
-        public async void BlockControl(int miliseconds)
-        {
-            character.Blocked = true;
-            await Task.Delay(miliseconds);
-            character.Blocked = false;
-        }
-
-        public void Reset()
-        {
-            character.LeftFoot = new Rect((Config.windowWidth - character.SpriteWidth) / 2, Config.windowHeight - 100, 40, 40);
-            character.RigthFoot = new Rect(((Config.windowWidth - character.SpriteWidth) / 2) +50, Config.windowHeight - 100, 40, 40);
-            character.LeftKnee = new Rect(((Config.windowWidth - character.SpriteWidth) / 2) + 30, Config.windowHeight - 140, 20, 20);
-            character.RigthKneee = new Rect(((Config.windowWidth - character.SpriteWidth) / 2) + 60, Config.windowHeight - 140, 20, 20);
-
-            character.PositionX = (Config.windowWidth - character.SpriteWidth) / 2;
         }
 
     }

@@ -15,7 +15,7 @@ namespace FootbagPix.Models
         public Rect Body { get { return body; } }
         public Point Head { get { return head; } }
         public Rect LeftKnee { get; set; }
-        public Rect RigthKneee { get; set; }
+        public Rect RigthKnee { get; set; }
         public int PositionX { get; set; }
         public int SpriteWidth { get; set; }
         public int SpriteHeight { get; set; }
@@ -38,7 +38,7 @@ namespace FootbagPix.Models
             RigthFoot = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 50, Config.windowHeight - 100, 40, 40);
 
             LeftKnee = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 30, Config.windowHeight - 140, 20, 20);
-            RigthKneee = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 60, Config.windowHeight - 140, 20, 20);
+            RigthKnee = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 60, Config.windowHeight - 140, 20, 20);
 
             PositionX = (Config.windowWidth - SpriteWidth) / 2;
         }
