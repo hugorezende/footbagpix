@@ -28,6 +28,7 @@ namespace FootbagPix.Logic
                 else
                 {
                     timer.GameOver = true;
+                    game.Character.Blocked = true;
                     scoreboardService.AddScore(game.PlayerName, game.Score.CurrentScore, game.Score.MaxComboCount);
                     ShowGameOver();
                 }
@@ -39,6 +40,7 @@ namespace FootbagPix.Logic
         {
             timer.gameOverBrush.Opacity = 1;
             timer.gameOverTextBrush = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+            game.Score.ComboCounter = 0;
         }
 
         public void Reset()

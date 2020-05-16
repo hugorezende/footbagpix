@@ -161,6 +161,8 @@ namespace FootbagPix.Logic
             character.RigthKnee = new Rect(((Config.windowWidth - character.SpriteWidth) / 2) + 60, Config.windowHeight - 140, 20, 20);
 
             character.PositionX = (Config.windowWidth - character.SpriteWidth) / 2;
+
+            character.Blocked = false;
         }
         private async void AnimateKickRight()
         {
@@ -190,7 +192,7 @@ namespace FootbagPix.Logic
 
         public async void AnimateWalkRight()
         {
-            while (movingRight)
+            while (movingRight && !character.Blocked)
             {
                 character.imageBrush.Viewbox = new Rect(0, 0, character.SpriteWidth, character.SpriteHeight);
                 await Task.Delay(50);
@@ -210,7 +212,7 @@ namespace FootbagPix.Logic
 
         public async void AnimateWalkLeft()
         {
-            while (movingLeft)
+            while (movingLeft && !character.Blocked)
             {
                 character.imageBrush.Viewbox = new Rect(0, 0, character.SpriteWidth, character.SpriteHeight);
                 await Task.Delay(50);
