@@ -8,10 +8,10 @@ namespace FootbagPix.Repository
 {
     public interface IRepository<T> where T : class
     {
-        T GetById(Int64 id);
+        T GetById(Guid gameID);
         IEnumerable<T> GetAll();
-        void Create(T entity);
-        void Delete(T entity);
-        void Update(T entity);
+        void Add(T entity);
+        void Remove(T entity);
+        void SaveChanges();
     }
 }

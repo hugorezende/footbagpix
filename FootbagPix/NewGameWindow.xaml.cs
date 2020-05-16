@@ -62,7 +62,32 @@ namespace FootbagPix
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (PlayerName.Length > 2)
+                {
+                    MainWindow mainWindow = new MainWindow(PlayerName)
+                    {
+                        Left = this.Left,
+                        Top = this.Top - 150
+                    };
+                    mainWindow.Show();
+                    this.Close();
+                }
+            }
+        }
+
+        private void NewGameTextBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            NewGameTextBox.Focus();
         }
     }
 }

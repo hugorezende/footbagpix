@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace FootbagPix.Logic
 {
-    public interface IScoreLogic
+    public enum ScoreType
     {
-        void Increase();
-        void CheckIfBallFell();
-        void Reset();
+        Miss = -1,
+        FootHit = 0,
+        KneeHit = 1,
+        HeadHit = 2
+
     }
 }

@@ -1,11 +1,8 @@
 ﻿using FootbagPix.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace FootbagPix.Renderer
 {
@@ -13,9 +10,10 @@ namespace FootbagPix.Renderer
     {
         GameModel gameModel;
 
-        static SolidColorBrush colorRed = new SolidColorBrush(Color.FromArgb(10, 255, 0, 0));
-        static SolidColorBrush colorBlue = new SolidColorBrush(Color.FromArgb(0, 0, 0, 255));
+        static SolidColorBrush colorRed = new SolidColorBrush(Color.FromArgb(100, 255, 0, 0));
+        static SolidColorBrush colorBlue = new SolidColorBrush(Color.FromArgb(100, 0, 0, 255));
         static Pen defaultPen = new Pen(colorBlue, 0);
+        static ImageBrush BackgroundBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/ImageResources/bg.png")));
 
         private Rect bgArea;
 
@@ -32,7 +30,7 @@ namespace FootbagPix.Renderer
         public void DrawItems(DrawingContext ctx)
         {
 
-            ctx.DrawRectangle(gameModel.BackgroundBrush, defaultPen, bgArea);
+            ctx.DrawRectangle(BackgroundBrush, defaultPen, bgArea);
             DrawCharacter(ctx);
             DrawScore(ctx);
             ctx.DrawRectangle(gameModel.Ball.imageBrush, defaultPen, gameModel.Ball.Area);
@@ -43,8 +41,6 @@ namespace FootbagPix.Renderer
 
         private void DrawCharacter(DrawingContext ctx)
         {
-            ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.LeftFoot).Rect);
-            ctx.DrawRectangle(colorBlue, defaultPen, new RectangleGeometry(gameModel.Character.RigthFoot).Rect);
             ctx.DrawRectangle(gameModel.Character.imageBrush, defaultPen, new Rect(gameModel.Character.PositionX, Config.windowHeight - 280, 95, 214));
         }
         private void DrawTimer(DrawingContext ctx)
@@ -136,18 +132,18 @@ namespace FootbagPix.Renderer
             
             if ((gameModel.Score.ComboCounter - 1) > 0)
             {
-                FormattedText formattedComboText = new FormattedText((gameModel.Score.ComboCounter - 1).ToString() + "x!",
-                    System.Globalization.CultureInfo.CurrentCulture,
+                FormattedText formattedComboText = new FormattedText(gameModel.Score.ExtraInfo + " " + (gameModel.Score.ComboCounter - 1).ToString() + "x!",
+    System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     JoystixFont,
-                    30,
+                    24,
                     Brushes.White,
                     96);
                 formattedComboText.SetFontWeight(FontWeights.ExtraBold, 0, formattedComboText.Text.Length);
                 GeometryDrawing comboText = new GeometryDrawing(Brushes.Red, new Pen(Brushes.Black, 1),
-                    formattedComboText.BuildGeometry(new Point(Config.windowWidth - formattedComboText.Width - 10, -80)));
+                    formattedComboText.BuildGeometry(new Point(Config.windowWidth - formattedComboText.Width - 10, -30)));
                 comboDrawing.Children.Add(comboText);
-                comboDrawing.Transform = new RotateTransform(10);
+                comboDrawing.Transform = new RotateTransform(7);
             }
             
             ctx.DrawDrawing(scoreDrawing);

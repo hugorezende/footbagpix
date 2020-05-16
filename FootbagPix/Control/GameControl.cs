@@ -2,10 +2,6 @@
 using FootbagPix.Models;
 using FootbagPix.Renderer;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -15,7 +11,7 @@ namespace FootbagPix.Control
 {
     public class GameControl : FrameworkElement
     {
-        GameModel gameModel;
+        public GameModel gameModel;
         BallLogic ballLogic;
         CharacterLogic characterLogic;
         TimerLogic timerLogic;
@@ -31,14 +27,27 @@ namespace FootbagPix.Control
         private void GameScreen_Loaded(object sender, RoutedEventArgs e)
         {
             MainWindow win = (MainWindow)Window.GetWindow(this);
+            
 
-            gameModel = new GameModel(win.PlayerName);
-            ballLogic = new BallLogic(gameModel.Ball);
-            characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character, gameModel.Score, gameModel.Timer);
-            scoreLogic = new ScoreLogic(gameModel.Score, gameModel.Ball);
-            timerLogic = new TimerLogic(gameModel.Timer, gameModel);
+            if (win.IsNewGame)
+            {
+                gameModel = new GameModel(win.PlayerName);
+                ballLogic = new BallLogic(gameModel.Ball);
+                characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character, gameModel.Score, gameModel.Timer);
+                scoreLogic = new ScoreLogic(gameModel.Score, gameModel.Ball);
+                timerLogic = new TimerLogic(gameModel.Timer, gameModel);
+            }
+            else
+            {
+                gameModel = win.GameModel;
+                ballLogic = new BallLogic(gameModel.Ball);
+                characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character, gameModel.Score, gameModel.Timer);
+                scoreLogic = new ScoreLogic(gameModel.Score, gameModel.Ball);
+                timerLogic = new TimerLogic(gameModel.Timer, gameModel);
+            }
 
             render = new GameRenderer(gameModel);
+
 
             if (win != null) // if (!IsInDesignMode)
             {
@@ -47,13 +56,14 @@ namespace FootbagPix.Control
                 tickTimerSeconds.Interval = TimeSpan.FromMilliseconds(1000);
                 tickTimer.Interval = TimeSpan.FromMilliseconds(20);
 
-                tickTimer.Tick += timer_Tick;
-                tickTimerSeconds.Tick += timer_Tick_Seconds;
+                tickTimer.Tick += Timer_Tick;
+                tickTimerSeconds.Tick += Timer_Tick_Seconds;
 
                 tickTimerSeconds.Start();
                 tickTimer.Start();
 
                 win.KeyDown += Win_KeyDown;
+                win.KeyUp += Win_KeyUp;
             }
             ballLogic.RefreshScreen += (obj, args) => InvalidateVisual();
             InvalidateVisual();
@@ -61,17 +71,24 @@ namespace FootbagPix.Control
 
         private void Win_KeyDown(object sender, KeyEventArgs e)
         {
-
             switch (e.Key)
             {
-                case Key.Space: if (!e.IsRepeat) { if (characterLogic.TryHitBall()) { scoreLogic.Increase(); } } break;
-                case Key.Left: characterLogic.MoveLeft(); break;
-                case Key.Right: characterLogic.MoveRight(); break;
+                case Key.Space: if (!e.IsRepeat) { scoreLogic.Increase(characterLogic.TryHitBall()); } break;
+                case Key.Left: characterLogic.MoveLeft(); if (!e.IsRepeat) { characterLogic.movingRight = false; characterLogic.movingLeft = true; characterLogic.AnimateWalkLeft(); } break;
+                case Key.Right: characterLogic.MoveRight(); if (!e.IsRepeat) { characterLogic.movingLeft = false; characterLogic.movingRight = true; characterLogic.AnimateWalkRight(); } break;
                 case Key.Up: characterLogic.Turn(); break;
-                case Key.Escape: goToMainMenu(); break;
-                case Key.Enter: if (gameModel.Timer.GameOver) startNewGame(); break;
+                case Key.Escape: if (gameModel.Timer.GameOver) { GoToMainMenu(); } else { PauseGame(); } break;
+                case Key.Enter: if (gameModel.Timer.GameOver) StartNewGame(); break;
             }
 
+        }
+        private void Win_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Left: characterLogic.movingLeft = false; break;
+                case Key.Right: characterLogic.movingRight = false; break;
+            }
         }
 
         protected override void OnRender(DrawingContext drawingContext)
@@ -79,17 +96,17 @@ namespace FootbagPix.Control
             if (render != null) render.DrawItems(drawingContext);
         }
 
-        void timer_Tick(object sender, EventArgs e)
+        void Timer_Tick(object sender, EventArgs e)
         {
             ballLogic.DoGravity();
             scoreLogic.CheckIfBallFell();
         }
-        void timer_Tick_Seconds(object sender, EventArgs e)
+        void Timer_Tick_Seconds(object sender, EventArgs e)
         {
             timerLogic.DecrementTime();
         }
 
-        void goToMainMenu()
+        public void GoToMainMenu()
         {
 
             MainMenuWindow mainmenu = new MainMenuWindow();
@@ -97,12 +114,30 @@ namespace FootbagPix.Control
             mainmenu.Show();
         }
 
-        void startNewGame()
+        void StartNewGame()
         {
             ballLogic.Reset();
             characterLogic.Reset();
             timerLogic.Reset();
             scoreLogic.Reset();
+        }
+
+        void PauseGame()
+        {
+            tickTimer.Stop();
+            tickTimerSeconds.Stop();
+            gameModel.Character.Blocked = true;
+            PauseWindow pauseWindow = new PauseWindow(this);
+            pauseWindow.Left = Window.GetWindow(this).Left + 104;
+            pauseWindow.Top = Window.GetWindow(this).Top + 160;
+            pauseWindow.Show();
+        }
+
+        public void ResumeGame()
+        {
+            tickTimer.Start();
+            tickTimerSeconds.Start();
+            gameModel.Character.Blocked = false;
         }
 
     }

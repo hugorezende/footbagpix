@@ -1,16 +1,10 @@
 ﻿using FootbagPix.Models;
-using FootbagPix.Renderer;
 using FootbagPix.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace FootbagPix.Logic
 {
-    class TimerLogic : ITimerLogic
+    public class TimerLogic : ITimerLogic
     {
         TimerModel timer;
         GameModel game;
@@ -34,6 +28,7 @@ namespace FootbagPix.Logic
                 else
                 {
                     timer.GameOver = true;
+                    game.Character.Blocked = true;
                     scoreboardService.AddScore(game.PlayerName, game.Score.CurrentScore, game.Score.MaxComboCount);
                     ShowGameOver();
                 }
@@ -45,6 +40,7 @@ namespace FootbagPix.Logic
         {
             timer.gameOverBrush.Opacity = 1;
             timer.gameOverTextBrush = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+            game.Score.ComboCounter = 0;
         }
 
         public void Reset()

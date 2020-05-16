@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FootbagPix.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,20 @@ namespace FootbagPix
     public partial class MainWindow : Window
     {
         public string PlayerName { get; set; }
+        public GameModel GameModel { get; set; }
+        public bool IsNewGame { get; set; }
         public MainWindow(string playerName)
         {
             InitializeComponent();
             PlayerName = playerName;
+            IsNewGame = true;
+        }
+
+        public MainWindow(GameModel gameModel)
+        {
+            InitializeComponent();
+            GameModel = gameModel;
+            IsNewGame = false;
         }
     }
 }

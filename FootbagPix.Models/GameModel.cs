@@ -6,26 +6,38 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml.Serialization;
 
 namespace FootbagPix.Models
 {
-    class GameModel : IGameModel
+    public class GameModel : IGameModel
     {
+        public Guid GameID { get; set; }
         public CharacterModel Character { get; set; }
         public BallModel Ball { get; set; }
         public TimerModel Timer { get; set; }
         public string PlayerName { get; set; }
         public ScoreModel Score { get; set; }
-        public ImageBrush BackgroundBrush { get; set; }
+        public DateTime SavedAt { get; set; }
 
         public GameModel(string playerName)
         {
-            BackgroundBrush = new ImageBrush(new BitmapImage(new Uri("Resources/ImageResources/bg.png", UriKind.Relative)));
-            Ball = new BallModel();
+            GameID = Guid.NewGuid();
             Character = new CharacterModel();
+            Ball = new BallModel();
             Timer = new TimerModel(Config.gameLength);
-            Score = new ScoreModel();
             PlayerName = playerName;
+            Score = new ScoreModel();
+        }
+
+        public GameModel()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0,-10} {1,-3} {2,6} {3,19}", PlayerName, Score.CurrentScore.ToString(), "0:" + Timer.TimeLeft, SavedAt.ToString("MM/dd/yyyy HH:mm"));
         }
     }
 }
