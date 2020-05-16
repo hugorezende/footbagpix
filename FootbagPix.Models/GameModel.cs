@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Xml.Serialization;
-
-namespace FootbagPix.Models
+﻿namespace FootbagPix.Models
 {
+    using System;
+
     public class GameModel : IGameModel
     {
         public Guid GameID { get; set; }
+
         public CharacterModel Character { get; set; }
+
         public BallModel Ball { get; set; }
+
         public TimerModel Timer { get; set; }
+
         public string PlayerName { get; set; }
+
         public ScoreModel Score { get; set; }
+
         public DateTime SavedAt { get; set; }
 
         public GameModel(string playerName)

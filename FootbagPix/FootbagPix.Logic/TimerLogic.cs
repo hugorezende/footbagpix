@@ -1,14 +1,14 @@
-﻿using FootbagPix.Models;
-using FootbagPix.Services;
-using System.Windows.Media;
-
-namespace FootbagPix.Logic
+﻿namespace FootbagPix.Logic
 {
+    using System.Windows.Media;
+    using FootbagPix.Models;
+    using FootbagPix.Services;
+
     public class TimerLogic : ITimerLogic
     {
-        TimerModel timer;
-        GameModel game;
-        ScoreboardService scoreboardService;
+        readonly TimerModel timer;
+        readonly GameModel game;
+        readonly ScoreboardService scoreboardService;
 
         public TimerLogic(TimerModel timer, GameModel game)
         {
@@ -38,16 +38,16 @@ namespace FootbagPix.Logic
 
         public void ShowGameOver()
         {
-            timer.gameOverBrush.Opacity = 1;
-            timer.gameOverTextBrush = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+            timer.GameOverBrush.Opacity = 1;
+            timer.GameOverTextBrush = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
             game.Score.ComboCounter = 0;
         }
 
         public void Reset()
         {
             timer.GameOver = false;
-            timer.gameOverBrush.Opacity = 0;
-            timer.gameOverTextBrush = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+            timer.GameOverBrush.Opacity = 0;
+            timer.GameOverTextBrush = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
             timer.TimeLeft = Config.gameLength;
         }
     }

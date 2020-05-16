@@ -1,17 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace FootbagPix.Services
+﻿namespace FootbagPix.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Xml.Linq;
+
     public class ScoreboardEntry
     {
         public string Name { get; set; }
+
         public int Score { get; set; }
+
         public int MaxCombo { get; set; }
+
         public DateTime DateTime { get; set; }
 
         public static List<ScoreboardEntry> Load(string url)

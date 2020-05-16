@@ -1,12 +1,15 @@
-﻿using System.Windows.Media;
-
-namespace FootbagPix.Models
+﻿namespace FootbagPix.Models
 {
+    using System.Windows.Media;
+
     public interface ITimerModel
     {
         bool GameOver { get; set; }
-        ImageBrush gameOverBrush { get; set; }
-        Brush gameOverTextBrush { get; set; }
+
+        ImageBrush GameOverBrush { get; set; }
+
+        Brush GameOverTextBrush { get; set; }
+
         int TimeLeft { get; set; }
     }
 }

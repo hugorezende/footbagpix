@@ -1,17 +1,18 @@
-﻿using FootbagPix.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Xml.Linq;
-using System.Xml.Serialization;
+﻿// <copyright file="GameModelRepository.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace FootbagPix.Repository
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Windows.Media;
+    using System.Xml.Linq;
+    using System.Xml.Serialization;
+    using FootbagPix.Models;
+
     public class GameModelRepository : IRepository<GameModel>
     {
         private readonly List<GameModel> savedGames;

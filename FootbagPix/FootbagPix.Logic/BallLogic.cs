@@ -1,12 +1,12 @@
-﻿using FootbagPix.Models;
-using System;
-using System.Windows;
-
-namespace FootbagPix.Logic
+﻿namespace FootbagPix.Logic
 {
+    using System;
+    using System.Windows;
+    using FootbagPix.Models;
+
     public class BallLogic : IBallLogic
     {
-        IBallModel ball;
+        readonly IBallModel ball;
         public event EventHandler RefreshScreen;
         public BallLogic(IBallModel ball)
         {
@@ -18,7 +18,7 @@ namespace FootbagPix.Logic
             if (ball.Area.Y < Config.groundPosition)
             {
                 ball.TimeOnAir++;
-                ball.SpeedY = ball.SpeedY - ((Config.gravity * ball.TimeOnAir));
+                ball.SpeedY -= ((Config.gravity * ball.TimeOnAir));
 
                 ball.Area = Rect.Offset(ball.Area, ball.SpeedX, -ball.SpeedY) ;
                 

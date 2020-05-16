@@ -1,70 +1,79 @@
-﻿using FootbagPix.Logic;
-using FootbagPix.Models;
-using FootbagPix.Renderer;
-using System;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Threading;
+﻿// <copyright file="GameControl.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace FootbagPix.Control
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Threading;
+    using FootbagPix.Logic;
+    using FootbagPix.Models;
+    using FootbagPix.Renderer;
+
     public class GameControl : FrameworkElement
     {
-        public GameModel gameModel;
-        BallLogic ballLogic;
-        CharacterLogic characterLogic;
-        TimerLogic timerLogic;
-        ScoreLogic scoreLogic;
-        GameRenderer render;
-        DispatcherTimer tickTimer, tickTimerSeconds;
+        public GameModel GameModel;
+        private BallLogic ballLogic;
+        private CharacterLogic characterLogic;
+        private TimerLogic timerLogic;
+        private ScoreLogic scoreLogic;
+        private GameRenderer render;
+        private DispatcherTimer tickTimer;
+        private DispatcherTimer tickTimerSeconds;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameControl"/> class.
+        /// </summary>
         public GameControl()
         {
-            Loaded += GameScreen_Loaded;
+            this.Loaded += this.GameScreen_Loaded;
         }
 
         private void GameScreen_Loaded(object sender, RoutedEventArgs e)
         {
             MainWindow win = (MainWindow)Window.GetWindow(this);
-            
 
             if (win.IsNewGame)
             {
-                gameModel = new GameModel(win.PlayerName);
-                ballLogic = new BallLogic(gameModel.Ball);
-                characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character, gameModel.Score, gameModel.Timer);
-                scoreLogic = new ScoreLogic(gameModel.Score, gameModel.Ball);
-                timerLogic = new TimerLogic(gameModel.Timer, gameModel);
+                this.GameModel = new GameModel(win.PlayerName);
+                this.ballLogic = new BallLogic(this.GameModel.Ball);
+                this.characterLogic = new CharacterLogic(this.GameModel.Ball, this.GameModel.Character, this.GameModel.Score, this.GameModel.Timer);
+                this.scoreLogic = new ScoreLogic(this.GameModel.Score, this.GameModel.Ball);
+                this.timerLogic = new TimerLogic(this.GameModel.Timer, this.GameModel);
             }
             else
             {
-                gameModel = win.GameModel;
-                ballLogic = new BallLogic(gameModel.Ball);
-                characterLogic = new CharacterLogic(gameModel.Ball, gameModel.Character, gameModel.Score, gameModel.Timer);
-                scoreLogic = new ScoreLogic(gameModel.Score, gameModel.Ball);
-                timerLogic = new TimerLogic(gameModel.Timer, gameModel);
+                this.GameModel = win.GameModel;
+                this.ballLogic = new BallLogic(this.GameModel.Ball);
+                this.characterLogic = new CharacterLogic(this.GameModel.Ball, this.GameModel.Character, this.GameModel.Score, this.GameModel.Timer);
+                this.scoreLogic = new ScoreLogic(this.GameModel.Score, this.GameModel.Ball);
+                this.timerLogic = new TimerLogic(this.GameModel.Timer, this.GameModel);
             }
 
-            render = new GameRenderer(gameModel);
+            this.render = new GameRenderer(this.GameModel);
 
-
-            if (win != null) // if (!IsInDesignMode)
+            if (win != null)
             {
-                tickTimer = new DispatcherTimer();
-                tickTimerSeconds = new DispatcherTimer();
-                tickTimerSeconds.Interval = TimeSpan.FromMilliseconds(1000);
-                tickTimer.Interval = TimeSpan.FromMilliseconds(20);
+                this.tickTimer = new DispatcherTimer();
+                this.tickTimerSeconds = new DispatcherTimer
+                {
+                    Interval = TimeSpan.FromMilliseconds(1000),
+                };
+                this.tickTimer.Interval = TimeSpan.FromMilliseconds(20);
 
-                tickTimer.Tick += Timer_Tick;
-                tickTimerSeconds.Tick += Timer_Tick_Seconds;
+                this.tickTimer.Tick += this.Timer_Tick;
+                this.tickTimerSeconds.Tick += this.Timer_Tick_Seconds;
 
-                tickTimerSeconds.Start();
-                tickTimer.Start();
+                this.tickTimerSeconds.Start();
+                this.tickTimer.Start();
 
-                win.KeyDown += Win_KeyDown;
-                win.KeyUp += Win_KeyUp;
+                win.KeyDown += this.Win_KeyDown;
+                win.KeyUp += this.Win_KeyUp;
             }
+
             ballLogic.RefreshScreen += (obj, args) => InvalidateVisual();
             InvalidateVisual();
         }
@@ -77,8 +86,8 @@ namespace FootbagPix.Control
                 case Key.Left: characterLogic.MoveLeft(); if (!e.IsRepeat) { characterLogic.movingRight = false; characterLogic.movingLeft = true; characterLogic.AnimateWalkLeft(); } break;
                 case Key.Right: characterLogic.MoveRight(); if (!e.IsRepeat) { characterLogic.movingLeft = false; characterLogic.movingRight = true; characterLogic.AnimateWalkRight(); } break;
                 case Key.Up: characterLogic.Turn(); break;
-                case Key.Escape: if (gameModel.Timer.GameOver) { GoToMainMenu(); } else { PauseGame(); } break;
-                case Key.Enter: if (gameModel.Timer.GameOver) StartNewGame(); break;
+                case Key.Escape: if (GameModel.Timer.GameOver) { GoToMainMenu(); } else { PauseGame(); } break;
+                case Key.Enter: if (GameModel.Timer.GameOver) StartNewGame(); break;
             }
 
         }
@@ -126,10 +135,12 @@ namespace FootbagPix.Control
         {
             tickTimer.Stop();
             tickTimerSeconds.Stop();
-            gameModel.Character.Blocked = true;
-            PauseWindow pauseWindow = new PauseWindow(this);
-            pauseWindow.Left = Window.GetWindow(this).Left + 104;
-            pauseWindow.Top = Window.GetWindow(this).Top + 160;
+            GameModel.Character.Blocked = true;
+            PauseWindow pauseWindow = new PauseWindow(this)
+            {
+                Left = Window.GetWindow(this).Left + 104,
+                Top = Window.GetWindow(this).Top + 160
+            };
             pauseWindow.Show();
         }
 
@@ -137,7 +148,7 @@ namespace FootbagPix.Control
         {
             tickTimer.Start();
             tickTimerSeconds.Start();
-            gameModel.Character.Blocked = false;
+            GameModel.Character.Blocked = false;
         }
 
     }

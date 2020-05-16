@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FootbagPix.Services
+﻿namespace FootbagPix.Services
 {
+    using System.Collections.Generic;
+    using System.Net;
+
     public class ScoreboardService : IScoreboardService
     {
         private const string privateURL = "http://dreamlo.com/lb/A1bG9M-W70GThtBQTVl-AA44FEVXFiYUWvWtufLd2f6w";
@@ -15,7 +11,7 @@ namespace FootbagPix.Services
         public void AddScore(string playerName, int score, int maxCombo)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(privateURL + "/add/" + playerName + "/" + score + "/" + maxCombo);
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            _ = (HttpWebResponse)request.GetResponse();
         }
 
         public List<string> ReadScores()

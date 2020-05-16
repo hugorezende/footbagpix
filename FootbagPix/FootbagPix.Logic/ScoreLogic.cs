@@ -1,11 +1,11 @@
-﻿using FootbagPix.Models;
-
-namespace FootbagPix.Logic
+﻿namespace FootbagPix.Logic
 {
+    using FootbagPix.Models;
+
     public class ScoreLogic : IScoreLogic
     {
-        IScoreModel score;
-        IBallModel ball;
+        readonly IScoreModel score;
+        readonly IBallModel ball;
 
         public ScoreLogic(IScoreModel score, IBallModel ball)
         {
@@ -17,7 +17,7 @@ namespace FootbagPix.Logic
         {
             if (scoreType == ScoreType.FootHit)
             {
-                score.CurrentScore = score.CurrentScore + (Config.scorePerKick * score.ComboCounter);
+                score.CurrentScore += (Config.scorePerKick * score.ComboCounter);
                 if (score.ComboCounter > score.MaxComboCount)
                 {
                     score.MaxComboCount = score.ComboCounter;
@@ -28,7 +28,7 @@ namespace FootbagPix.Logic
 
             if (scoreType == ScoreType.KneeHit)
             {
-                score.CurrentScore = score.CurrentScore + (Config.scorePerKick * score.ComboCounter);
+                score.CurrentScore += (Config.scorePerKick * score.ComboCounter);
                 if (score.ComboCounter > score.MaxComboCount)
                 {
                     score.MaxComboCount = score.ComboCounter;
@@ -36,8 +36,6 @@ namespace FootbagPix.Logic
                 score.ExtraInfo = "Knee Hit!";
                 score.ComboCounter++;
             }
-
-
         }
 
         public void CheckIfBallFell()
@@ -54,11 +52,5 @@ namespace FootbagPix.Logic
             score.ComboCounter = 0;
             score.MaxComboCount = 0;
         }
-
-        public void IncreaseCombo()
-        {
-            score.ComboCounter++;
-        }
-
     }
 }

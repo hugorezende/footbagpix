@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FootbagPix.Services
+﻿namespace FootbagPix.Services
 {
+    using System.Collections.Generic;
+
     public interface IScoreboardService
     {
         void AddScore(string playerName, int score, int maxCombo);
+
         List<string> ReadScores();
     }
 }

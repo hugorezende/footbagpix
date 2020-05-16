@@ -1,15 +1,10 @@
-﻿using FootbagPix.Logic;
-using FootbagPix.Models;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FootbagPix.Test
+﻿namespace FootbagPix.Test
 {
+    using FootbagPix.Logic;
+    using FootbagPix.Models;
+    using Moq;
+    using NUnit.Framework;
+
     [TestFixture]
     class TestScoreLogic
     {
