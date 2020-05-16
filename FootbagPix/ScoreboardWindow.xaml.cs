@@ -1,17 +1,21 @@
-﻿namespace FootbagPix
+﻿// <copyright file="ScoreboardWindow.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix
 {
     using System.Windows;
     using System.Windows.Input;
     using FootbagPix.Services;
 
     /// <summary>
-    /// Interaction logic for ScoreboardWindow.xaml
+    /// Interaction logic for ScoreboardWindow.xaml.
     /// </summary>
     public partial class ScoreboardWindow : Window
     {
         public ScoreboardWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -28,7 +32,7 @@
             {
                 WindowStartupLocation = WindowStartupLocation.Manual,
                 Left = this.Left,
-                Top = this.Top
+                Top = this.Top,
             };
             mainmenuWindow.Show();
             this.Close();
@@ -37,7 +41,7 @@
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ScoreboardService scoreboardService = new ScoreboardService();
-            ScoreboardList.ItemsSource = scoreboardService.ReadScores();
+            this.ScoreboardList.ItemsSource = scoreboardService.ReadScores();
         }
     }
 }

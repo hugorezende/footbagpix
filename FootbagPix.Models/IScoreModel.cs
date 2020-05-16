@@ -1,4 +1,8 @@
-﻿namespace FootbagPix.Models
+﻿// <copyright file="IScoreModel.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix.Models
 {
     public interface IScoreModel
     {

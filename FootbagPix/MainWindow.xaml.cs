@@ -1,28 +1,35 @@
-﻿namespace FootbagPix
+﻿// <copyright file="MainWindow.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix
 {
     using System.Windows;
     using FootbagPix.Models;
 
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml.
     /// </summary>
     public partial class MainWindow : Window
     {
-        public string PlayerName { get; set; }
-        public GameModel GameModel { get; set; }
-        public bool IsNewGame { get; set; }
         public MainWindow(string playerName)
         {
-            InitializeComponent();
-            PlayerName = playerName;
-            IsNewGame = true;
+            this.InitializeComponent();
+            this.PlayerName = playerName;
+            this.IsNewGame = true;
         }
 
         public MainWindow(GameModel gameModel)
         {
-            InitializeComponent();
-            GameModel = gameModel;
-            IsNewGame = false;
+            this.InitializeComponent();
+            this.GameModel = gameModel;
+            this.IsNewGame = false;
         }
+
+        public string PlayerName { get; set; }
+
+        public GameModel GameModel { get; set; }
+
+        public bool IsNewGame { get; set; }
     }
 }

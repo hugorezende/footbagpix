@@ -32,6 +32,28 @@ namespace FootbagPix.Control
             this.Loaded += this.GameScreen_Loaded;
         }
 
+        public void GoToMainMenu()
+        {
+            MainMenuWindow mainmenu = new MainMenuWindow();
+            Application.Current.Windows[0].Close();
+            mainmenu.Show();
+        }
+
+        public void ResumeGame()
+        {
+            this.tickTimer.Start();
+            this.tickTimerSeconds.Start();
+            this.GameModel.Character.Blocked = false;
+        }
+
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            if (this.render != null)
+            {
+                this.render.DrawItems(drawingContext);
+            }
+        }
+
         private void GameScreen_Loaded(object sender, RoutedEventArgs e)
         {
             MainWindow win = (MainWindow)Window.GetWindow(this);
@@ -74,85 +96,100 @@ namespace FootbagPix.Control
                 win.KeyUp += this.Win_KeyUp;
             }
 
-            ballLogic.RefreshScreen += (obj, args) => InvalidateVisual();
-            InvalidateVisual();
+            this.ballLogic.RefreshScreen += (obj, args) => this.InvalidateVisual();
+            this.InvalidateVisual();
         }
 
         private void Win_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
-                case Key.Space: if (!e.IsRepeat) { scoreLogic.Increase(characterLogic.TryHitBall()); } break;
-                case Key.Left: characterLogic.MoveLeft(); if (!e.IsRepeat) { characterLogic.movingRight = false; characterLogic.movingLeft = true; characterLogic.AnimateWalkLeft(); } break;
-                case Key.Right: characterLogic.MoveRight(); if (!e.IsRepeat) { characterLogic.movingLeft = false; characterLogic.movingRight = true; characterLogic.AnimateWalkRight(); } break;
-                case Key.Up: characterLogic.Turn(); break;
-                case Key.Escape: if (GameModel.Timer.GameOver) { GoToMainMenu(); } else { PauseGame(); } break;
-                case Key.Enter: if (GameModel.Timer.GameOver) StartNewGame(); break;
-            }
+                case Key.Space:
+                    if (!e.IsRepeat)
+                    {
+                        this.scoreLogic.Increase(this.characterLogic.TryHitBall());
+                    }
 
+                    break;
+                case Key.Left:
+                    this.characterLogic.MoveLeft(); if (!e.IsRepeat)
+                    {
+                        this.characterLogic.MovingRight = false;
+                        this.characterLogic.MovingLeft = true;
+                        this.characterLogic.AnimateWalkLeft();
+                    }
+
+                    break;
+                case Key.Right:
+                    this.characterLogic.MoveRight(); if (!e.IsRepeat)
+                    {
+                        this.characterLogic.MovingLeft = false;
+                        this.characterLogic.MovingRight = true;
+                        this.characterLogic.AnimateWalkRight();
+                    }
+
+                    break;
+                case Key.Up: this.characterLogic.Turn(); break;
+                case Key.Escape:
+                    if (this.GameModel.Timer.GameOver)
+                    {
+                        this.GoToMainMenu();
+                    }
+                    else
+                    {
+                        this.PauseGame();
+                    }
+
+                    break;
+                case Key.Enter:
+                    if (this.GameModel.Timer.GameOver)
+                    {
+                        this.StartNewGame();
+                    }
+
+                    break;
+            }
         }
+
         private void Win_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
-                case Key.Left: characterLogic.movingLeft = false; break;
-                case Key.Right: characterLogic.movingRight = false; break;
+                case Key.Left: this.characterLogic.MovingLeft = false; break;
+                case Key.Right: this.characterLogic.MovingRight = false; break;
             }
         }
 
-        protected override void OnRender(DrawingContext drawingContext)
+        private void Timer_Tick(object sender, EventArgs e)
         {
-            if (render != null) render.DrawItems(drawingContext);
+            this.ballLogic.DoGravity();
+            this.scoreLogic.CheckIfBallFell();
         }
 
-        void Timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick_Seconds(object sender, EventArgs e)
         {
-            ballLogic.DoGravity();
-            scoreLogic.CheckIfBallFell();
-        }
-        void Timer_Tick_Seconds(object sender, EventArgs e)
-        {
-            timerLogic.DecrementTime();
+            this.timerLogic.DecrementTime();
         }
 
-        public void GoToMainMenu()
+        private void StartNewGame()
         {
-
-            MainMenuWindow mainmenu = new MainMenuWindow();
-            Application.Current.Windows[0].Close();
-            mainmenu.Show();
+            this.ballLogic.Reset();
+            this.characterLogic.Reset();
+            this.timerLogic.Reset();
+            this.scoreLogic.Reset();
         }
 
-        void StartNewGame()
+        private void PauseGame()
         {
-            ballLogic.Reset();
-            characterLogic.Reset();
-            timerLogic.Reset();
-            scoreLogic.Reset();
-        }
-
-        void PauseGame()
-        {
-            tickTimer.Stop();
-            tickTimerSeconds.Stop();
-            GameModel.Character.Blocked = true;
+            this.tickTimer.Stop();
+            this.tickTimerSeconds.Stop();
+            this.GameModel.Character.Blocked = true;
             PauseWindow pauseWindow = new PauseWindow(this)
             {
                 Left = Window.GetWindow(this).Left + 104,
-                Top = Window.GetWindow(this).Top + 160
+                Top = Window.GetWindow(this).Top + 160,
             };
             pauseWindow.Show();
         }
-
-        public void ResumeGame()
-        {
-            tickTimer.Start();
-            tickTimerSeconds.Start();
-            GameModel.Character.Blocked = false;
-        }
-
     }
 }
-
-
-

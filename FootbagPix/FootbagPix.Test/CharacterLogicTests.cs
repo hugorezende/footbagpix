@@ -1,4 +1,8 @@
-﻿namespace FootbagPix.Test
+﻿// <copyright file="CharacterLogicTests.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix.Test
 {
     using System.Threading.Tasks;
     using System.Windows;
@@ -8,133 +12,128 @@
     using NUnit.Framework;
 
     [TestFixture]
-    class CharacterLogicTests
+    internal class CharacterLogicTests
     {
-        Mock<IBallModel> mockedBall;
-        Mock<ICharacterModel> mockedCharacter;
-        Mock<ITimerModel> mockedTimer;
-        Mock<IScoreModel> mockedScore;
+        private Mock<IBallModel> mockedBall;
+        private Mock<ICharacterModel> mockedCharacter;
+        private Mock<ITimerModel> mockedTimer;
+        private Mock<IScoreModel> mockedScore;
 
         [Test]
         public async Task TestMoveLeftAsync()
         {
-            mockedBall = new Mock<IBallModel>(MockBehavior.Default);
-            mockedCharacter = new Mock<ICharacterModel>(MockBehavior.Default);
-            mockedTimer = new Mock<ITimerModel>(MockBehavior.Default);
-            mockedScore = new Mock<IScoreModel>(MockBehavior.Default);
+            this.mockedBall = new Mock<IBallModel>(MockBehavior.Default);
+            this.mockedCharacter = new Mock<ICharacterModel>(MockBehavior.Default);
+            this.mockedTimer = new Mock<ITimerModel>(MockBehavior.Default);
+            this.mockedScore = new Mock<IScoreModel>(MockBehavior.Default);
 
-            mockedTimer.Setup(mock => mock.GameOver).Returns(false);
-            mockedCharacter.Setup(mock => mock.Blocked).Returns(false);
-            mockedCharacter.SetupProperty(mock => mock.PositionX, 10);
+            this.mockedTimer.Setup(mock => mock.GameOver).Returns(false);
+            this.mockedCharacter.Setup(mock => mock.Blocked).Returns(false);
+            this.mockedCharacter.SetupProperty(mock => mock.PositionX, 10);
             CharacterLogic characterLogic = new CharacterLogic(
-                mockedBall.Object,
-                mockedCharacter.Object,
-                mockedScore.Object,
-                mockedTimer.Object);
+                this.mockedBall.Object,
+                this.mockedCharacter.Object,
+                this.mockedScore.Object,
+                this.mockedTimer.Object);
 
             characterLogic.MoveLeft();
-            mockedCharacter.VerifySet(mock => mock.LeftFoot);
-            mockedCharacter.VerifySet(mock => mock.RigthFoot);
+            this.mockedCharacter.VerifySet(mock => mock.LeftFoot);
+            this.mockedCharacter.VerifySet(mock => mock.RigthFoot);
             await Task.Delay(1000);
-            Assert.That(mockedCharacter.Object.PositionX, Is.EqualTo(5));
-
-
+            Assert.That(this.mockedCharacter.Object.PositionX, Is.EqualTo(5));
         }
 
         [Test]
         public void TestMoveLeftBlocked()
         {
-            mockedBall = new Mock<IBallModel>(MockBehavior.Default);
-            mockedCharacter = new Mock<ICharacterModel>(MockBehavior.Default);
-            mockedTimer = new Mock<ITimerModel>(MockBehavior.Default);
-            mockedScore = new Mock<IScoreModel>(MockBehavior.Default);
+            this.mockedBall = new Mock<IBallModel>(MockBehavior.Default);
+            this.mockedCharacter = new Mock<ICharacterModel>(MockBehavior.Default);
+            this.mockedTimer = new Mock<ITimerModel>(MockBehavior.Default);
+            this.mockedScore = new Mock<IScoreModel>(MockBehavior.Default);
 
-            mockedTimer.Setup(mock => mock.GameOver).Returns(false);
-            mockedCharacter.Setup(mock => mock.Blocked).Returns(true);
-            mockedCharacter.SetupProperty(mock => mock.PositionX, 10);
+            this.mockedTimer.Setup(mock => mock.GameOver).Returns(false);
+            this.mockedCharacter.Setup(mock => mock.Blocked).Returns(true);
+            this.mockedCharacter.SetupProperty(mock => mock.PositionX, 10);
 
             CharacterLogic characterLogic = new CharacterLogic(
-                mockedBall.Object,
-                mockedCharacter.Object,
-                mockedScore.Object,
-                mockedTimer.Object);
+                this.mockedBall.Object,
+                this.mockedCharacter.Object,
+                this.mockedScore.Object,
+                this.mockedTimer.Object);
 
             characterLogic.MoveLeft();
-            mockedCharacter.VerifySet(mock => mock.LeftFoot = It.IsAny<Rect>(), Times.Never());
-            mockedCharacter.VerifySet(mock => mock.RigthFoot = It.IsAny<Rect>(), Times.Never());
-            Assert.That(mockedCharacter.Object.PositionX, Is.EqualTo(10));
-
+            this.mockedCharacter.VerifySet(mock => mock.LeftFoot = It.IsAny<Rect>(), Times.Never());
+            this.mockedCharacter.VerifySet(mock => mock.RigthFoot = It.IsAny<Rect>(), Times.Never());
+            Assert.That(this.mockedCharacter.Object.PositionX, Is.EqualTo(10));
         }
 
         [Test]
         public void TestMoveLeftGameOver()
         {
-            mockedBall = new Mock<IBallModel>(MockBehavior.Default);
-            mockedCharacter = new Mock<ICharacterModel>(MockBehavior.Default);
-            mockedTimer = new Mock<ITimerModel>(MockBehavior.Default);
-            mockedScore = new Mock<IScoreModel>(MockBehavior.Default);
+            this.mockedBall = new Mock<IBallModel>(MockBehavior.Default);
+            this.mockedCharacter = new Mock<ICharacterModel>(MockBehavior.Default);
+            this.mockedTimer = new Mock<ITimerModel>(MockBehavior.Default);
+            this.mockedScore = new Mock<IScoreModel>(MockBehavior.Default);
 
-            mockedTimer.Setup(mock => mock.GameOver).Returns(true);
-            mockedCharacter.Setup(mock => mock.Blocked).Returns(false);
-            mockedCharacter.SetupProperty(mock => mock.PositionX, 10);
+            this.mockedTimer.Setup(mock => mock.GameOver).Returns(true);
+            this.mockedCharacter.Setup(mock => mock.Blocked).Returns(false);
+            this.mockedCharacter.SetupProperty(mock => mock.PositionX, 10);
 
             CharacterLogic characterLogic = new CharacterLogic(
-                mockedBall.Object,
-                mockedCharacter.Object,
-                mockedScore.Object,
-                mockedTimer.Object);
+                this.mockedBall.Object,
+                this.mockedCharacter.Object,
+                this.mockedScore.Object,
+                this.mockedTimer.Object);
 
             characterLogic.MoveLeft();
-            mockedCharacter.VerifySet(mock => mock.LeftFoot = It.IsAny<Rect>(), Times.Never());
-            mockedCharacter.VerifySet(mock => mock.RigthFoot = It.IsAny<Rect>(), Times.Never());
-            Assert.That(mockedCharacter.Object.PositionX, Is.EqualTo(10));
-
+            this.mockedCharacter.VerifySet(mock => mock.LeftFoot = It.IsAny<Rect>(), Times.Never());
+            this.mockedCharacter.VerifySet(mock => mock.RigthFoot = It.IsAny<Rect>(), Times.Never());
+            Assert.That(this.mockedCharacter.Object.PositionX, Is.EqualTo(10));
         }
 
         [Test]
         public async Task TestMoveRightAsync()
         {
-            mockedBall = new Mock<IBallModel>(MockBehavior.Default);
-            mockedCharacter = new Mock<ICharacterModel>(MockBehavior.Default);
-            mockedTimer = new Mock<ITimerModel>(MockBehavior.Default);
-            mockedScore = new Mock<IScoreModel>(MockBehavior.Default);
+            this.mockedBall = new Mock<IBallModel>(MockBehavior.Default);
+            this.mockedCharacter = new Mock<ICharacterModel>(MockBehavior.Default);
+            this.mockedTimer = new Mock<ITimerModel>(MockBehavior.Default);
+            this.mockedScore = new Mock<IScoreModel>(MockBehavior.Default);
 
-            mockedTimer.Setup(mock => mock.GameOver).Returns(false);
-            mockedCharacter.Setup(mock => mock.Blocked).Returns(false);
-            mockedCharacter.SetupProperty(mock => mock.PositionX, 10);
+            this.mockedTimer.Setup(mock => mock.GameOver).Returns(false);
+            this.mockedCharacter.Setup(mock => mock.Blocked).Returns(false);
+            this.mockedCharacter.SetupProperty(mock => mock.PositionX, 10);
 
             CharacterLogic characterLogic = new CharacterLogic(
-                mockedBall.Object,
-                mockedCharacter.Object,
-                mockedScore.Object,
-                mockedTimer.Object);
+                this.mockedBall.Object,
+                this.mockedCharacter.Object,
+                this.mockedScore.Object,
+                this.mockedTimer.Object);
 
             characterLogic.MoveRight();
-            mockedCharacter.VerifySet(mock => mock.LeftFoot);
-            mockedCharacter.VerifySet(mock => mock.RigthFoot);
+            this.mockedCharacter.VerifySet(mock => mock.LeftFoot);
+            this.mockedCharacter.VerifySet(mock => mock.RigthFoot);
             await Task.Delay(1000);
-            Assert.That(mockedCharacter.Object.PositionX, Is.EqualTo(15));
+            Assert.That(this.mockedCharacter.Object.PositionX, Is.EqualTo(15));
         }
 
         [Test]
         public void TestTryHitBall()
         {
-            mockedBall = new Mock<IBallModel>(MockBehavior.Default);
-            mockedCharacter = new Mock<ICharacterModel>(MockBehavior.Default);
-            mockedTimer = new Mock<ITimerModel>(MockBehavior.Default);
-            mockedScore = new Mock<IScoreModel>(MockBehavior.Default);
+            this.mockedBall = new Mock<IBallModel>(MockBehavior.Default);
+            this.mockedCharacter = new Mock<ICharacterModel>(MockBehavior.Default);
+            this.mockedTimer = new Mock<ITimerModel>(MockBehavior.Default);
+            this.mockedScore = new Mock<IScoreModel>(MockBehavior.Default);
 
-            mockedBall.Setup(mock => mock.Area.IntersectsWith(It.IsAny<Rect>())).Returns(true);
+            this.mockedBall.Setup(mock => mock.Area.IntersectsWith(It.IsAny<Rect>())).Returns(true);
 
             CharacterLogic characterLogic = new CharacterLogic(
-                mockedBall.Object,
-                mockedCharacter.Object,
-                mockedScore.Object,
-                mockedTimer.Object);
+                this.mockedBall.Object,
+                this.mockedCharacter.Object,
+                this.mockedScore.Object,
+                this.mockedTimer.Object);
 
             Assert.That(true, Is.EqualTo(characterLogic.TryHitBall()));
-            mockedBall.VerifySet(mock => mock.Area);
-
+            this.mockedBall.VerifySet(mock => mock.Area);
         }
     }
 }

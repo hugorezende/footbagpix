@@ -1,4 +1,8 @@
-﻿namespace FootbagPix.Models
+﻿// <copyright file="CharacterModel.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix.Models
 {
     using System;
     using System.Windows;
@@ -8,18 +12,30 @@
 
     public class CharacterModel : ICharacterModel
     {
-        public Rect leftFoot;
-        public Rect rigthFoot;
-        public Rect body;
-        public Point head;
+        public CharacterModel()
+        {
+            this.SpriteWidth = 95;
+            this.SpriteHeight = 214;
+
+            this.ImageBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/ImageResources/character_sprite3.png")))
+            {
+                Viewbox = new Rect(0, 0, this.SpriteWidth, this.SpriteHeight),
+                ViewboxUnits = BrushMappingMode.Absolute,
+                Stretch = Stretch.None,
+            };
+
+            this.LeftFoot = new Rect((Config.WindowWidth - this.SpriteWidth) / 2, Config.WindowHeight - 100, 40, 40);
+            this.RigthFoot = new Rect(((Config.WindowWidth - this.SpriteWidth) / 2) + 50, Config.WindowHeight - 100, 40, 40);
+
+            this.LeftKnee = new Rect(((Config.WindowWidth - this.SpriteWidth) / 2) + 30, Config.WindowHeight - 140, 20, 20);
+            this.RigthKnee = new Rect(((Config.WindowWidth - this.SpriteWidth) / 2) + 60, Config.WindowHeight - 140, 20, 20);
+
+            this.PositionX = (Config.WindowWidth - this.SpriteWidth) / 2;
+        }
 
         public Rect LeftFoot { get; set; }
 
         public Rect RigthFoot { get; set; }
-
-        public Rect Body { get { return body; } }
-
-        public Point Head { get { return head; } }
 
         public Rect LeftKnee { get; set; }
 
@@ -35,27 +51,5 @@
         public ImageBrush ImageBrush { get; set; }
 
         public bool Blocked { get; set; }
-
-        public CharacterModel()
-        {
-            SpriteWidth = 95;
-            SpriteHeight = 214;
-
-            ImageBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/ImageResources/character_sprite3.png")))
-            {
-                Viewbox = new Rect(0, 0, SpriteWidth, SpriteHeight),
-                ViewboxUnits = BrushMappingMode.Absolute,
-                Stretch = Stretch.None
-            };
-
-            LeftFoot = new Rect((Config.windowWidth - SpriteWidth) / 2, Config.windowHeight - 100, 40, 40);
-            RigthFoot = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 50, Config.windowHeight - 100, 40, 40);
-
-            LeftKnee = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 30, Config.windowHeight - 140, 20, 20);
-            RigthKnee = new Rect(((Config.windowWidth - SpriteWidth) / 2) + 60, Config.windowHeight - 140, 20, 20);
-
-            PositionX = (Config.windowWidth - SpriteWidth) / 2;
-        }
-
     }
 }

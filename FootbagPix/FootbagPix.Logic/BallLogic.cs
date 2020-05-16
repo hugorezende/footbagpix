@@ -1,4 +1,8 @@
-﻿namespace FootbagPix.Logic
+﻿// <copyright file="BallLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix.Logic
 {
     using System;
     using System.Windows;
@@ -6,48 +10,52 @@
 
     public class BallLogic : IBallLogic
     {
-        readonly IBallModel ball;
-        public event EventHandler RefreshScreen;
+        private readonly IBallModel ball;
+
         public BallLogic(IBallModel ball)
         {
             this.ball = ball;
         }
+
+        public event EventHandler RefreshScreen;
+
         public void DoGravity()
         {
-            Console.WriteLine(ball.Area.Y);
-            if (ball.Area.Y < Config.groundPosition)
+            Console.WriteLine(this.ball.Area.Y);
+            if (this.ball.Area.Y < Config.GroundPosition)
             {
-                ball.TimeOnAir++;
-                ball.SpeedY -= ((Config.gravity * ball.TimeOnAir));
+                this.ball.TimeOnAir++;
+                this.ball.SpeedY -= Config.Gravity * this.ball.TimeOnAir;
 
-                ball.Area = Rect.Offset(ball.Area, ball.SpeedX, -ball.SpeedY) ;
-                
+                this.ball.Area = Rect.Offset(this.ball.Area, this.ball.SpeedX, -this.ball.SpeedY);
             }
             else
             {
-                ball.Area = new Rect(ball.Area.X, Config.groundPosition + 1, 20, 20);
-                ball.TimeOnAir = 0;
+                this.ball.Area = new Rect(this.ball.Area.X, Config.GroundPosition + 1, 20, 20);
+                this.ball.TimeOnAir = 0;
             }
-            if (ball.Area.X < 0 || ball.Area.X + ball.Area.Width > Config.windowWidth)
+
+            if (this.ball.Area.X < 0 || this.ball.Area.X + this.ball.Area.Width > Config.WindowWidth)
             {
-                ball.SpeedX *= -1;
+                this.ball.SpeedX *= -1;
             }
-            RefreshScreen?.Invoke(this, EventArgs.Empty);
+
+            this.RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         public void KickBall()
         {
-            ball.TimeOnAir = 0;
-            ball.Area = Rect.Offset(ball.Area, ball.Area.X, ball.Area.Y - 5); //just to remove ball of the area that DoGravity() does not work
-            ball.SpeedY = 10;
+            this.ball.TimeOnAir = 0;
+            this.ball.Area = Rect.Offset(this.ball.Area, this.ball.Area.X, this.ball.Area.Y - 5); // just to remove ball of the area that DoGravity() does not work
+            this.ball.SpeedY = 10;
         }
 
         public void Reset()
         {
-            ball.Area = new Rect((Config.windowWidth - ball.Area.Width) / 2, 50, 20, 20);
-            ball.SpeedX = 0;
-            ball.SpeedY = 0;
-            ball.TimeOnAir = 0;
+            this.ball.Area = new Rect((Config.WindowWidth - this.ball.Area.Width) / 2, 50, 20, 20);
+            this.ball.SpeedX = 0;
+            this.ball.SpeedY = 0;
+            this.ball.TimeOnAir = 0;
         }
     }
 }

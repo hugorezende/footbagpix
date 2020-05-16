@@ -1,4 +1,8 @@
-﻿namespace FootbagPix.Repository
+﻿// <copyright file="IRepository.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix.Repository
 {
     using System;
     using System.Collections.Generic;

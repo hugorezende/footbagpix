@@ -1,25 +1,29 @@
-﻿namespace FootbagPix
+﻿// <copyright file="ControlsWindow.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix
 {
     using System.Windows;
     using System.Windows.Input;
 
     /// <summary>
-    /// Interaction logic for ControlsWindow.xaml
+    /// Interaction logic for ControlsWindow.xaml.
     /// </summary>
     public partial class ControlsWindow : Window
     {
         public ControlsWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void Button_Back_Click(object sender, RoutedEventArgs e)
         {
             MainMenuWindow mainmenuWindow = new MainMenuWindow
             {
-                WindowStartupLocation=WindowStartupLocation.Manual,
+                WindowStartupLocation = WindowStartupLocation.Manual,
                 Left = this.Left,
-                Top = this.Top
+                Top = this.Top,
             };
             mainmenuWindow.Show();
             this.Close();

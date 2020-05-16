@@ -1,4 +1,8 @@
-﻿namespace FootbagPix
+﻿// <copyright file="LoadWindow.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix
 {
     using System.Windows;
     using System.Windows.Input;
@@ -6,26 +10,26 @@
     using FootbagPix.Repository;
 
     /// <summary>
-    /// Interaction logic for LoadWindow.xaml
+    /// Interaction logic for LoadWindow.xaml.
     /// </summary>
     public partial class LoadWindow : Window
     {
         public LoadWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             GameModelRepository repository = new GameModelRepository("savedgames.xml");
-            LoadList.ItemsSource = repository.GetAll();
+            this.LoadList.ItemsSource = repository.GetAll();
         }
 
         private void Button_Load_Click(object sender, RoutedEventArgs e)
         {
-            if (LoadList.SelectedItem != null)
+            if (this.LoadList.SelectedItem != null)
             {
-                GameModel gameToLoad = LoadList.SelectedItem as GameModel;
+                GameModel gameToLoad = this.LoadList.SelectedItem as GameModel;
                 MainWindow mainWindow = new MainWindow(gameToLoad)
                 {
                     Left = this.Left,
-                    Top = this.Top - 150
+                    Top = this.Top - 150,
                 };
                 mainWindow.Show();
                 this.Close();
@@ -38,7 +42,7 @@
             {
                 WindowStartupLocation = WindowStartupLocation.Manual,
                 Left = this.Left,
-                Top = this.Top
+                Top = this.Top,
             };
             mainmenuWindow.Show();
             this.Close();

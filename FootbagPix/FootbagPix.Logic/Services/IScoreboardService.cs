@@ -1,4 +1,8 @@
-﻿namespace FootbagPix.Services
+﻿// <copyright file="IScoreboardService.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix.Services
 {
     using System.Collections.Generic;
 

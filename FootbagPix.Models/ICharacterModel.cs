@@ -1,4 +1,8 @@
-﻿namespace FootbagPix.Models
+﻿// <copyright file="ICharacterModel.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix.Models
 {
     using System.Windows;
     using System.Windows.Media;
@@ -6,10 +10,6 @@
     public interface ICharacterModel
     {
         bool Blocked { get; set; }
-
-        Rect Body { get; }
-
-        Point Head { get; }
 
         ImageBrush ImageBrush { get; set; }
 

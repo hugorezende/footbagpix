@@ -1,4 +1,8 @@
-﻿namespace FootbagPix.Services
+﻿// <copyright file="ScoreboardEntry.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix.Services
 {
     using System;
     using System.Collections.Generic;
@@ -31,7 +35,7 @@
 
         public override string ToString()
         {
-            return string.Format("{0,-12} {1,-8} {2,3} {3,12}", Name, Score.ToString(), MaxCombo.ToString()+"x", DateTime.ToShortDateString());
+            return string.Format("{0,-12} {1,-8} {2,3} {3,12}", this.Name, this.Score.ToString(), this.MaxCombo.ToString() + "x", this.DateTime.ToShortDateString());
         }
     }
 }

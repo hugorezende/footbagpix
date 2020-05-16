@@ -1,9 +1,27 @@
-﻿namespace FootbagPix.Models
+﻿// <copyright file="GameModel.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix.Models
 {
     using System;
 
     public class GameModel : IGameModel
     {
+        public GameModel(string playerName)
+        {
+            this.GameID = Guid.NewGuid();
+            this.Character = new CharacterModel();
+            this.Ball = new BallModel();
+            this.Timer = new TimerModel(Config.GameLength);
+            this.PlayerName = playerName;
+            this.Score = new ScoreModel();
+        }
+
+        public GameModel()
+        {
+        }
+
         public Guid GameID { get; set; }
 
         public CharacterModel Character { get; set; }
@@ -18,24 +36,9 @@
 
         public DateTime SavedAt { get; set; }
 
-        public GameModel(string playerName)
-        {
-            GameID = Guid.NewGuid();
-            Character = new CharacterModel();
-            Ball = new BallModel();
-            Timer = new TimerModel(Config.gameLength);
-            PlayerName = playerName;
-            Score = new ScoreModel();
-        }
-
-        public GameModel()
-        {
-
-        }
-
         public override string ToString()
         {
-            return string.Format("{0,-10} {1,-3} {2,6} {3,19}", PlayerName, Score.CurrentScore.ToString(), "0:" + Timer.TimeLeft, SavedAt.ToString("MM/dd/yyyy HH:mm"));
+            return string.Format("{0,-10} {1,-3} {2,6} {3,19}", this.PlayerName, this.Score.CurrentScore.ToString(), "0:" + this.Timer.TimeLeft, this.SavedAt.ToString("MM/dd/yyyy HH:mm"));
         }
     }
 }

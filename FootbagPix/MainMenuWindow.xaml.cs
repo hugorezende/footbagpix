@@ -1,16 +1,20 @@
-﻿namespace FootbagPix
+﻿// <copyright file="MainMenuWindow.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix
 {
     using System.Windows;
     using System.Windows.Input;
 
     /// <summary>
-    /// Interaction logic for MainMenuWindow.xaml
+    /// Interaction logic for MainMenuWindow.xaml.
     /// </summary>
     public partial class MainMenuWindow : Window
     {
         public MainMenuWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void Button_Play_Click(object sender, RoutedEventArgs e)
@@ -18,7 +22,7 @@
             NewGameWindow newGameWindow = new NewGameWindow
             {
                 Left = this.Left,
-                Top = this.Top + 150
+                Top = this.Top + 150,
             };
             newGameWindow.Show();
             this.Close();
@@ -29,7 +33,7 @@
             LoadWindow loadWindow = new LoadWindow
             {
                 Left = this.Left,
-                Top = this.Top
+                Top = this.Top,
             };
             loadWindow.Show();
             this.Close();
@@ -44,7 +48,7 @@
             ScoreboardWindow scoreboardWindow = new ScoreboardWindow
             {
                 Left = this.Left,
-                Top = this.Top
+                Top = this.Top,
             };
             scoreboardWindow.Show();
             Application.Current.Dispatcher.Invoke(() =>
@@ -59,7 +63,7 @@
             ControlsWindow controlsWindow = new ControlsWindow
             {
                 Left = this.Left,
-                Top = this.Top
+                Top = this.Top,
             };
             controlsWindow.Show();
             this.Close();

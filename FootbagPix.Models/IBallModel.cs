@@ -1,4 +1,8 @@
-﻿namespace FootbagPix.Models
+﻿// <copyright file="IBallModel.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix.Models
 {
     using System.Windows;
     using System.Windows.Media;

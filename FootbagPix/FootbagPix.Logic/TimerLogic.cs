@@ -1,4 +1,8 @@
-﻿namespace FootbagPix.Logic
+﻿// <copyright file="TimerLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix.Logic
 {
     using System.Windows.Media;
     using FootbagPix.Models;
@@ -6,49 +10,48 @@
 
     public class TimerLogic : ITimerLogic
     {
-        readonly TimerModel timer;
-        readonly GameModel game;
-        readonly ScoreboardService scoreboardService;
+        private readonly TimerModel timer;
+        private readonly GameModel game;
+        private readonly ScoreboardService scoreboardService;
 
         public TimerLogic(TimerModel timer, GameModel game)
         {
             this.timer = timer;
             this.game = game;
-            scoreboardService = new ScoreboardService();
+            this.scoreboardService = new ScoreboardService();
         }
 
         public void DecrementTime()
         {
-            if (!timer.GameOver)
+            if (!this.timer.GameOver)
             {
-                if (timer.TimeLeft > 0)
+                if (this.timer.TimeLeft > 0)
                 {
-                    timer.TimeLeft--;
+                    this.timer.TimeLeft--;
                 }
                 else
                 {
-                    timer.GameOver = true;
-                    game.Character.Blocked = true;
-                    scoreboardService.AddScore(game.PlayerName, game.Score.CurrentScore, game.Score.MaxComboCount);
-                    ShowGameOver();
+                    this.timer.GameOver = true;
+                    this.game.Character.Blocked = true;
+                    this.scoreboardService.AddScore(this.game.PlayerName, this.game.Score.CurrentScore, this.game.Score.MaxComboCount);
+                    this.ShowGameOver();
                 }
             }
-
         }
 
         public void ShowGameOver()
         {
-            timer.GameOverBrush.Opacity = 1;
-            timer.GameOverTextBrush = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
-            game.Score.ComboCounter = 0;
+            this.timer.GameOverBrush.Opacity = 1;
+            this.timer.GameOverTextBrush = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+            this.game.Score.ComboCounter = 0;
         }
 
         public void Reset()
         {
-            timer.GameOver = false;
-            timer.GameOverBrush.Opacity = 0;
-            timer.GameOverTextBrush = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
-            timer.TimeLeft = Config.gameLength;
+            this.timer.GameOver = false;
+            this.timer.GameOverBrush.Opacity = 0;
+            this.timer.GameOverTextBrush = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+            this.timer.TimeLeft = Config.GameLength;
         }
     }
 }

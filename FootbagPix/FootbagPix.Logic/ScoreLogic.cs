@@ -1,11 +1,15 @@
-﻿namespace FootbagPix.Logic
+﻿// <copyright file="ScoreLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix.Logic
 {
     using FootbagPix.Models;
 
     public class ScoreLogic : IScoreLogic
     {
-        readonly IScoreModel score;
-        readonly IBallModel ball;
+        private readonly IScoreModel score;
+        private readonly IBallModel ball;
 
         public ScoreLogic(IScoreModel score, IBallModel ball)
         {
@@ -17,40 +21,42 @@
         {
             if (scoreType == ScoreType.FootHit)
             {
-                score.CurrentScore += (Config.scorePerKick * score.ComboCounter);
-                if (score.ComboCounter > score.MaxComboCount)
+                this.score.CurrentScore += Config.ScorePerKick * this.score.ComboCounter;
+                if (this.score.ComboCounter > this.score.MaxComboCount)
                 {
-                    score.MaxComboCount = score.ComboCounter;
+                    this.score.MaxComboCount = this.score.ComboCounter;
                 }
-                score.ExtraInfo = "Foot Hit";
-                score.ComboCounter++;
+
+                this.score.ExtraInfo = "Foot Hit";
+                this.score.ComboCounter++;
             }
 
             if (scoreType == ScoreType.KneeHit)
             {
-                score.CurrentScore += (Config.scorePerKick * score.ComboCounter);
-                if (score.ComboCounter > score.MaxComboCount)
+                this.score.CurrentScore += Config.ScorePerKick * this.score.ComboCounter;
+                if (this.score.ComboCounter > this.score.MaxComboCount)
                 {
-                    score.MaxComboCount = score.ComboCounter;
+                    this.score.MaxComboCount = this.score.ComboCounter;
                 }
-                score.ExtraInfo = "Knee Hit!";
-                score.ComboCounter++;
+
+                this.score.ExtraInfo = "Knee Hit!";
+                this.score.ComboCounter++;
             }
         }
 
         public void CheckIfBallFell()
         {
-            if (ball.Area.Y >= Config.groundPosition)
+            if (this.ball.Area.Y >= Config.GroundPosition)
             {
-                score.ComboCounter = 0;
+                this.score.ComboCounter = 0;
             }
         }
 
         public void Reset()
         {
-            score.CurrentScore = 0;
-            score.ComboCounter = 0;
-            score.MaxComboCount = 0;
+            this.score.CurrentScore = 0;
+            this.score.ComboCounter = 0;
+            this.score.MaxComboCount = 0;
         }
     }
 }

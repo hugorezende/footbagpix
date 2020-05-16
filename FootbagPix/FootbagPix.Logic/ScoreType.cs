@@ -1,4 +1,8 @@
-﻿namespace FootbagPix.Logic
+﻿// <copyright file="ScoreType.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FootbagPix.Logic
 {
     public enum ScoreType
     {
