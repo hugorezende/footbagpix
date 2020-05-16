@@ -19,6 +19,10 @@ namespace FootbagPix.Test
         private Mock<ITimerModel> mockedTimer;
         private Mock<IScoreModel> mockedScore;
 
+        /// <summary>
+        /// Unit test for Move Left method.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the result of the asynchronous operation.</returns>
         [Test]
         public async Task TestMoveLeftAsync()
         {
@@ -43,6 +47,9 @@ namespace FootbagPix.Test
             Assert.That(this.mockedCharacter.Object.PositionX, Is.EqualTo(5));
         }
 
+        /// <summary>
+        /// Unit test for check MoveLeft() when character is blocked.
+        /// </summary>
         [Test]
         public void TestMoveLeftBlocked()
         {
@@ -67,6 +74,9 @@ namespace FootbagPix.Test
             Assert.That(this.mockedCharacter.Object.PositionX, Is.EqualTo(10));
         }
 
+        /// <summary>
+        /// Unit test for check MoveLeft() when game is over.
+        /// </summary>
         [Test]
         public void TestMoveLeftGameOver()
         {
@@ -91,6 +101,11 @@ namespace FootbagPix.Test
             Assert.That(this.mockedCharacter.Object.PositionX, Is.EqualTo(10));
         }
 
+
+        /// <summary>
+        /// Unit test for Move Right character.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the result of the asynchronous operation.</returns>
         [Test]
         public async Task TestMoveRightAsync()
         {
@@ -116,6 +131,9 @@ namespace FootbagPix.Test
             Assert.That(this.mockedCharacter.Object.PositionX, Is.EqualTo(15));
         }
 
+        /// <summary>
+        /// Unit Test for try hit the ball.
+        /// </summary>
         [Test]
         public void TestTryHitBall()
         {
