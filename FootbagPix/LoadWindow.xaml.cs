@@ -14,6 +14,9 @@ namespace FootbagPix
     /// </summary>
     public partial class LoadWindow : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoadWindow"/> class.
+        /// </summary>
         public LoadWindow()
         {
             this.InitializeComponent();

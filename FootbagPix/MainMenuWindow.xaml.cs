@@ -12,6 +12,9 @@ namespace FootbagPix
     /// </summary>
     public partial class MainMenuWindow : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainMenuWindow"/> class.
+        /// </summary>
         public MainMenuWindow()
         {
             this.InitializeComponent();

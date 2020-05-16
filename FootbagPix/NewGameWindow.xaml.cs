@@ -14,12 +14,18 @@ namespace FootbagPix
     /// </summary>
     public partial class NewGameWindow : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewGameWindow"/> class.
+        /// </summary>
         public NewGameWindow()
         {
             this.InitializeComponent();
             this.PlayerName = string.Empty;
         }
 
+        /// <summary>
+        /// Gets or sets the name of the player.
+        /// </summary>
         public string PlayerName { get; set; }
 
         private void Button_Back_Click(object sender, RoutedEventArgs e)

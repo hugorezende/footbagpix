@@ -16,6 +16,10 @@ namespace FootbagPix
     {
         private readonly GameControl gameControl;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PauseWindow"/> class.
+        /// </summary>
+        /// <param name="gameControl">The GameControl object controlling the game.</param>
         public PauseWindow(GameControl gameControl)
         {
             this.InitializeComponent();
