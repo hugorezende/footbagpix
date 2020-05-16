@@ -15,6 +15,9 @@ namespace FootbagPix.Test
         private Mock<IScoreModel> mockScore;
         private Mock<IBallModel> mockBall;
 
+        /// <summary>
+        /// Unit test for Inscrease score.
+        /// </summary>
         [Test]
         public void TestIncrease()
         {
