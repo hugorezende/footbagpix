@@ -11,6 +11,9 @@ namespace FootbagPix.Test
     using Moq;
     using NUnit.Framework;
 
+    /// <summary>
+    /// Test CharacterLogicTests Class.
+    /// </summary>
     [TestFixture]
     internal class CharacterLogicTests
     {

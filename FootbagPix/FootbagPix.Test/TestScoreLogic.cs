@@ -9,6 +9,9 @@ namespace FootbagPix.Test
     using Moq;
     using NUnit.Framework;
 
+    /// <summary>
+    /// Test TestScoreLogic Class.
+    /// </summary>
     [TestFixture]
     internal class TestScoreLogic
     {
