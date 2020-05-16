@@ -101,7 +101,6 @@ namespace FootbagPix.Test
             Assert.That(this.mockedCharacter.Object.PositionX, Is.EqualTo(10));
         }
 
-
         /// <summary>
         /// Unit test for Move Right character.
         /// </summary>
