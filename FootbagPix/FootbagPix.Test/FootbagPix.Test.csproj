@@ -76,10 +76,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FootbagPix.Models\FootbagPix.Models.csproj">
-      <Project>{c5809713-7982-409a-acf6-e0ef7aec7484}</Project>
-      <Name>FootbagPix.Models</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FootbagPix.csproj">
       <Project>{3d0927fa-790d-4332-af93-4d8abc62bf73}</Project>
       <Name>FootbagPix</Name>
@@ -87,6 +83,10 @@
     <ProjectReference Include="..\FootbagPix.Logic\FootbagPix.Logic.csproj">
       <Project>{19b8c785-8753-4b2c-90ad-5f33d9a14fb9}</Project>
       <Name>FootbagPix.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FootbagPix.Models\FootbagPix.Models.csproj">
+      <Project>{c5809713-7982-409a-acf6-e0ef7aec7484}</Project>
+      <Name>FootbagPix.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

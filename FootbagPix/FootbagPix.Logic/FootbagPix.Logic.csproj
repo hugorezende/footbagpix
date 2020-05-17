@@ -60,15 +60,15 @@
     <Compile Include="TimerLogic.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FootbagPix.Models\FootbagPix.Models.csproj">
-      <Project>{C5809713-7982-409A-ACF6-E0EF7AEC7484}</Project>
-      <Name>FootbagPix.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="LogicClassDiagram.cd" />
     <None Include="oenik.ruleset" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FootbagPix.Models\FootbagPix.Models.csproj">
+      <Project>{c5809713-7982-409a-acf6-e0ef7aec7484}</Project>
+      <Name>FootbagPix.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
