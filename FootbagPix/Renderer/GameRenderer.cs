@@ -10,6 +10,9 @@ namespace FootbagPix.Renderer
     using System.Windows.Media.Imaging;
     using FootbagPix.Models;
 
+    /// <summary>
+    /// Represents the GameRenderer, used to draw the elements of the game to the screen.
+    /// </summary>
     internal class GameRenderer
     {
         private static readonly SolidColorBrush ColorBlue = new SolidColorBrush(Color.FromArgb(100, 0, 0, 255));
@@ -21,12 +24,20 @@ namespace FootbagPix.Renderer
         private readonly Typeface joystixFont = new Typeface(new FontFamily(new Uri("pack://application:,,,/"), "./Resources/FontResources/#Joystix Monospace"), FontStyles.Normal, FontWeights.Normal, FontStretches.Normal);
         private Rect bgArea;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameRenderer"/> class.
+        /// </summary>
+        /// <param name="gameModel">The GameModel object representing the current game.</param>
         public GameRenderer(GameModel gameModel)
         {
             this.gameModel = gameModel;
             this.bgArea = new Rect(0, 0, Config.WindowWidth, Config.WindowHeight);
         }
 
+        /// <summary>
+        /// Draw all items of the DrawingContext to the screen.
+        /// </summary>
+        /// <param name="ctx">DrawingContext containing the elements of the game.</param>
         public void DrawItems(DrawingContext ctx)
         {
             ctx.DrawRectangle(BackgroundBrush, DefaultPen, this.bgArea);

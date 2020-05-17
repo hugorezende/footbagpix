@@ -13,6 +13,9 @@ namespace FootbagPix
     /// </summary>
     public partial class ScoreboardWindow : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScoreboardWindow"/> class.
+        /// </summary>
         public ScoreboardWindow()
         {
             this.InitializeComponent();

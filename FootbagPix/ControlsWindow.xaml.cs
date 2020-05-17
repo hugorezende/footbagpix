@@ -12,6 +12,9 @@ namespace FootbagPix
     /// </summary>
     public partial class ControlsWindow : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ControlsWindow"/> class.
+        /// </summary>
         public ControlsWindow()
         {
             this.InitializeComponent();
