@@ -47,7 +47,6 @@ namespace FootbagPix.Test
             await Task.Delay(1000);
             this.mockedCharacter.VerifySet(mock => mock.LeftFoot);
             this.mockedCharacter.VerifySet(mock => mock.RigthFoot);
-            
             Assert.That(this.mockedCharacter.Object.PositionX, Is.EqualTo(5));
         }
 
