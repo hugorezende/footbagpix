@@ -69,6 +69,7 @@ namespace FootbagPix.Control
             else
             {
                 this.GameModel = win.GameModel;
+                this.GameModel.Character.Blocked = false;
                 this.ballLogic = new BallLogic(this.GameModel.Ball);
                 this.characterLogic = new CharacterLogic(this.GameModel.Ball, this.GameModel.Character, this.GameModel.Score, this.GameModel.Timer);
                 this.scoreLogic = new ScoreLogic(this.GameModel.Score, this.GameModel.Ball);
