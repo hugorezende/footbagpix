@@ -8,20 +8,32 @@ namespace FootbagPix.Logic
     using System.Windows;
     using FootbagPix.Models;
 
+    /// <summary>
+    /// Class for Ball Logic.
+    /// </summary>
     public class BallLogic : IBallLogic
     {
         private readonly IBallModel ball;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BallLogic"/> class.
+        /// </summary>
+        /// <param name="ball">Ball Model Interface.</param>
         public BallLogic(IBallModel ball)
         {
             this.ball = ball;
         }
 
+        /// <summary>
+        /// Event for refresh screen.
+        /// </summary>
         public event EventHandler RefreshScreen;
 
+        /// <summary>
+        /// Method that moves ball simulating gravity.
+        /// </summary>
         public void DoGravity()
         {
-            Console.WriteLine(this.ball.Area.Y);
             if (this.ball.Area.Y < Config.GroundPosition)
             {
                 this.ball.TimeOnAir++;
@@ -43,6 +55,9 @@ namespace FootbagPix.Logic
             this.RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Method that moves ball up when hit.
+        /// </summary>
         public void KickBall()
         {
             this.ball.TimeOnAir = 0;
@@ -50,6 +65,9 @@ namespace FootbagPix.Logic
             this.ball.SpeedY = 10;
         }
 
+        /// <summary>
+        /// Method to reset speed and position of ball.
+        /// </summary>
         public void Reset()
         {
             this.ball.Area = new Rect((Config.WindowWidth - this.ball.Area.Width) / 2, 50, 20, 20);

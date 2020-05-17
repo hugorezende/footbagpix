@@ -8,15 +8,33 @@ namespace FootbagPix.Logic
     using System.Windows;
     using FootbagPix.Models;
 
+    /// <summary>
+    /// Class for Character Logic.
+    /// </summary>
     public class CharacterLogic : ICharacterLogic
     {
+        /// <summary>
+        /// Store if chraracter is moving to the left in that instant.
+        /// </summary>
         public bool MovingLeft;
+
+        /// <summary>
+        /// Store if chraracter is moving to the right in that instant.
+        /// </summary>
         public bool MovingRight;
+
         private readonly IBallModel ball;
         private readonly ICharacterModel character;
         private readonly ITimerModel timer;
         private readonly IScoreModel score;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CharacterLogic"/> class.
+        /// </summary>
+        /// <param name="ball">Ball Model Interface.</param>
+        /// <param name="character">Character  Model Interface.</param>
+        /// <param name="score">Score Model Interface.</param>
+        /// <param name="timer">Timer Model Interface.</param>
         public CharacterLogic(IBallModel ball, ICharacterModel character, IScoreModel score, ITimerModel timer)
         {
             this.ball = ball;
@@ -25,6 +43,9 @@ namespace FootbagPix.Logic
             this.timer = timer;
         }
 
+        /// <summary>
+        /// Move Character and all their elements to the left.
+        /// </summary>
         public async void MoveLeft()
         {
             if (!this.timer.GameOver && !this.character.Blocked)
@@ -51,6 +72,9 @@ namespace FootbagPix.Logic
             }
         }
 
+        /// <summary>
+        /// Move Character and all their elements to the right.
+        /// </summary>
         public async void MoveRight()
         {
             if (!this.timer.GameOver && !this.character.Blocked)
@@ -77,6 +101,10 @@ namespace FootbagPix.Logic
             }
         }
 
+        /// <summary>
+        /// Performs a kick and check if character hitted the ball.
+        /// </summary>
+        /// <returns>Type of hit.</returns>
         public ScoreType TryHitBall()
         {
             if (!this.timer.GameOver && !this.character.Blocked)
@@ -128,6 +156,12 @@ namespace FootbagPix.Logic
             return ScoreType.Miss;
         }
 
+        /// <summary>
+        /// Create direction for the ball after character kick.
+        /// </summary>
+        /// <param name="ball">Ball.</param>
+        /// <param name="surface">Hit area.</param>
+        /// <returns>Amount of X velocity.</returns>
         public float GenerateBallDirection(IBallModel ball, Rect surface)
         {
             double middleOfBall = ball.Area.X + (ball.Area.Width / 2);
@@ -136,6 +170,9 @@ namespace FootbagPix.Logic
             return offset / Config.KickOffset;
         }
 
+        /// <summary>
+        /// Performs Turn for character.
+        /// </summary>
         public void Turn()
         {
             if (!this.character.Blocked && !this.timer.GameOver)
@@ -147,6 +184,10 @@ namespace FootbagPix.Logic
             }
         }
 
+        /// <summary>
+        /// Block character movements and controls for specific amount time.
+        /// </summary>
+        /// <param name="miliseconds">Period of blocked time.</param>
         public async void BlockControl(int miliseconds)
         {
             this.character.Blocked = true;
@@ -154,6 +195,9 @@ namespace FootbagPix.Logic
             this.character.Blocked = false;
         }
 
+        /// <summary>
+        /// Send character for the initial position.
+        /// </summary>
         public void Reset()
         {
             this.character.LeftFoot = new Rect((Config.WindowWidth - this.character.SpriteWidth) / 2, Config.WindowHeight - 100, 40, 40);
@@ -166,6 +210,9 @@ namespace FootbagPix.Logic
             this.character.Blocked = false;
         }
 
+        /// <summary>
+        /// Sprite Animation for Walk in right direction.
+        /// </summary>
         public async void AnimateWalkRight()
         {
             while (this.MovingRight && !this.character.Blocked)
@@ -185,6 +232,9 @@ namespace FootbagPix.Logic
             }
         }
 
+        /// <summary>
+        /// Sprite Animation for Walk in left direction.
+        /// </summary>
         public async void AnimateWalkLeft()
         {
             while (this.MovingLeft && !this.character.Blocked)
@@ -204,6 +254,9 @@ namespace FootbagPix.Logic
             }
         }
 
+        /// <summary>
+        /// Sprite Animation for kick with right foot.
+        /// </summary>
         private async void AnimateKickRight()
         {
             this.character.ImageBrush.Viewbox = new Rect(0, 0, this.character.SpriteWidth, this.character.SpriteHeight);
@@ -217,6 +270,9 @@ namespace FootbagPix.Logic
             this.character.ImageBrush.Viewbox = new Rect(0, 0, this.character.SpriteWidth, this.character.SpriteHeight);
         }
 
+        /// <summary>
+        /// Sprite Animation for kick with left foot.
+        /// </summary>
         private async void AnimateKickLeft()
         {
             this.character.ImageBrush.Viewbox = new Rect(0, 0, this.character.SpriteWidth, this.character.SpriteHeight);
@@ -230,6 +286,9 @@ namespace FootbagPix.Logic
             this.character.ImageBrush.Viewbox = new Rect(0, 0, this.character.SpriteWidth, this.character.SpriteHeight);
         }
 
+        /// <summary>
+        /// Sprite Animation for caharter turn.
+        /// </summary>
         private async void AnimateTurn()
         {
             this.character.ImageBrush.Viewbox = new Rect(0, 0, this.character.SpriteWidth, this.character.SpriteHeight);

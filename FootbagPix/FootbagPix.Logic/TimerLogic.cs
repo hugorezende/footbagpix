@@ -8,19 +8,30 @@ namespace FootbagPix.Logic
     using FootbagPix.Models;
     using FootbagPix.Services;
 
+    /// <summary>
+    /// Class Logic for Timer.
+    /// </summary>
     public class TimerLogic : ITimerLogic
     {
-        private readonly ITimerModel timer;
-        private readonly IGameModel game;
-        private readonly IScoreboardService scoreboardService;
+        private readonly TimerModel timer;
+        private readonly GameModel game;
+        private readonly ScoreboardService scoreboardService;
 
-        public TimerLogic(ITimerModel timer, IGameModel game)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TimerLogic"/> class.
+        /// </summary>
+        /// <param name="timer">Timer Model.</param>
+        /// <param name="game">Game Model.</param>
+        public TimerLogic(TimerModel timer, GameModel game)
         {
             this.timer = timer;
             this.game = game;
             this.scoreboardService = new ScoreboardService();
         }
 
+        /// <summary>
+        /// Method to Decrement Time.
+        /// </summary>
         public void DecrementTime()
         {
             if (!this.timer.GameOver)
@@ -39,6 +50,9 @@ namespace FootbagPix.Logic
             }
         }
 
+        /// <summary>
+        /// Method to display Gameover.
+        /// </summary>
         public void ShowGameOver()
         {
             this.timer.GameOverBrush.Opacity = 1;
@@ -46,6 +60,9 @@ namespace FootbagPix.Logic
             this.game.Score.ComboCounter = 0;
         }
 
+        /// <summary>
+        /// Method to reset game.
+        /// </summary>
         public void Reset()
         {
             this.timer.GameOver = false;
