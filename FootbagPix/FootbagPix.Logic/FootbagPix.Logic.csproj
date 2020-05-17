@@ -49,7 +49,6 @@
     <Compile Include="CharacterLogic.cs" />
     <Compile Include="IBallLogic.cs" />
     <Compile Include="ICharacterLogic.cs" />
-    <Compile Include="IGameLogic.cs" />
     <Compile Include="IScoreLogic.cs" />
     <Compile Include="ITimerLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,6 +66,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="LogicClassDiagram.cd" />
     <None Include="oenik.ruleset" />
     <None Include="packages.config" />
   </ItemGroup>

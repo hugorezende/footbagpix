@@ -10,11 +10,11 @@ namespace FootbagPix.Logic
 
     public class TimerLogic : ITimerLogic
     {
-        private readonly TimerModel timer;
-        private readonly GameModel game;
-        private readonly ScoreboardService scoreboardService;
+        private readonly ITimerModel timer;
+        private readonly IGameModel game;
+        private readonly IScoreboardService scoreboardService;
 
-        public TimerLogic(TimerModel timer, GameModel game)
+        public TimerLogic(ITimerModel timer, IGameModel game)
         {
             this.timer = timer;
             this.game = game;

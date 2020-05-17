@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FootbagPix.Logic.BallLogic" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAggAAAAAAABAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BallLogic.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="ball" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FootbagPix.Logic.CharacterLogic" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIgAQAAQQABQAAAEAKAABAAAAAAQAIQAgAAAAgAAA=</HashCode>
+      <FileName>CharacterLogic.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="ball" />
+      <Field Name="character" />
+      <Field Name="score" />
+      <Field Name="timer" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FootbagPix.Logic.ScoreLogic" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAA0AAAAAAABAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ScoreLogic.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="score" />
+      <Field Name="ball" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FootbagPix.Logic.TimerLogic" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAAAAgAABAAAAAAAAAAAAAAAAAAIAAAAAAAAAAE=</HashCode>
+      <FileName>TimerLogic.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="game" />
+      <Field Name="timer" />
+      <Field Name="scoreboardService" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FootbagPix.Services.ScoreboardEntry">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAgEAAAAAAQAAAAIAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ScoreboardEntry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FootbagPix.Services.ScoreboardService" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAQAAAAAAAAAAABAAAAIAAAAAA=</HashCode>
+      <FileName>Services\ScoreboardService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="FootbagPix.Logic.IBallLogic">
+    <Position X="6.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IBallLogic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FootbagPix.Logic.ICharacterLogic">
+    <Position X="9" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABQAAAEACAAAAAAAAAAAIQAAAAAAAAAA=</HashCode>
+      <FileName>ICharacterLogic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FootbagPix.Logic.IScoreLogic">
+    <Position X="9" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IScoreLogic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FootbagPix.Logic.ITimerLogic">
+    <Position X="16.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ITimerLogic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FootbagPix.Services.IScoreboardService">
+    <Position X="14.25" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Services\IScoreboardService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FootbagPix.Models.IBallModel" Collapsed="true">
+    <Position X="8.5" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="FootbagPix.Models.ICharacterModel" Collapsed="true">
+    <Position X="13.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="FootbagPix.Models.IScoreModel" Collapsed="true">
+    <Position X="10.75" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="FootbagPix.Models.ITimerModel" Collapsed="true">
+    <Position X="13.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="FootbagPix.Models.IGameModel" Collapsed="true">
+    <Position X="18.5" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="FootbagPix.Logic.ScoreType">
+    <Position X="12.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>ScoreType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
