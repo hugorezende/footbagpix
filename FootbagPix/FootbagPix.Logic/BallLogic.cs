@@ -21,7 +21,6 @@ namespace FootbagPix.Logic
 
         public void DoGravity()
         {
-            Console.WriteLine(this.ball.Area.Y);
             if (this.ball.Area.Y < Config.GroundPosition)
             {
                 this.ball.TimeOnAir++;
