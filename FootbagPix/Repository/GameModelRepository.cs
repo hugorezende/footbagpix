@@ -30,11 +30,19 @@ namespace FootbagPix.Repository
         /// <param name="filename">The name of the file that contains the saved GameModel objects.</param>
         public GameModelRepository(string filename)
         {
+            this.AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            this.FolderPath = this.AppDataPath + "/FootbagPix";
+
             this.FileName = filename;
             this.types = new List<Type> { typeof(CharacterModel), typeof(BallModel), typeof(TimerModel), typeof(ScoreModel), typeof(Guid), typeof(MatrixTransform), typeof(SolidColorBrush) };
             this.savedGames = new List<GameModel>();
 
-            if (File.Exists(this.FileName))
+            if (!Directory.Exists(this.FolderPath))
+            {
+                Directory.CreateDirectory(this.FolderPath);
+            }
+
+            if (File.Exists(this.FolderPath + "/" + this.FileName))
             {
                 XmlSerializer serializer = new XmlSerializer(
                     typeof(List<GameModel>),
@@ -42,7 +50,7 @@ namespace FootbagPix.Repository
                     this.types.ToArray(),
                     new XmlRootAttribute("SavedGames"),
                     "FootbagPix");
-                using (StreamReader reader = new StreamReader(this.FileName))
+                using (StreamReader reader = new StreamReader(this.FolderPath + "/" + this.FileName))
                 {
                     this.savedGames = (List<GameModel>)serializer.Deserialize(reader);
                     reader.Close();
@@ -50,9 +58,17 @@ namespace FootbagPix.Repository
             }
             else
             {
-                XDocument newFile = new XDocument();
-                newFile.Add(new XElement("SavedGames"));
-                newFile.Save(this.FileName);
+                XmlSerializer serializer = new XmlSerializer(
+                this.savedGames.GetType(),
+                null,
+                this.types.ToArray(),
+                new XmlRootAttribute("SavedGames"),
+                "FootbagPix");
+                using (StreamWriter writer = new StreamWriter(this.FolderPath + "/" + this.FileName))
+                {
+                    serializer.Serialize(writer, this.savedGames);
+                    writer.Close();
+                }
             }
         }
 
@@ -60,6 +76,10 @@ namespace FootbagPix.Repository
         /// Gets the name of the file containing the saved games.
         /// </summary>
         internal string FileName { get; private set; }
+
+        internal string AppDataPath { get; private set; }
+
+        internal string FolderPath { get; private set; }
 
         /// <summary>
         /// Gets a GameModel object based on ID.
@@ -110,7 +130,7 @@ namespace FootbagPix.Repository
                 this.types.ToArray(),
                 new XmlRootAttribute("SavedGames"),
                 "FootbagPix");
-            using (StreamWriter writer = new StreamWriter(this.FileName))
+            using (StreamWriter writer = new StreamWriter(this.FolderPath + "/" + this.FileName))
             {
                 serializer.Serialize(writer, this.savedGames);
                 writer.Close();
