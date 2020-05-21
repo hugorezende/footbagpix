@@ -5,17 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FootbagPix"
         mc:Ignorable="d"
-        Title="PauseWindow" Height="300" Width="600" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown" KeyDown="Window_KeyDown">
+        Title="PauseWindow" Height="400" Width="400" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown" KeyDown="Window_KeyDown">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/FootbagPix;component/Resources/ImageResources/FootBagPause.png"/>
+            <ImageBrush ImageSource="/FootbagPix;component/Resources/ImageResources/FootbagNewPause.png"/>
         </Grid.Background>
 
         <Button Name="Button_Back" Click="Button_Resume_Click" Style="{StaticResource MainMenuButtonStyle}"
                 HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="192,158,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}">
         </Button>
-        <Button Name="Button_Play" Click="Button_Save_Click" Style="{StaticResource MainMenuButtonStyle}"
+        <Button Name="Button_Save" Click="Button_Save_Click" Style="{StaticResource MainMenuButtonStyle}"
                 HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="192,227,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}">
         </Button>
-        </Grid>
+        <Button x:Name="Button_Resume" Click="Button_Resume_Click" Style="{StaticResource MainMenuButtonStyle}"
+            HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="90,149,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
+        <Button x:Name="Button_Restart" Click="Button_Restart_Click" Style="{StaticResource MainMenuButtonStyle}"
+            HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="90,227,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
+        <Button x:Name="Button_Quit" Click="Button_Quit_Click" Style="{StaticResource MainMenuButtonStyle}"
+            HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Margin="90,307,0,0" Height="52" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
+    </Grid>
 </Window>

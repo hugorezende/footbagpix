@@ -172,7 +172,7 @@ namespace FootbagPix.Control
             this.timerLogic.DecrementTime();
         }
 
-        private void StartNewGame()
+        public void StartNewGame()
         {
             this.ballLogic.Reset();
             this.characterLogic.Reset();
@@ -187,8 +187,8 @@ namespace FootbagPix.Control
             this.GameModel.Character.Blocked = true;
             PauseWindow pauseWindow = new PauseWindow(this)
             {
-                Left = Window.GetWindow(this).Left + 104,
-                Top = Window.GetWindow(this).Top + 160,
+                Left = Window.GetWindow(this).Left + 200,
+                Top = Window.GetWindow(this).Top + 100,
             };
             pauseWindow.Show();
         }

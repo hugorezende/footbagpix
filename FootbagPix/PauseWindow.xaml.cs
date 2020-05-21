@@ -51,11 +51,28 @@ namespace FootbagPix
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Escape)
+            switch (e.Key)
             {
-                this.Close();
-                this.gameControl.ResumeGame();
+                case Key.Escape:
+                    this.Button_Resume_Click(sender, e); 
+                    break;
+                case Key.Enter:
+                    this.Button_Restart_Click(sender, e);
+                    break;
             }
+        }
+
+        private void Button_Restart_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            this.gameControl.StartNewGame();
+            this.gameControl.ResumeGame();
+        }
+
+        private void Button_Quit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            this.gameControl.GoToMainMenu();
         }
     }
 }
