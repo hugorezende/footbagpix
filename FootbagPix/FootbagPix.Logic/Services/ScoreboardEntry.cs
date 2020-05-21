@@ -24,12 +24,13 @@ namespace FootbagPix.Services
         public static List<ScoreboardEntry> Load(string url)
         {
             XDocument xDocument = XDocument.Load(url);
+            System.Globalization.CultureInfo cultureinfo = new System.Globalization.CultureInfo("en-US");
             return xDocument.Descendants("entry").Select(node => new ScoreboardEntry()
             {
                 Name = node.Element("name")?.Value,
                 Score = Convert.ToInt32(node.Element("score")?.Value),
                 MaxCombo = Convert.ToInt32(node.Element("seconds")?.Value),
-                DateTime = Convert.ToDateTime(node.Element("date")?.Value),
+                DateTime = DateTime.Parse(node.Element("date")?.Value, cultureinfo),
             }).ToList();
         }
 
